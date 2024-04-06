@@ -1,0 +1,92 @@
+*{
+    background-color:rgb(188, 233, 246);
+}
+
+.header{
+    height: 10vh;
+    width: 100%;
+    padding: 0 8%;
+    background: rgb(188, 233, 246);
+    position: relative;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.nav-links{
+    padding: 28px 0;
+}
+
+.nav-links li{
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-links li a{
+    text-decoration: none;
+    color: purple;
+    padding: 5px 0;
+    position: relative;
+    font-size:16px;
+}
+
+.nav-links li a::after{   /*underline effect */
+    content: '';
+    background: plum;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    transition: width 0.5s;
+}
+
+.nav-links li a:hover::after{  /*underline effect when hovering*/
+    width: 100%;
+}
+
+.btn{                        /*sign up button*/
+    background: plum;
+    color: white;
+    padding: 0.01px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 90%;
+    max-width: 900px;
+    transform: translate(-50%, -50%);    /*To ensure the content is always centered*/
+    text-align: center;
+}
+
+h1{
+    color: rgb(10, 112, 110);
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+.button-container {
+    text-align: center;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 45px;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #04AA6D;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+
