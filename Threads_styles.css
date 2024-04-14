@@ -1,0 +1,29 @@
+/* Custom Styles */
+body {
+    background-image: url(UWA-Media-1-1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Arial', sans-serif; 
+}
+
+#threadsList {
+    margin-top: 30px;
+    color: white;
+}
+
+.thread {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.thread h5 {
+    color: white;
+}
+
+.thread p {
+    color: white;
+}
