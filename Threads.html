@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Threads_styles.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Threads Page</h1>
+
+    <!-- Search Bar -->
+    <div class="input-group mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
+        <div class="input-group-append">
+            <button class="btn btn-primary" onclick="searchThreads()">Search</button>
+        </div>
+    </div>
+
+    <!-- New Thread Form -->
+    <div class="mb-4">
+        <h4>Create New Thread</h4>
+        <form id="newThreadForm">
+            <div class="form-group">
+                <label for="threadTitle">Thread Title</label>
+                <input type="text" class="form-control" id="threadTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="threadContent">Thread Content</label>
+                <textarea class="form-control" id="threadContent" rows="3" required></textarea>
+            </div>
+            <button type="button" class="btn btn-success" onclick="addThread()">Submit</button>
+        </form>
+    </div>
+
+    <!-- Display Threads -->
+    <div id="threadsList">
+        <!-- Threads will be displayed here -->
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Custom JS -->
+<script src="Threads_scripts.js"></script>
+
+</body>
+</html>
