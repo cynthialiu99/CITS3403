@@ -1,29 +1,36 @@
 /* Custom Styles */
 body {
-    background-image: url(UWA-Media-1-1.jpg);
+    background-color: lightskyblue;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    font-family: 'Arial', sans-serif; 
+    font-family: 'Times New Roman', Times, serif; 
 }
 
-#threadsList {
-    margin-top: 30px;
-    color: white;
+h1{
+    color: darkblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
 }
 
-.thread {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+h3{
+    color: darkblue;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.thread h5 {
-    color: white;
+.form-group{
+    border-color: white;
+    color: darkblue;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.thread p {
-    color: white;
+#threadContent{
+    border-color: darkblue;
+    text-align: center;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
 }
+
