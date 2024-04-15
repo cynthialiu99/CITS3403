@@ -1,0 +1,82 @@
+* body {
+    background-color: lightskyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-form {
+    background-color: white;
+    padding: 150px;
+    border-radius: 8px;
+    padding-top: 95px;
+    padding-bottom: 164px;
+  }
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Times New Roman';
+    font-size: xx-large;
+  }
+  .login-form p {
+    font-size: 16px;
+  }
+  .login-form p a {
+    text-decoration: none;
+    color: rgb(10, 145, 230);
+  }
+  .login-form p a:hover {
+    color: lightskyblue;
+  }
+  .login-form p:hover {
+    color: lightskyblue;
+    text-decoration: underline;
+    cursor: pointer; 
+  }
+  .buttons-container {
+    margin-bottom: 15px;
+  }
+  button {
+    border: none;
+    border-radius: 4px;
+    padding: 20px 70px;
+    font-weight: bold;
+    cursor: pointer;  
+  }
+  .login-button {
+    background-color: lightskyblue; 
+    color: black;
+  }
+  .login-button:hover {
+    background-color: rgb(111, 197, 250);
+  }
+  .sign-up-button {
+    background-color: #f3f3f3;
+    color: #333;
+  }
+  .sign-up-button:hover {
+    background-color: lightgrey;
+  }
+  .input-email-password {
+    margin-bottom: 20px;
+  }
+  .input-email-password input {
+    width: 89%;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  .login-form-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 17px;
+  }  
+  .login-form-footer p2 a {
+    text-decoration: none;
+    color: rgb(10, 145, 230);
+  }
+  .login-form-footer p2 a:hover {
+    color: lightskyblue;
+    text-decoration: underline;
+  }
+  
+    
