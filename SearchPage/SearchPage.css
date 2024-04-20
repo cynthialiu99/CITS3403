@@ -1,0 +1,108 @@
+* {
+    background-color: lightblue;
+}
+
+h1 {
+    text-align: center;
+    font-size: 100px;
+}
+
+.searchbar{
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.searchbar input {
+    padding: 10px;
+    font-size: 30px;
+    width: 80%;
+}
+
+#submit {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    padding: 10px;
+    background: #ddd;
+    font-size: 30px;
+    border: solid;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: #ccc; /* Change background color on hover */
+}
+
+.populartopics {
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.populartopics + div {
+    font-size: 20px;
+    text-align: center;
+}
+
+.foundThreads{
+    font-size: 40px;
+    padding: 20px;
+}
+
+.errorNothingFound {
+    font-size: 40px;
+}
+
+.header{
+    height: 10vh;
+    width: 100%;
+    padding: 0 8%;
+    background:lightblue;
+    display: flex;
+    justify-content: center;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.nav-links{
+    padding: 28px 0;
+}
+
+.nav-links li{
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-links li a{
+    text-decoration: none;
+    color: white;
+    padding: 5px 0;
+    position: relative;
+    font-size:16px;
+}
+
+.nav-links li a::after{   /*underline effect */
+    content: '';
+    background: plum;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    transition: width 0.5s;
+}
+
+.nav-links li a:hover::after{  /*underline effect when hovering*/
+    width: 100%;
+}
+
+.btn{                        /*sign up button*/
+    background: plum;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
