@@ -52,7 +52,6 @@ nav{
 .btn{                        /*sign up button*/
     background: plum;
     color: white;
-    padding: 0.01px 20px;
     border-radius: 3px;
     cursor: pointer;
 }
