@@ -1,12 +1,13 @@
 *{
-    background-color:rgb(188, 233, 246);
+    background-color:lightblue;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .header{
     height: 10vh;
     width: 100%;
     padding: 0 8%;
-    background: rgb(188, 233, 246);
+    background:lightblue;
     display: flex;
     justify-content: center;
 }
@@ -28,7 +29,7 @@ nav{
 
 .nav-links li a{
     text-decoration: none;
-    color: purple;
+    color: white;
     padding: 5px 0;
     position: relative;
     font-size:16px;
@@ -57,17 +58,16 @@ nav{
 }
 
 .content{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 90%;
-    max-width: 900px;
-    transform: translate(-50%, -50%);    /*To ensure the content is always centered*/
+   
+    width: 100%; 
+    max-width: none; 
+    position: relative; 
     text-align: center;
+    padding: 0 8%; 
 }
 
 h1{
-    color: rgb(10, 112, 110);
+    color: darkblue;
     text-align: center;
     font-size: 50px;
     font-weight: 600;
