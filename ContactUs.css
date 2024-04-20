@@ -1,0 +1,12 @@
+*{
+    background-color:lightblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1{
+    color: white;
+}
+
+h3,p{
+    color: darkblue;
+}
