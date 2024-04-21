@@ -1,8 +1,8 @@
 // Sample data for threads (you can replace this with data from a database)
 let threads = [
-    //{ id: 1, title: 'Help with Math Homework', content: 'I need help with algebra problems.', date: '2024-04-14' },
-    //{ id: 2, title: 'Programming Project Help', content: 'I am stuck on my programming project.', date: '2024-04-13' },
-    //{ id: 3, title: 'Study Tips for Exams', content: 'Any tips for effective studying?', date: '2024-04-12' }
+    { id: 1, title: 'Help with Math Homework', content: 'I need help with algebra problems.', date: '2024-04-14' },
+    { id: 2, title: 'Programming Project Help', content: 'I am stuck on my programming project.', date: '2024-04-13' },
+    { id: 3, title: 'Study Tips for Exams', content: 'Any tips for effective studying?', date: '2024-04-12' }
 ];
 
 // Function to add a new thread
