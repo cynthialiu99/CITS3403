@@ -30,11 +30,19 @@ h3{
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
+    margin-top: 20px;
+    color: darkblue;
 }
 
 .nav-links li {
     margin-right: 10px; /* Optional: adds spacing between items */
     font-weight: bolder;
+    color: darkblue;
+}
+
+.btn btn-success{
+    font-weight: bolder;
+    color: darkblue;
 }
 
 .form-group{
