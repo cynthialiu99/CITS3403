@@ -45,6 +45,24 @@
         <!-- Threads will be displayed here -->
     </div>
 
+    <h1>Reply to Threads</h1>
+
+    <!-- Reply Form -->
+    <div id="replyForm" style="display: none;">
+        <h4>Reply</h4>
+        <form>
+            <div class="formGroup">
+                <label for="threadTitle">Thread Title</label>
+                <input type="text" class="form-control" id="threadTitle" required>
+                <label for="replyContent">Reply Content</label>
+                <textarea class="form-control" id="replyContent" rows="3" required></textarea>
+            </div>
+            <button type="button" class="btn btn-reply" onclick="replyToThread()">Submit</button>
+        </form>
+    </div>
+
+
+
     
 
 <!-- Bootstrap JS and Popper.js -->
