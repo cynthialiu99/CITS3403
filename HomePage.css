@@ -90,3 +90,108 @@ h1{
 .button1 {background-color: #04AA6D;} /* Green */
 .button2 {background-color: #008CBA;} /* Blue */
 
+*{
+    background-color:lightblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.header{
+    height: 10vh;
+    width: 100%;
+    padding: 0 8%;
+    background:lightblue;
+    display: flex;
+    justify-content: center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.nav-links{
+    padding: 28px 0;
+}
+
+.nav-links li{
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-links li a{
+    text-decoration: none;
+    color: white;
+    padding: 5px 0;
+    position: relative;
+    font-size:16px;
+}
+
+.nav-links li a::after{   /*underline effect */
+    content: '';
+    background: plum;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    transition: width 0.5s;
+}
+
+.nav-links li a:hover::after{  /*underline effect when hovering*/
+    width: 100%;
+}
+
+.btn{                        /*sign up button*/
+    background: plum;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.content{
+   
+    width: 100%; 
+    max-width: none; 
+    position: relative; 
+    text-align: center;
+    padding: 0 8%; 
+}
+
+h1{
+    color: darkblue;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+.button-container {
+    text-align: center;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 45px;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #04AA6D;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+
+.hotTopics {
+    color: darkblue;
+    width: 400px;
+    height: 400px;
+    border: 1px solid white;
+    padding: 25px;
+    margin: 25px auto; /* Center horizontally */
+    position: relative;
+    text-align: center;
+    display: block; /* Ensures margin: 0 auto; works */
+}
+
+

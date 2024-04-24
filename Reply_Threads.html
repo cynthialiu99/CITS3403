@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Threads</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS -CHANGE -->
+        <link rel="stylesheet" href="Threads_styles.css">
+    </head>
+    <body>
+
+        <h1>Reply to Threads</h1>
+
+        <!-- Reply Form -->
+        <div id="replyForm">
+            <form>
+                <div class="formGroup">
+                    <label for="threadTitle">Thread Title</label>
+                    <input type="text" class="form-control" id="threadTitle" required>
+                    <label for="replyContent">Reply Content</label>
+                    <textarea class="form-control" id="replyContent" rows="3" required></textarea>
+                </div>
+                <button type="button" class="btn btn-reply" onclick="replyThread()">Submit</button>
+            </form>
+        </div>
+
+        <!-- Bootstrap JS and Popper.js -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Custom JS -->
+        <script src="Threads_scripts.js"></script>
+
+    </body>
+</html>

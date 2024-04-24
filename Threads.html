@@ -11,8 +11,27 @@
 </head>
 <body>
 
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Threads Page</h1>
+<div class="submitThreads">
+    <h1 class="threadsPage">Threads Page</h1>
+
+    <div class="header">
+        <nav>
+            <ul class = "nav-links">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="">Account</a></li>
+                <li><a href="">Resources</a></li>
+                <li><a href="ContactUs.html">Contact</a></li>
+                <li><a href="">Menu</a></li>
+                <li><a href="SearchPage/PythonHomePage.html">Python</a></li>
+                <li><a href="SearchPage/JavaHomePage.html">Java</a></li>   
+                <li class = "btn" onclick="window.location.href='Sign Up.html'">Login/Sign Up</li> 
+            </ul>
+        </nav>
+    </div>
+
+    <div>
+        <a id= "display" href="Display_Threads.html">View Existing Threads!</a>
+    </div>
 
     <!-- Search Bar 
     <div class="input-group mb-3">
@@ -23,20 +42,21 @@
     </div> -->
 
     <!-- New Thread Form -->
-    <div class="mb-4">
+    <div class="newThread">
         <h3>Create New Thread</h3>
         <form id="newThreadForm">
-            <div class="form-group">
+            <div class="formGroup">
                 <label for="threadTitle">Thread Title</label>
                 <input type="text" class="form-control" id="threadTitle" required>
             </div>
-            <div class="form-group">
+            <div class="formGroup">
                 <label for="threadContent">Thread Content</label>
                 <textarea class="form-control" id="threadContent" rows="3" required></textarea>
             </div>
             <button type="button" class="btn btn-success" onclick="addThread()">Submit</button>
         </form>
     </div>
+
 
     <!-- Display Threads -->
     <!--div id="threadsList"-->
