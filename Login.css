@@ -1,24 +1,96 @@
-* body {
+* {
+    font-family: 'Times New Roman';
+    margin: 0;
+  }
+  body {
     background-color: lightskyblue;
+  }
+  .header {
+    width: 100%;
+    background-color: rgb(10, 145, 230);
     display: flex;
     justify-content: center;
-    align-items: center;
+  }
+  .nav-links{
+    padding: 35px 0;
+  }
+  .nav-links li{
+    display: inline-block;
+    margin: 0 15px;
+  }
+  .nav-links li a{
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+  }
+  .nav-links li a:hover{  
+    text-decoration: underline;
+  }
+  .sign-up-btn{                        
+    background-color: plum;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+  }
+  .sign-up-btn:hover {
+    background-color: darkblue;
   }
   .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
-    padding: 150px;
+    padding: 40px;
     border-radius: 8px;
-    padding-top: 95px;
-    padding-bottom: 164px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   .login-form h2 {
     text-align: center;
     margin-bottom: 30px;
-    font-family: 'Times New Roman';
     font-size: xx-large;
   }
+  .buttons-container {
+    margin-bottom: 16px;
+  }
+  button {
+    border: none;
+    border-radius: 4px;
+    padding: 20px 70px;
+    font-weight: bold;
+    cursor: pointer;  
+  }
+  .login-button-a {
+    background-color: lightskyblue; 
+  }
+  .login-button-a:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .sign-up-button {
+    background-color: #f3f3f3;
+    color: #333;
+  }
+  .sign-up-button:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .input-email-password {
+    margin-bottom: 20px;
+    width: 91%;
+  }
+  .input-email-password input {
+    width: 88%;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
   .login-form p {
-    font-size: 16px;
+    font-size: 15px;
+    margin-bottom: 23px;
   }
   .login-form p a {
     text-decoration: none;
@@ -32,38 +104,13 @@
     text-decoration: underline;
     cursor: pointer; 
   }
-  .buttons-container {
-    margin-bottom: 15px;
-  }
-  button {
-    border: none;
-    border-radius: 4px;
-    padding: 20px 70px;
-    font-weight: bold;
-    cursor: pointer;  
-  }
-  .login-button {
+  .login-button-b {
     background-color: lightskyblue; 
-    color: black;
+    width: 92%;
   }
-  .login-button:hover {
-    background-color: rgb(111, 197, 250);
-  }
-  .sign-up-button {
-    background-color: #f3f3f3;
-    color: #333;
-  }
-  .sign-up-button:hover {
-    background-color: lightgrey;
-  }
-  .input-email-password {
-    margin-bottom: 20px;
-  }
-  .input-email-password input {
-    width: 89%;
-    border-radius: 4px;
-    padding: 20px;
-    border: 1px solid #ddd;
+  .login-button-b:hover {
+    background-color: darkblue;
+    color: white;
   }
   .login-form-footer {
     text-align: center;

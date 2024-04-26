@@ -1,28 +1,65 @@
-* body {
+* {
+  font-family: 'Times New Roman';
+  margin: 0;
+  }
+  body {
     background-color: lightskyblue;
+  }
+  .header {
+    width: 100%;
+    background-color: rgb(10, 145, 230);
     display: flex;
     justify-content: center;
-    align-items: center;
+  }
+  .nav-links{
+    padding: 35px 0;
+  }
+  .nav-links li{
+    display: inline-block;
+    margin: 0 15px;
+  }
+  .nav-links li a{
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+  }
+  .nav-links li a:hover{  
+    text-decoration: underline;
+  }
+  .login-btn{                        
+    background-color: plum;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+  }
+  .login-btn:hover {
+    background-color: darkblue;
   }
   .sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
-    padding: 150px;
+    padding: 50px;
     border-radius: 8px;
-    padding-top: 20px;
-    padding-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   .sign-up-form h2 {
     text-align: center;
     margin-bottom: 30px;
-    font-family: 'Times New Roman';
     font-size: xx-large;
   }
   .input-details {
     margin-bottom: 9px;
     background-color: rgb(198, 230, 250);
+    width: 91%;
   }
   .input-details input {
-    width: 100%;
+    width: 93%;
     border-radius: 4px;
     padding: 17px;
     border: 1px solid #ddd;
@@ -37,10 +74,12 @@
   }
   .sign-up-button {
     background-color: lightskyblue;
-    color: #333;
+    width: 80%;
+    margin-top: 10px;
   }
   .sign-up-button:hover {
-    background-color: rgb(111, 197, 250);
+    background-color: darkblue;
+    color: white;
   }
   .sign-up-form-footer {
     text-align: center;
