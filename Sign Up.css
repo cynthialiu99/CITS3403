@@ -94,3 +94,7 @@
     color: lightskyblue;
     text-decoration: underline;
   }
+  .errorSignUp {
+    color: red;
+    font-size: 17px;
+  }
