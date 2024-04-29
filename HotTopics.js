@@ -31,7 +31,7 @@ function getHotTopics(){
 }
 
 function extractTopics(pageContent){
-    const topicRegex = /<a href="(.*?)">(.*?)<\/a>/g; // Regular expression to match links
+    //const topicRegex = /<a href="(.*?)">(.*?)<\/a>/g; // Regular expression to match links
     const topics = [];
     let match;
     while ((match = topicRegex.exec(pageContent)) !== null) {
