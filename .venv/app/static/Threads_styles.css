@@ -1,0 +1,80 @@
+/* Custom Styles */
+body {
+    background-color: lightskyblue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+h1{
+    color: darkblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    text-align: center;
+}
+
+h3{
+    color: darkblue;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#display{
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: large;
+}
+
+#create{
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: large;
+}
+
+.header {
+    width: 55%; /* or any specific width */
+    margin: 0 auto;
+}
+
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin-top: 20px;
+    color: darkblue;
+}
+
+.nav-links li {
+    margin-right: 10px; /* Optional: adds spacing between items */
+    font-weight: bolder;
+    color: darkblue;
+}
+
+.btn btn-success{
+    font-weight: bolder;
+    color: darkblue;
+}
+
+.form-group{
+    border-color: white;
+    color: darkblue;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#threadContent{
+    border-color: darkblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#threadsList{
+    font-family: 'Times New Roman', Times, serif;
+    color: darkblue;
+    margin-left: 100px;
+
+}

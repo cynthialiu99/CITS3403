@@ -1,0 +1,104 @@
+*{
+    background-color:lightblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1{
+    color: white;
+}
+
+h3,p{
+    color: darkblue;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    color: #333;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input, textarea {
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color:rgb(10, 145, 230);
+    color: #fff;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: rgb(111, 197, 250);
+}
+form, .container, label, .container > h2{
+    background-color: white;
+}
+
+.header{
+    height: 10vh;
+    width: 100%;
+    padding: 0 8%;
+    background:lightblue;
+    display: flex;
+    justify-content: center;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.nav-links{
+    padding: 28px 0;
+}
+
+.nav-links li{
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-links li a{
+    text-decoration: none;
+    color: white;
+    padding: 5px 0;
+    position: relative;
+    font-size:16px;
+}
+
+.nav-links li a::after{   /*underline effect */
+    content: '';
+    background: plum;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    transition: width 0.5s;
+}
+
+.nav-links li a:hover::after{  /*underline effect when hovering*/
+    width: 100%;
+}
+
+.btn{                        /*sign up button*/
+    background: plum;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
