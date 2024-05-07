@@ -1,4 +1,4 @@
-from wtforms import SelectField, StringField, SubmitField
+from wtforms import SelectField, PasswordField, StringField, SubmitField
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 
@@ -11,9 +11,9 @@ class CreateThreadForm(FlaskForm):
     #content = StringField("Enter reply:", validators=[DataRequired()])
 
 class LoginForm(FlaskForm):
-    id = StringField("Student_ID", validators=[DataRequired()])
-    email = StringField("Enter student email:", validators=[DataRequired()])
-    submit = SubmitField("login")
+    username = StringField("Username", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("Log In")
     #redirect to forgot_password page if user clicks on forgot password??
     #redirect to Account page (Account.html)??
 
