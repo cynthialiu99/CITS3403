@@ -8,25 +8,28 @@ from app.models import Student, Staff
 @flaskApp.route('/signup')
 def signup():
     return render_template('Sign Up.html')
-    
-@flaskApp.route('/submit', methods=['post'])
+
+@flaskApp.route('/signup/submit', methods=['POST'])
 def submit():
     print(request.method)
     print(request.form)
     print("Submitted!")
-    return redirect(location="Login.html")
+    return redirect(location="/login")
 
-# Function to create the SQLite database
-def create_db():
-    conn = sqlite3.connect('threads.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS threads
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, date TEXT)''')
-    conn.commit()
-    conn.close()
+@flaskApp.route('/login', methods=['GET'])
+def login():
+    return redirect(location="/login/submit")
 
-# Call the create_db() function to create the database
-create_db()
+@flaskApp.route('/login/submit', methods=['POST'])
+def submit2():
+    print(request.method)
+    print(request.form)
+    print("Submitted!")
+    return redirect(location="/account")
+
+@flaskApp.route('/account', methods=['GET'])
+def account():
+    return render_template("Account.html")
 
 # Route to create a new thread
 @flaskApp.route('/threads', methods=['POST'])
@@ -48,6 +51,22 @@ def get_threads():
     threads = c.fetchall()
     conn.close()
     return jsonify(threads), 200
+
+@flaskApp.route('/threads/<thread_id>/reply', methods=['GET'])
+def reply_threads():
+    return render_template("Reply_Threads.html")
+
+@flaskApp.route('/homepage/python', methods=['GET'])
+def python():
+    return render_template('PythonHomePage.html')
+
+@flaskApp.route('/homepage/java', methods=['GET'])
+def java():
+    return render_template('JavaHomePage.html')
+
+@flaskApp.route('/contact', methods=['GET'])
+def contact():
+    return render_template('ContactUs.html')
 
 if __name__ == '__main__':
     flaskApp.run(debug=True)
