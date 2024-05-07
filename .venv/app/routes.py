@@ -1,9 +1,11 @@
 import sqlite3
-from flask import redirect, render_template, request, url_for, jsonify
-from app import flaskApp
-from app.models import Student, Staff
+from flask import Flask, redirect, render_template, request, url_for, jsonify
+from app import flaskApp, db
+from app.models import *
 
 @flaskApp.route("/")
+def signup():
+    return render_template('Sign Up.html')
 
 @flaskApp.route('/signup')
 def signup():
@@ -16,17 +18,7 @@ def submit():
     print("Submitted!")
     return redirect(location="Login.html")
 
-# Function to create the SQLite database
-def create_db():
-    conn = sqlite3.connect('threads.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS threads
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, date TEXT)''')
-    conn.commit()
-    conn.close()
-
-# Call the create_db() function to create the database
-create_db()
+db.create_all()
 
 # Route to create a new thread
 @flaskApp.route('/threads', methods=['POST'])
