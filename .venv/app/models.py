@@ -1,34 +1,63 @@
-from typing import List
+from typing import List, Optional
+import sqlalchemy as sa
+import sqlalchemy.orm as so
 from app import db
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from app import login, datetime, timezone
 
-class Users(db.Model):
-    id = db.Column(db.string(8), primary_key=True)
-    firstName = db.Column(db.String(100), nullable=False)
-    lastName = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
+@login.user_loader
+def load_user(id):
+    return db.session.get(User, int(id))
 
-class Student(db.Model):
-    student_id = db.Column(db.String(8), primary_key=True)
-    points = db.Column(db.Integer)
+class User(UserMixin, db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
+    password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
+    points: so.Mapped[int] = so.mapped_column()
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
+    
+class Post(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),index=True)
+
+    author: so.Mapped[User] = so.relationship(back_populates='posts')
+
+    def __repr__(self):
+        return '<Post {}>'.format(self.body)
+
+
+class Student(so.Model):
+    student_id: so.Column[so.String(8)] = so.Column(so.String(8), primary_key=True)
+    points: so.Column[so.Integer] = so.Column(so.Integer)
+
     def __repr__(self) -> str:
-        return f'<Student {self.name} {self.uwa_id}>'
-    
-class Staff(db.Model):
-    staff_id = db.Column(db.String(8), primary_key=True)
-    points = db.Column(db.Integer)
-    def __repr__(self) -> str:
-        return f'<Student {self.name} {self.staff_id}>'
-    
-class Threads(db.Model):
-    thread_id = db.Column(db.String(100), primary_key = True)
-    creator_id = db.Column(db.String(8), nullable=False)
-    content = db.Column(db.Text, nullable = False)
+        return f'<Student {self.student_id} {self.points}>'
 
-class responses(db.Model):
-    thread_id = db.Column(db.String(100), nullable = False)
-    response_id = db.Column(db.String(100), primary_key = True)
-    response_no = db.Column(db.Integer, nullable = False)
-    responder_id = db.Column(db.String(8), nullable = False)
-    
+class Staff(so.Model):
+    staff_id: so.Column[so.String(8)] = so.Column(so.String(8), primary_key=True)
+    points: so.Column[so.Integer] = so.Column(so.Integer)
+
+    def __repr__(self) -> str:
+        return f'<Staff {self.staff_id} {self.points}>'
+
+class Threads(so.Model):
+    thread_id: so.Column[so.String(100)] = so.Column(so.String(100), primary_key=True)
+    creator_id: so.Column[so.String(8)] = so.Column(so.String(8), nullable=False)
+    content: so.Column[so.Text] = so.Column(so.Text, nullable=False)
+
+class Responses(so.Model):
+    thread_id: so.Column[so.String(100)] = so.Column(so.String(100), nullable=False)
+    response_id: so.Column[so.String(100)] = so.Column(so.String(100), primary_key=True)
+    response_no: so.Column[so.Integer] = so.Column(so.Integer, nullable=False)
+    responder_id: so.Column[so.String(8)] = so.Column(so.String(8), nullable=False)
