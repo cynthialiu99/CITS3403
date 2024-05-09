@@ -1,5 +1,5 @@
 *{
-    background-color:lightblue;
+    background-color:lightskyblue;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -7,7 +7,7 @@
     height: 10vh;
     width: 100%;
     padding: 0 8%;
-    background:lightblue;
+    background:lightskyblue;
     display: flex;
     justify-content: center;
 }
@@ -91,7 +91,7 @@ h1{
 .button2 {background-color: #008CBA;} /* Blue */
 
 *{
-    background-color:lightblue;
+    background-color:lightskyblue;
     font-family: 'Times New Roman', Times, serif;
 }
 

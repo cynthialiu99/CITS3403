@@ -1,5 +1,5 @@
 * {
-    font-family: 'Times New Roman';
+    font-family: 'Helvetica';
     margin: 0;
   }
   body {
@@ -10,13 +10,14 @@
     background-color: rgb(10, 145, 230);
     display: flex;
     justify-content: center;
+    font-weight: bold;
   }
   .nav-links{
     padding: 35px 0;
   }
   .nav-links li{
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 30px;
   }
   .nav-links li a{
     text-decoration: none;
@@ -27,13 +28,14 @@
     text-decoration: underline;
   }
   .sign-up-btn{                        
-    background-color: plum;
+    background-color: darkblue;
     border-radius: 50%;
     padding: 15px;
     cursor: pointer;
   }
   .sign-up-btn:hover {
-    background-color: darkblue;
+    background-color: white;
+    color: black;
   }
   .login-form {
     display: flex;
@@ -45,7 +47,7 @@
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 35px;
     margin-bottom: 40px;
   }
   .login-form h2 {
@@ -88,18 +90,18 @@
     padding: 20px;
     border: 1px solid #ddd;
   }
-  .login-form p {
+  .login-form p1 {
     font-size: 15px;
     margin-bottom: 23px;
   }
-  .login-form p a {
+  .login-form p1 a {
     text-decoration: none;
     color: rgb(10, 145, 230);
   }
-  .login-form p a:hover {
+  .login-form p1 a:hover {
     color: lightskyblue;
   }
-  .login-form p:hover {
+  .login-form p1:hover {
     color: lightskyblue;
     text-decoration: underline;
     cursor: pointer; 
@@ -114,14 +116,15 @@
   }
   .login-form-footer {
     text-align: center;
-    margin-top: 25px;
-    font-size: 17px;
-  }  
-  .login-form-footer p2 a {
+    margin-top: 35px;
+    font-size: 15px;
+  }
+  .login-form-footer p3 a {
     text-decoration: none;
     color: rgb(10, 145, 230);
+    font-size: 16px;
   }
-  .login-form-footer p2 a:hover {
+  .login-form-footer p3 a:hover {
     color: lightskyblue;
     text-decoration: underline;
   }
