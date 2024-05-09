@@ -2,12 +2,13 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
-        <title>Accounts</title>
-        <link rel="stylesheet" href="Account.css">
-        
+        <title>Help Forum</title>
+        <link rel="stylesheet" href="Homepage.css">
+        <script src="HotTopics.js"></script>
     </head>
-
+    
     <body>
+        
         <div class="header">
             <nav>
                 <ul class = "nav-links">
@@ -20,16 +21,9 @@
                 </ul>
             </nav>
         </div>
-
-        <h1>Welcome, {user.username}</h1>
-        <h4>Manage your info, privacy and details here.</h4>
-
-        <h2>Your Threads</h2>
-        <!-- Display Threads -->
-        <div id="threadsList">
-            <!-- Threads will be displayed here -->
-        </div>
-        <script src="Account.js"></script>
+        <hr>
+        {% block content %}{% endblock %}
     </body>
-</html>
+    
 
+</html>
