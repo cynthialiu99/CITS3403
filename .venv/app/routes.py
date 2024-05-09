@@ -12,6 +12,7 @@ from flask_login import logout_user, login_required
 @flaskApp.route('/account')
 @login_required
 def account():
+    user = {'username': 'SupremeLord'}
     return render_template("Account.html", title='Account Page')
 
 @flaskApp.route('/signup', methods=['GET','POST'])
