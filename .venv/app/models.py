@@ -12,9 +12,11 @@ def load_user(id):
 
 class User(UserMixin, db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    name: so.Mapped[str] = so.mapped_column(sa.String(64))
     username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
-    password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
-    points: so.Mapped[int] = so.mapped_column()
+    password_hash: so.Mapped[str] = so.mapped_column(sa.String(256))
+    points: so.mapped_column [int] = so.mapped_column (sa.Integer)
+    status: so.mapped_column[str] = so.mapped_column(sa.String(7))
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -37,27 +39,13 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
-class Student(so.Model):
-    student_id: so.Column[so.String(8)] = so.Column(so.String(8), primary_key=True)
-    points: so.Column[so.Integer] = so.Column(so.Integer)
-
-    def __repr__(self) -> str:
-        return f'<Student {self.student_id} {self.points}>'
-
-class Staff(so.Model):
-    staff_id: so.Column[so.String(8)] = so.Column(so.String(8), primary_key=True)
-    points: so.Column[so.Integer] = so.Column(so.Integer)
-
-    def __repr__(self) -> str:
-        return f'<Staff {self.staff_id} {self.points}>'
-
 class Threads(so.Model):
-    thread_id: so.Column[so.String(100)] = so.Column(so.String(100), primary_key=True)
-    creator_id: so.Column[so.String(8)] = so.Column(so.String(8), nullable=False)
-    content: so.Column[so.Text] = so.Column(so.Text, nullable=False)
+    thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
+    post_id: so.Mapped[int] = so.mapped_column(sa.Integer)
 
 class Responses(so.Model):
-    thread_id: so.Column[so.String(100)] = so.Column(so.String(100), nullable=False)
-    response_id: so.Column[so.String(100)] = so.Column(so.String(100), primary_key=True)
-    response_no: so.Column[so.Integer] = so.Column(so.Integer, nullable=False)
-    responder_id: so.Column[so.String(8)] = so.Column(so.String(8), nullable=False)
+    post_id: so.Mapped[int] = so.mapped_column(sa.Integer)
+    thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), nullable=False)
+    response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
+    response_no: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
+    responder_id: so.Mapped[str] = so.mapped_column(sa.String(8), nullable=False)
