@@ -12,26 +12,25 @@
     justify-content: center;
     font-weight: bold;
   }
-  .nav-links{
+  .nav-links {
     padding: 35px 0;
   }
-  .nav-links li{
+  .nav-links li {
     display: inline-block;
     margin: 0 30px;
   }
-  .nav-links li a{
+  .nav-links li a {
     text-decoration: none;
     color: white;
     font-size: 17px;
   }
-  .nav-links li a:hover{  
+  .nav-links li a:hover {  
     text-decoration: underline;
   }
-  .sign-up-btn{                        
+  .sign-up-btn {                        
     background-color: darkblue;
     border-radius: 50%;
     padding: 15px;
-    cursor: pointer;
   }
   .sign-up-btn:hover {
     background-color: white;
@@ -51,7 +50,6 @@
     margin-bottom: 40px;
   }
   .login-form h2 {
-    text-align: center;
     margin-bottom: 30px;
     font-size: xx-large;
   }
@@ -100,11 +98,7 @@
   }
   .login-form p1 a:hover {
     color: lightskyblue;
-  }
-  .login-form p1:hover {
-    color: lightskyblue;
     text-decoration: underline;
-    cursor: pointer; 
   }
   .login-button-b {
     background-color: lightskyblue; 
