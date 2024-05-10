@@ -4,7 +4,7 @@ from urllib.parse import urlsplit
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db, flaskApp
-from app.forms import SignUp, LoginForm, flash
+from app.forms import SignUp, LoginForm
 from app.models import User
 from flask_login import logout_user, login_required
 
@@ -12,6 +12,7 @@ from flask_login import logout_user, login_required
 @flaskApp.route('/account')
 @login_required
 def account():
+    user = {'username': 'SupremeLord'}
     return render_template("Account.html", title='Account Page')
 
 @flaskApp.route('/signup', methods=['GET','POST'])
