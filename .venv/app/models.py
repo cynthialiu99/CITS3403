@@ -1,10 +1,10 @@
 from typing import List, Optional
 import sqlalchemy as sa
 import sqlalchemy.orm as so
-from app import db
+from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from app import login, datetime, timezone
+from datetime import datetime, timezone
 
 @login.user_loader
 def load_user(id):
@@ -15,8 +15,8 @@ class User(UserMixin, db.Model):
     name: so.Mapped[str] = so.mapped_column(sa.String(64))
     username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
     password_hash: so.Mapped[str] = so.mapped_column(sa.String(256))
-    points: so.mapped_column [int] = so.mapped_column (sa.Integer)
-    status: so.mapped_column[str] = so.mapped_column(sa.String(7))
+    points: so.Mapped[int] = so.mapped_column (sa.Integer)
+    status: so.Mapped[str] = so.mapped_column(sa.String(7))
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -39,11 +39,11 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
-class Threads(so.Model):
+class Threads(db.Model):
     thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
     post_id: so.Mapped[int] = so.mapped_column(sa.Integer)
 
-class Responses(so.Model):
+class Responses(db.Model):
     post_id: so.Mapped[int] = so.mapped_column(sa.Integer)
     thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), nullable=False)
     response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
