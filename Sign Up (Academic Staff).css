@@ -9,7 +9,7 @@
     width: 100%;
     background-color: rgb(10, 145, 230);
     display: flex;
-    justify-content: center;
+    justify-content: right;
     font-weight: bold;
   }
   .nav-links {
@@ -17,7 +17,7 @@
   }
   .nav-links li {
     display: inline-block;
-    margin: 0 30px;
+    margin: 0 25px;
   }
   .nav-links li a {
     text-decoration: none;
@@ -27,12 +27,12 @@
   .nav-links li a:hover {  
     text-decoration: underline;
   }
-  .login-btn {                        
+  .btn a {                        
     background-color: darkblue;
     border-radius: 50%;
     padding: 15px;
   }
-  .login-btn:hover {
+  .btn a:hover {
     background-color: white;
     color: black;
   }
@@ -108,7 +108,7 @@
     color: lightskyblue;
     text-decoration: underline;
   }
-  .errorSignUp {
+  .signup-error {
     color: red;
     font-size: 17px;
   }
