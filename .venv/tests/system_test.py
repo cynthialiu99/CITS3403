@@ -23,7 +23,7 @@ class SystemTest(unittest.TestCase):
             db.session.query(User).delete()
             staff = User(username='01234567', email='01234567@uwa.edu.au', staff=True)
             staff.set_password('staffpassword')
-            db.session.add(admin)
+            db.session.add(staff)
             db.session.commit()
             self.driver.maximize_window()
             self.driver.get('http://localhost:5000/')
