@@ -9,18 +9,9 @@
 
 <html>
     <body>
-        <div class="header">
-            <nav>
-                <ul class = "nav-links">
-                    <li><a href="../HomePage.html">Home</a></li>
-                    <li><a href="../Account.html">Account</a></li>   
-                    <li><a href="../ContactUs.html">Contact</a></li>
-                    <li><a href="PythonHomePage.html">Python</a></li>
-                    <li><a href="JavaHomePage.html">Java</a></li>   
-                    <li class = "btn" onclick="window.location.href='Sign Up.html'">Login/Sign Up</li> 
-                </ul>
-            </nav>
-        </div>
+        {% extends "header.html" %}
+
+        {% block content%}
         
         <h1> Python</h1>
         <div class="searchbar">
@@ -32,5 +23,6 @@
             <p><a href = "insert link">What does IndexError mean?</a></p>
             <p><a href = "insert link">What is a tuple?</a></p>
         </div>
+        {% endblock %}
     </body>
 </html>
