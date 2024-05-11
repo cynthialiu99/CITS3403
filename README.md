@@ -141,7 +141,9 @@ Python - packages and dependency management
 Bootstrap - Styling of front end development
 HTML - Creating webpage templates
 CSS - Designing and styling webpages
-JavaScript - Adding functionality and making dynamic webpages
+JavaScript, JQuery, AJAX - Adding functionality and making dynamic webpages
+Websockets - used for testing files 
+SQLite (accessed via the SQLAlchemy package) - used to create database
 
 ## Group Members
 
