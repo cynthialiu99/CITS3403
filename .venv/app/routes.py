@@ -1,5 +1,5 @@
 import sqlite3
-from flask import redirect, render_template, request, url_for, jsonify
+from flask import flash, redirect, render_template, request, url_for, jsonify
 from urllib.parse import urlsplit
 from flask_login import current_user, login_user
 import sqlalchemy as sa
@@ -93,5 +93,10 @@ def contact():
 
 if __name__ == '__main__':
     flaskApp.run(debug=True)
+
+@flaskApp.route('/home', methods=['GET'])
+def home():
+    return render_template('HomePage.html')
+
 
 
