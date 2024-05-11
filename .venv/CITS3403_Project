@@ -1,1 +1,8 @@
-from app import app
+
+from app import flaskApp, db
+from app.models import User
+from datetime import datetime
+
+@flaskApp.shell_context_processor
+def make_shell_context():
+	return {'db': db, 'User': User}

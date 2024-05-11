@@ -1,0 +1,61 @@
+import unittest, os, time
+from app import APP, db
+from app.models import User
+from config import TestConfig
+from selenium import webdriver
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+class SystemTest(unittest.TestCase):
+    driver = None
+
+    def setUp(self):
+        self.driver = webdriver.Firefox(executable_path=os.path.join(basedir,))
+        
+        if not self.driver:
+            self.skipTest('Could not create driver')
+        else:
+            db.init_app(APP)
+            db.create_all()
+            users = User.query.all()
+            if users:
+                self.skipTest('Database is not empty')
+            db.session.query(User).delete()
+            admin = User(username='admin', email='admin@admin.com', admin=True)
+            admin.set_password('adminpassword')
+            db.session.add(admin)
+            db.session.commit()
+            self.driver.maximize_window()
+            self.driver.get('http://localhost:5000/')
+
+    def tearDOwn(self):
+        if self.driver:
+            self.driver.close()
+            db.session.query(User).delete()
+            db.session.commit()
+            db.session.remove()
+
+    def test_signup(self):
+        user = User.query.get(0)
+        self.assertEqual(user.username,'admin',msg='user exist.')
+        self.driver.get('http://localhost:5000/signup')
+        self.driver.implicity.wait(5)
+        username_field = self.driver.find_element_by_id('username')
+        username.send_keys('Tester1')
+        email_field = self.driver.find_element_by_id('email')
+        email.send_keys('Tester@email')
+        password_field = self.driver.find_element_by_id('password')
+        password_field.send_keys('testpassword')
+        confirm_field = self.driver.find_element_by_id('password2')
+        confirm_field.send_keys('testpassword')
+        time.sleep(1)
+        self.driver.implicity_wait(5)
+        submit = self.driver.find_element_by_id('submit')
+        submit.click()
+        self.driver.implicity_wait(5)
+        time.sleep(1)
+        logout = self.driver.find_element_by_partial_link_text('logout')
+        self.assertEqual(logout.get_attribute('innerHTML')),'logout user',   
+    
+    if __name__ == '__main__':
+        unittest.main(verbosity=2)
