@@ -1,5 +1,5 @@
 import unittest, os, time
-from app import APP, db
+from app import flaskApp, db
 from app.models import User
 from config import TestConfig
 from selenium import webdriver
@@ -15,7 +15,7 @@ class SystemTest(unittest.TestCase):
         if not self.driver:
             self.skipTest('Could not create driver')
         else:
-            db.init_app(APP)
+            db.init_app(flaskApp)
             db.create_all()
             users = User.query.all()
             if users:
@@ -41,9 +41,9 @@ class SystemTest(unittest.TestCase):
         self.driver.get('http://localhost:5000/signup')
         self.driver.implicity.wait(5)
         username_field = self.driver.find_element_by_id('username')
-        username.send_keys('Tester1')
+        user.username.send_keys('Tester1')
         email_field = self.driver.find_element_by_id('email')
-        email.send_keys('Tester@email')
+        user.email.send_keys('Tester@email')
         password_field = self.driver.find_element_by_id('password')
         password_field.send_keys('testpassword')
         confirm_field = self.driver.find_element_by_id('password2')
