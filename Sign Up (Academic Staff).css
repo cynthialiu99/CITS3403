@@ -3,7 +3,7 @@
     margin: 0;
   }
   body {
-    background-color: lightskyblue;
+    background-color: #f3f3f3;
   }
   .header {
     width: 100%;
@@ -17,7 +17,7 @@
   }
   .nav-links li {
     display: inline-block;
-    margin: 0 25px;
+    margin: 0 22px;
   }
   .nav-links li a {
     text-decoration: none;
@@ -25,16 +25,17 @@
     font-size: 17px;
   }
   .nav-links li a:hover {  
-    text-decoration: underline;
+    color: darkblue;
   }
   .btn a {                        
-    background-color: darkblue;
-    border-radius: 50%;
-    padding: 15px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px 20px;
   }
   .btn a:hover {
     background-color: white;
-    color: black;
+    color: darkblue;
+    border-color: darkblue;
   }
   .sign-up-form {
     display: flex;
@@ -43,6 +44,7 @@
     background-color: white;
     padding: 50px;
     border-radius: 8px;
+    border: 1px solid lightskyblue;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -51,7 +53,8 @@
   }
   .sign-up-form h2 {
     margin-bottom: 30px;
-    font-size: xx-large;
+    font-size: 35px;
+    color: darkblue;
   }
   .sign-up-form p1 {
     margin-bottom: 30px;
@@ -59,6 +62,7 @@
   }
   .sign-up-form p1 a {
     font-weight: bold;
+    font-size: 18.5px;
     text-decoration: none;
     color: rgb(10, 145, 230)
   }
