@@ -41,11 +41,11 @@ class Post(db.Model):
 
 class Threads(db.Model):
     thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
-    post_id: so.Mapped[int] = so.mapped_column(sa.Integer)
+    post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey(Post.id))
 
 class Responses(db.Model):
-    post_id: so.Mapped[int] = so.mapped_column(sa.Integer)
-    thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), nullable=False)
+    post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id), sa.Integer)
+    thread_id: so.Mapped[str] = so.mapped_column(sa.ForeignKey(Threads.id), sa.String(100), nullable=False)
     response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
     response_no: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
     responder_id: so.Mapped[str] = so.mapped_column(sa.String(8), nullable=False)

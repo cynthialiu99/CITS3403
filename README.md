@@ -72,13 +72,13 @@ python -m unittest tests/unit_test.py
 
 There are Pre existing accounts that have been created for the user to use:
 
-Normal User:
-* Username: tester
-* Password: tester
+Student User:
+* Username: 8 digit number
+* Email: Username@student.uwa.edu.au
 
-Admin User:
-* Username: admin
-* Password: admin
+Staff User:
+* Username: 8 digit number
+* Email: Username@uwa.edu.au
 
 ### Dependencies
 
