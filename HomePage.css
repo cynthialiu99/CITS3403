@@ -18,7 +18,7 @@
   }
   .nav-links li {
     display: inline-block;
-    margin: 0 18.5px;
+    margin: 0 16.97px;
   }
   .nav-links li a {
     text-decoration: none;
@@ -48,7 +48,7 @@
     margin-bottom: 40px;
   }
   p {
-    font-size: 18px;
+    font-size: 21px;
     margin-bottom: 40px;
   }
   .button-container {
@@ -81,7 +81,7 @@
     margin: 25px auto;
     text-align: center;
   }
-  h3 {
+  h2 {
     font-size: 20px;
     text-decoration: underline dashed;
     text-decoration-color: rgb(10, 145, 230);

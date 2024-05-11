@@ -2,34 +2,32 @@
 <html>
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
-    <title>Contact Us</title>
+    <title>Code Central | Contact Us</title>
     <link rel="stylesheet" href="ContactUs.css">
     </head>
     <body>
-
         <div class="header">
             <nav>
                 <ul class = "nav-links">
                     <li><a href="HomePage.html">Home</a></li>
-                    <li><a href="Account.html">Account</a></li>   
-                    <li><a href="ContactUs.html">Contact</a></li>
                     <li><a href="SearchPage/PythonHomePage.html">Python</a></li>
-                    <li><a href="SearchPage/JavaHomePage.html">Java</a></li>   
-                    <li class = "btn" onclick="window.location.href='Sign Up.html'">Login/Sign Up</li> 
+                    <li><a href="SearchPage/JavaHomePage.html">Java</a></li> 
+                    <li><a href="Account.html">Account</a></li>   
+                    <li><a href="ContactUs.html">Contact Us</a></li>  
+                    <li class = "btn"> <a href="Login.html" onclick="window.location.href='Login.html'"> Login </a> </li> 
                 </ul>
             </nav>
         </div>
-
         <div class="container">
-            <h2>Contact Us</h2>
+            <h1>CONTACT US</h1>
             <form action="#" method="post">
-                <label for="name">Your Name:</label>
+                <label for="name">Your First & Last Name:</label>
                 <input type="text" id="name" name="name" required>
-                <label for="email">Your Email:</label>
+                <label for="email">Student/Staff Email:</label>
                 <input type="email" id="email" name="email" required>
-                <label for="message">Your Message:</label>
+                <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
-                <input type="submit" value="Submit">
+                <button class="submit-button"> Submit </button>
             </form>
         </div>
     </body>
