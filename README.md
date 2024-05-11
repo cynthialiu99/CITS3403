@@ -136,14 +136,14 @@ Admin User:
 
 ## Built With
 
-*Flask - web framework used
-*Python - packages and dependency management 
-*Bootstrap - Styling of front end development
-*HTML - Creating webpage templates
-*CSS - Designing and styling webpages
-*JavaScript, JQuery, AJAX - Adding functionality and making dynamic webpages
-*Websockets - used for testing files 
-*SQLite (accessed via the SQLAlchemy package) - used to create database
+* Flask - web framework used
+* Python - packages and dependency management 
+* Bootstrap - Styling of front end development
+* HTML - Creating webpage templates
+* CSS - Designing and styling webpages
+* JavaScript, JQuery, AJAX - Adding functionality and making dynamic webpages
+* Websockets - used for testing files 
+* SQLite (accessed via the SQLAlchemy package) - used to create database
 
 ## Group Members
 
