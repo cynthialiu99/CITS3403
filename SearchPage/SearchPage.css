@@ -1,108 +1,109 @@
 * {
-    background-color: lightblue;
-}
-
-h1 {
+    font-family: 'Helvetica';
+    margin: 0;
+  }
+  body {
+    background-color: white;
+  }
+  .header {
+    width: 100%;
+    background: rgb(10, 145, 230);
+    display: flex;
+    justify-content: right;
+    font-weight: bold;
+  }
+  .nav-links {
+    padding: 35px 0;
+  }
+  .nav-links li {
+    display: inline-block;
+    margin: 0 16.97px;
+  }
+  .nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+  }
+  .nav-links li a:hover { 
+    color: darkblue;
+  }
+  .btn a {                        
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+  .btn a:hover {
+    background-color: white;
+    color: darkblue;
+    border-color: darkblue;
+  }
+  h1 {
     text-align: center;
     font-size: 100px;
-}
-
-.searchbar{
+    color: darkblue;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  .searchbar {
     text-align: center;
-    overflow: hidden;
     position: relative;
-}
-
-.searchbar input {
-    padding: 10px;
-    font-size: 30px;
-    width: 80%;
-}
-
-#submit {
+    margin-bottom: 60px;
+    margin-right: 120px;
+  }
+  .searchbar input {
+    padding: 15px;
+    font-size: 20px;
+    width: 40%;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+  }
+  .searchbar input:hover {
+    background-color: #f3f3f3;
+  }
+  #submit {
+    border: none;
+    border-radius: 1px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%); 
-    padding: 10px;
-    background: #ddd;
-    font-size: 30px;
-    border: solid;
+    padding: 17px 30px;
+    background-color: lightskyblue;
+    font-size: 17.5px;
+    font-weight: bold;
     cursor: pointer;
-}
-
-#submit:hover {
-    background-color: #ccc; /* Change background color on hover */
-}
-
-.populartopics {
-    align-items: center;
+  }
+  #submit:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .populartopics {
+    border-top: 2.5px dashed rgb(10, 145, 230);
+    width: 42%;
+    padding: 50px;
+    margin: 25px auto;
     text-align: center;
-    font-size: 30px;
-}
-
-.populartopics + div {
-    font-size: 20px;
-    text-align: center;
-}
-
-.foundThreads{
+  }
+  .populartopics h2 {
+    color: darkblue;
+    font-size: 21.5px;
+    text-decoration: underline dotted;
+    text-decoration-color: rgb(10, 145, 230);
+    margin-bottom: 25px;
+  }
+  .populartopics p a{
+    text-decoration: none;
+    color: rgb(10, 145, 230);
+    font-weight: bold;
+    font-size: 17.5px;
+  }
+  .populartopics p a:hover{
+    color: lightskyblue;
+    text-decoration: underline;
+  }
+  .foundThreads {
     font-size: 40px;
     padding: 20px;
-}
-
-.errorNothingFound {
+  }
+  .errorNothingFound {
     font-size: 40px;
-}
-
-.header{
-    height: 10vh;
-    width: 100%;
-    padding: 0 8%;
-    background:lightblue;
-    display: flex;
-    justify-content: center;
-}
-nav{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-}
-
-.nav-links{
-    padding: 28px 0;
-}
-
-.nav-links li{
-    display: inline-block;
-    margin: 0 15px;
-}
-
-.nav-links li a{
-    text-decoration: none;
-    color: white;
-    padding: 5px 0;
-    position: relative;
-    font-size:16px;
-}
-
-.nav-links li a::after{   /*underline effect */
-    content: '';
-    background: plum;
-    width: 0;
-    height: 2px;
-    position: absolute;
-    bottom: 0;
-    left:0;
-    transition: width 0.5s;
-}
-
-.nav-links li a:hover::after{  /*underline effect when hovering*/
-    width: 100%;
-}
-
-.btn{                        /*sign up button*/
-    background: plum;
-    color: white;
-    border-radius: 3px;
-    cursor: pointer;
-}
+  }
