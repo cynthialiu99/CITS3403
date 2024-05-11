@@ -21,8 +21,8 @@ class SystemTest(unittest.TestCase):
             if users:
                 self.skipTest('Database is not empty')
             db.session.query(User).delete()
-            admin = User(username='admin', email='admin@admin.com', admin=True)
-            admin.set_password('adminpassword')
+            staff = User(username='01234567', email='01234567@uwa.edu.au', staff=True)
+            staff.set_password('staffpassword')
             db.session.add(admin)
             db.session.commit()
             self.driver.maximize_window()
@@ -37,13 +37,13 @@ class SystemTest(unittest.TestCase):
 
     def test_signup(self):
         user = User.query.get(0)
-        self.assertEqual(user.username,'admin',msg='user exist.')
+        self.assertEqual(user.username,'staff',msg='user exist.')
         self.driver.get('http://localhost:5000/signup')
         self.driver.implicity.wait(5)
         username_field = self.driver.find_element_by_id('username')
-        user.username.send_keys('Tester1')
-        email_field = self.driver.find_element_by_id('email')
-        user.email.send_keys('Tester@email')
+        user.username.send_keys('23456789')
+        email_field = self.driver.find_element_by_id('student')
+        user.email.send_keys('@student.uwa.edu.au')
         password_field = self.driver.find_element_by_id('password')
         password_field.send_keys('testpassword')
         confirm_field = self.driver.find_element_by_id('password2')
