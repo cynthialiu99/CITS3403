@@ -1,100 +1,118 @@
 * {
-  font-family: 'Times New Roman';
+  font-family: 'Helvetica';
   margin: 0;
-  }
-  body {
-    background-color: lightskyblue;
-  }
-  .header {
-    width: 100%;
-    background-color: rgb(10, 145, 230);
-    display: flex;
-    justify-content: center;
-  }
-  .nav-links{
-    padding: 35px 0;
-  }
-  .nav-links li{
-    display: inline-block;
-    margin: 0 15px;
-  }
-  .nav-links li a{
-    text-decoration: none;
-    color: white;
-    font-size: 17px;
-  }
-  .nav-links li a:hover{  
-    text-decoration: underline;
-  }
-  .login-btn{                        
-    background-color: plum;
-    border-radius: 50%;
-    padding: 15px;
-    cursor: pointer;
-  }
-  .login-btn:hover {
-    background-color: darkblue;
-  }
-  .sign-up-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding: 50px;
-    border-radius: 8px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-  .sign-up-form h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: xx-large;
-  }
-  .input-details {
-    margin-bottom: 9px;
-    background-color: rgb(198, 230, 250);
-    width: 91%;
-  }
-  .input-details input {
-    width: 93%;
-    border-radius: 4px;
-    padding: 17px;
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-  }
-  button {
-    border: none;
-    border-radius: 4px;
-    padding: 20px 60px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .sign-up-button {
-    background-color: lightskyblue;
-    width: 80%;
-    margin-top: 10px;
-  }
-  .sign-up-button:hover {
-    background-color: darkblue;
-    color: white;
-  }
-  .sign-up-form-footer {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 17px;
-  }  
-  .sign-up-form-footer p a {
-    text-decoration: none;
-    color: rgb(10, 145, 230);
-  }
-  .sign-up-form-footer p a:hover {
-    color: lightskyblue;
-    text-decoration: underline;
-  }
-  .errorSignUp {
-    color: red;
-    font-size: 17px;
-  }
+}
+body {
+  background-color: #f3f3f3;
+}
+.header {
+  width: 100%;
+  background-color: rgb(10, 145, 230);
+  display: flex;
+  justify-content: right;
+  font-weight: bold;
+}
+.nav-links {
+  padding: 35px 0;
+}
+.nav-links li {
+  display: inline-block;
+  margin: 0 19.5px;
+}
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+}
+.nav-links li a:hover {  
+  color: darkblue
+}
+.btn a {                        
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+.btn a:hover {
+  background-color: white;
+  color: darkblue;
+  border-color: darkblue;
+}
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 50px;
+  border-radius: 8px;
+  border: 1px solid lightskyblue;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.sign-up-form h1 {
+  margin-bottom: 30px;
+  font-size: 35px;
+  color: darkblue
+}
+.sign-up-form p1 {
+  margin-bottom: 30px;
+  font-size: 17px;
+}
+.sign-up-form p1 a {
+  font-weight: bold;
+  font-size: 18.5px;
+  text-decoration: none;
+  color: rgb(10, 145, 230)
+}
+.sign-up-form p1 a:hover {
+  color: lightskyblue;
+  text-decoration: underline;
+}
+.input-details {
+  margin-bottom: 11px;
+  background-color: rgb(198, 230, 250);
+  width: 91%;
+}
+.input-details input {
+  width: 93%;
+  border-radius: 4px;
+  padding: 17px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 20px 60px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.sign-up-button {
+  background-color: lightskyblue;
+  width: 80%;
+  margin-top: 11px;
+}
+.sign-up-button:hover {
+  background-color: darkblue;
+  color: white;
+}
+.sign-up-form-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 17px;
+}  
+.sign-up-form-footer p2 a {
+  text-decoration: none;
+  color: rgb(10, 145, 230);
+  font-size: 17.5px;
+}
+.sign-up-form-footer p2 a:hover {
+  color: lightskyblue;
+  text-decoration: underline;
+}
+.signup-error {
+  color: red;
+  font-size: 17px;
+}

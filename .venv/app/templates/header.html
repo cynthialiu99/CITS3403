@@ -2,22 +2,21 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
-        <title>Help Forum</title>
+        <title>Code Central</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='Homepage.css') }}"> <!-- Use url_for to link to static files -->
         <script src="{{ url_for('static', filename='HotTopics.js') }}"></script> <!-- Use url_for to link to static files -->
     </head>
-    
-    <body>
-        
+    <body>   
         <div class="header">
             <nav>
                 <ul class="nav-links">
                     <li><a href="{{ url_for('home') }}">Home</a></li> <!-- Use url_for to link to the home route -->
-                    <li><a href="{{ url_for('account') }}">Account</a></li> <!-- Use url_for to link to the account route -->
-                    <li><a href="{{ url_for('contact') }}">Contact</a></li> <!-- Use url_for to link to the contact_us route -->
                     <li><a href="{{ url_for('python') }}">Python</a></li> <!-- Use url_for to link to the python_home route -->
                     <li><a href="{{ url_for('java') }}">Java</a></li> <!-- Use url_for to link to the java_home route -->
-                    <li class="btn"><a href="{{ url_for('signup') }}">Login/Sign Up</a></li> <!-- Use url_for to link to the signup route -->
+                    <li><a href="{{ url_for('account') }}">Account</a></li> <!-- Use url_for to link to the account route -->
+                    <li><a href="{{ url_for('contact') }}">Contact Us</a></li> <!-- Use url_for to link to the contact_us route -->
+                    <li class="btn"><a href="{{ url_for('login') }}">Login</a></li> <!-- Use url_for to link to the login route -->
+                    <li class="btn"><a href="{{ url_for('signup') }}">Sign Up</a></li> <!-- Use url_for to link to the signup route -->
                 </ul>
             </nav>
         </div>

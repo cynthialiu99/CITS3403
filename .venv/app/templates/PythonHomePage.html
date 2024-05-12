@@ -1,24 +1,20 @@
 <!-- HTML Script -->
-
 <!DOCTYPE html>
-
-<head>
-    <title>Python Help Page</title>
-    <link rel="stylesheet" href="SearchPage.css">
-</head>
-
 <html>
+    <head>
+        <title>Code Central | Python Help Page</title>
+        <link rel="stylesheet" href="SearchPage.css">
+    </head>
     <body>
         {% extends "header.html" %}
-
         {% block content%}
-        
-        <h1> Python</h1>
+        <h1>Python</h1>
         <div class="searchbar">
             <input type="text" placeholder="Search for a topic">
+            <button id = "submit" onclick = "searchBar()">Submit</button>
         </div>
-        <h2 class = "populartopics">Popular topics:</h2>
-        <div>
+        <div class = "populartopics" id = popularTopics>
+            <h2>POPULAR TOPICS:</h2>
             <p><a href = "insert link">Getting started with Python</a></p>
             <p><a href = "insert link">What does IndexError mean?</a></p>
             <p><a href = "insert link">What is a tuple?</a></p>
