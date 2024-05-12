@@ -20,12 +20,12 @@
             <div class="input-email-password">
                 <input type="password" placeholder="Password" required>
             </div>
-            <p1> <a href="Forgot Password.html"> Forgot password? </a> </p1>
+            <p1> <a href="{{ url_for('forgot_passwd') }}"> Forgot password? </a> </p1>
             <button class="login-button-b"> Login </button>
             <div class="login-form-footer">
                 <p2> Don't have an account yet? </p2>
                 <br>
-                <p3> Sign up as a <a href="Sign Up (Student).html"> Student</a> or an <a href="Sign Up (Academic Staff).html"> Academic Staff</a> member! </p3>
+                <p3> Sign up as a <a href="{{ url_for('signup') }}"> Student</a> or an <a href="{{ url_for('signup_academic') }}"> Academic Staff</a> member! </p3>
             </div>
             </form>
         </div>

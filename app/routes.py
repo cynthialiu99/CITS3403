@@ -28,7 +28,7 @@ def signup():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('Sign Up.html', title='Sign Up', form=form)
+    return render_template('Sign Up (Student).html', title='Sign Up', form=form)
 
 @flaskApp.route('/login', methods=['GET','POST'])
 def login():
@@ -98,5 +98,10 @@ if __name__ == '__main__':
 def home():
     return render_template('HomePage.html')
 
+@flaskApp.route('/signup_academic', methods=['GET', 'POST'])
+def signup_academic():
+    return render_template('Sign Up (Academic Staff).html', title='Sign Up Staff')
 
-
+@flaskApp.route('/forgot_passwd', methods = ['GET', 'POST'])
+def forgot_passwd():
+    return render_template('ForgotPassword.html', title ='ForgotPassword')

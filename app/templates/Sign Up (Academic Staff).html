@@ -10,7 +10,7 @@
         {% block content%}
         <div class="sign-up-form">
             <h1> ACADEMIC STAFF SIGN UP </h1>  
-            <p1> Are you a Student? <a href="Sign Up (Student).html"> Sign up here... </a> </p1>
+            <p1> Are you a Student? <a href="{{ url_for('signup') }}"> Sign up here... </a> </p1>
             <div class="input-details">
                 <input type="first-name" placeholder="First Name" required>
                 <input type="last-name" placeholder="Last Name" required>
