@@ -8,9 +8,8 @@ from app.forms import SignUp, LoginForm
 from app.models import User
 from flask_login import logout_user, login_required
 
-@flaskApp.route("/")
 @flaskApp.route('/account')
-@login_required
+#@login_required
 def account():
     user = {'username': 'SupremeLord'}
     return render_template("Account.html", title='Account Page')
@@ -94,6 +93,7 @@ def contact():
 if __name__ == '__main__':
     flaskApp.run(debug=True)
 
+@flaskApp.route("/")
 @flaskApp.route('/home', methods=['GET'])
 def home():
     return render_template('HomePage.html')
