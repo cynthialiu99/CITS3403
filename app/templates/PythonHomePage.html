@@ -9,10 +9,12 @@
         {% extends "header.html" %}
         {% block content%}
         <h1>Python</h1>
+        <form id ="searchForm">
         <div class="searchbar">
             <input type="text" placeholder="Search for a topic">
             <button id = "submit" onclick = "searchBar()">Submit</button>
         </div>
+        </form>
         <div class = "populartopics" id = popularTopics>
             <h2>POPULAR TOPICS:</h2>
             <p><a href = "insert link">Getting started with Python</a></p>

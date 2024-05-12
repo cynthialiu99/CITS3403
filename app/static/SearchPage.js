@@ -11,6 +11,12 @@ function searchBar() {
   let input = document.getElementById('searcher').value
   input = input.toLowerCase();
 
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    searchBar(); // Call searchBar function
+  });
+
+
   let matchedThreads = [];
   
   // Iterate through threads array
