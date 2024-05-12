@@ -44,8 +44,19 @@ class Threads(db.Model):
     post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey(Post.id))
 
 class Responses(db.Model):
-    post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id), sa.Integer)
-    thread_id: so.Mapped[str] = so.mapped_column(sa.ForeignKey(Threads.id), sa.String(100), nullable=False)
-    response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
-    response_no: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
-    responder_id: so.Mapped[str] = so.mapped_column(sa.String(8), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
+    post = db.relationship('Post', backref=db.backref('responses', lazy=True))
+
+    thread_id = db.Column(db.String(100), db.ForeignKey('threads.thread_id'), nullable=False)
+    thread = db.relationship('Threads', backref=db.backref('responses', lazy=True))
+
+    response_id = db.Column(db.String(100), primary_key=True)
+    response_no = db.Column(db.Integer, nullable=False)
+    responder_id = db.Column(db.String(8), nullable=False)
+
+# class Responses(db.Model):
+#     post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id), sa.Integer)
+#     thread_id: so.Mapped[str] = so.mapped_column(sa.ForeignKey(Threads.id), sa.String(100), nullable=False)
+#     response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
+#     response_no: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
+#     responder_id: so.Mapped[str] = so.mapped_column(sa.String(8), nullable=False)
