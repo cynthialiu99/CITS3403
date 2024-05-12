@@ -1,5 +1,14 @@
-{% extends "header.html" %}
-{% block content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
+    <title>Code Central | Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='HomePage.css') }}">
+    <script src="{{ url_for('static', filename='HotTopics.js') }}"></script>
+</head>
+<body> 
+    {% extends "header.html" %}
+    {% block content%}
     <div class = "content">
         <h1>Code Central</h1>
         <p>Your go-to coding help forum for...</p>
@@ -11,4 +20,6 @@
             <h2>Hot Topics!</h2>
         </div>
     </div>
-{% endblock %}
+    {% endblock %}
+</body>
+</html>

@@ -3,8 +3,8 @@
 <html>
     <head>
         <title>Code Central | Java Help Page</title>
-        <link rel="stylesheet" href="SearchPage.css">
-        <script type="text/javascript" src="SearchPage.js"></script>  
+        <link rel="stylesheet" href="{{ url_for('static', filename='SearchPage.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='SearchPage.js') }}"></script>  
     </head>
     <body>
         {% extends "header.html" %}

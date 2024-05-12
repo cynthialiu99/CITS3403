@@ -5,38 +5,6 @@
 body {
   background-color: #f3f3f3;
 }
-.header {
-  width: 100%;
-  background-color: rgb(10, 145, 230);
-  display: flex;
-  justify-content: right;
-  font-weight: bold;
-}
-.nav-links {
-  padding: 35px 0;
-}
-.nav-links li {
-  display: inline-block;
-  margin: 0 19.5px;
-}
-.nav-links li a {
-  text-decoration: none;
-  color: white;
-  font-size: 17px;
-}
-.nav-links li a:hover {  
-  color: darkblue
-}
-.btn a {                        
-  border: 2px solid white;
-  border-radius: 20px;
-  padding: 10px 20px;
-}
-.btn a:hover {
-  background-color: white;
-  color: darkblue;
-  border-color: darkblue;
-}
 .sign-up-form {
   display: flex;
   flex-direction: column;
