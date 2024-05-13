@@ -11,19 +11,6 @@ The idea of this app is a simple UWA student help forum where the students can s
 
 These instructions will get you started to playing and navigating throughout the application. It will also serve as a guide to ensure that the project is up and running on your local machine with minimal problems.
 
-
-### Installing
-
-To setup the virtual environment, open the root directory of the project in a terminal and type:
-
-```
-$ python3 -m venv flask
-$ source flask/bin/activate
-$ pip install -r requirements.txt
-```
-
-(note: it is recommended that this application is run on a linux or mac system as pip on windows does not correctly manage packages)
-
 ### Prerequisites
 
 A minimum of python 3.8 is required to run this project
@@ -46,13 +33,24 @@ For windows, download the installer from python's website
 https://www.python.org/downloads/
 ```
 
-### Executing program
 
-To run the program after succesful installation of all the prerequisites, simply run:
+### Installing and Running flask
+
+To setup the virtual environment and run flask using Windows, open the root directory of the project in a terminal and type:
 
 ```
+$ python3 -m venv venv
+$ venv\Scripts\activate
+$ pip install flask
+$ pip install flask_sqlalchemy
+$ pip install flask_migrate
+$ pip install flask_login
+$ pip install wtforms
+$ pip install flask_wtf
+$ set FLASK_APP = projectify.py 
 $ flask run
 ```
+
 ### Testing
 
 To run the system tests, on the main directory, open a terminal and run:
