@@ -1,16 +1,36 @@
-from wtforms import SelectField, PasswordField, StringField, SubmitField, BooleanField
+from wtforms import SelectField, PasswordField, StringField, SubmitField, BooleanField, RadioField
 from flask_wtf import FlaskForm
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import *
 
 class CreateThreadForm(FlaskForm):
     title = StringField("Enter title:", validators=[DataRequired()])
     content = StringField("Enter thread content:", validators=[DataRequired()])
     submit = SubmitField("Create thread")
 
-#class ReplyThreadForm(FlaskForm):
+    def create_thread(self, user_id):
+
+        if (is_table_empty(Post) == True):
+            postid = 0
+        else:
+            postid = postid + 1
+
+        if (is_table_empty(Threads) == True):
+            threadid = 0
+        else:
+            threadid = threadid + 1
+        # Create a new post
+        post = Post(id = postid, body = self.content.data, user_id = user_id)
+        thread = Threads(thread_id = threadid, post_id = postid)
+
+        # Add the post to the database session
+        db.session.add(post)
+        db.session.add(thread)
+        db.session.commit()
+
+    #class ReplyThreadForm(FlaskForm):
     #content = StringField("Enter reply:", validators=[DataRequired()])
 
 class LoginForm(FlaskForm):
@@ -39,6 +59,18 @@ class SignUp(FlaskForm):
             User.email == email.data))
         if user is not None:
             raise ValidationError('Please use a different email address.')
+        
+    def create_user(self):
+        if (is_table_empty(User) == True):
+            userid = 0
+        else:
+            userid = userid + 1
+        user = User(id = userid, username = self.username.data, email = self.email.data, points = 0)
+        user.set_password(self.password.data)
+
+        db.session.add(user)
+        db.session.commit()
+
     #name
     #id
     #email
@@ -55,3 +87,12 @@ class SignUp(FlaskForm):
     #redirect to login page
 
 
+def is_table_empty(tablename):
+    # Execute a query to count the number of records in the Threads table
+    count = tablename.query.count()
+
+    # Check if the count is zero
+    if count == 0:
+        return True
+    else:
+        return False

@@ -1,10 +1,11 @@
 import logging
 from logging.config import fileConfig
 
-from flask import current_app
+from flask import current_app, Flask
 
 from alembic import context
 
+app = Flask(__name__)
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

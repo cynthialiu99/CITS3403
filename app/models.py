@@ -12,11 +12,12 @@ def load_user(id):
 
 class User(UserMixin, db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    name: so.Mapped[str] = so.mapped_column(sa.String(64))
     username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
     password_hash: so.Mapped[str] = so.mapped_column(sa.String(256))
     points: so.Mapped[int] = so.mapped_column (sa.Integer)
     status: so.Mapped[str] = so.mapped_column(sa.String(7))
+
+    posts: so.Mapped[List['Post']] = so.relationship('Post', back_populates='author')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

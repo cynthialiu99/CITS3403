@@ -21,10 +21,7 @@ def signup():
     
     form = SignUp()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        form.create_user()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('Sign Up (Student).html', title='Sign Up', form=form)
@@ -78,11 +75,11 @@ def get_threads():
 def reply_threads():
     return render_template("Reply_Threads.html")
 
-@flaskApp.route('/homepage/python', methods=['GET'])
+@flaskApp.route('/home/python', methods=['GET'])
 def python():
     return render_template('PythonHomePage.html')
 
-@flaskApp.route('/homepage/java', methods=['GET'])
+@flaskApp.route('/home/java', methods=['GET'])
 def java():
     return render_template('JavaHomePage.html')
 
