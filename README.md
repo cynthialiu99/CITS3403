@@ -34,9 +34,11 @@ https://www.python.org/downloads/
 ```
 
 
-### Installing and Running flask
+### Installing Packages and Running flask
 
-To setup the virtual environment and run flask using Windows, open the root directory of the project in a terminal and type:
+To setup the virtual environment and run flask, open the root directory of the project in a terminal and type:
+
+(Using Windows Command Prompt)
 
 ```
 $ python3 -m venv venv
@@ -50,6 +52,17 @@ $ pip install flask_wtf
 $ set FLASK_APP = projectify.py 
 $ flask run
 ```
+For linux/mac use these commands instead of venv\Scripts\activate and set FLASK_APP = projectify.py:
+```
+$ source venv/bin/activate
+$ export FLASK_APP=microblog.py
+```
+For windows powershell, use this command instead of venv\Scripts\activate:
+
+```
+$venv\Scripts\Activate.ps1
+```
+
 
 ### Testing
 
@@ -79,58 +92,25 @@ Staff User:
 * Email: Username@uwa.edu.au
 
 ### Dependencies
+alembic==1.13.1
+blinker==1.8.2
+click==8.1.7
+colorama==0.4.6
+Flask==3.0.3
+Flask-Login==0.6.3
+Flask-Migrate==4.0.7
+Flask-SQLAlchemy==3.1.1
+Flask-WTF==1.2.1
+greenlet==3.0.3
+itsdangerous==2.2.0
+Jinja2==3.1.4
+Mako==1.3.3
+MarkupSafe==2.1.5
+SQLAlchemy==2.0.30
+typing_extensions==4.11.0
+Werkzeug==3.0.3
+WTForms==3.1.2
 
-* alembic==1.5.8
-* asgiref==3.5.0
-* astroid==2.5.6
-* autopep8==1.5.7
-* Babel==2.9.1
-* bcrypt==3.2.0
-* blinker==1.4
-* cffi==1.15.0
-* click==8.1.2
-* cryptography==37.0.2
-* dnspython==2.2.1
-* dominate==2.6.0
-* email-validator==1.1.3
-* Flask==2.1.1
-* Flask-Admin==1.6.0
-* Flask-Bcrypt==1.0.1
-* Flask-Bootstrap==3.3.7.1
-* Flask-Cors==3.0.10
-* Flask-Login==0.6.0
-* Flask-Mail==0.9.1
-* Flask-Migrate==3.1.0
-* Flask-SQLAlchemy==2.5.1
-* Flask-User==1.0.2.2
-* Flask-WTF==1.0.1
-* greenlet==1.1.2
-* idna==3.3
-* importlib-metadata==4.11.3
-* importlib-resources==5.7.1
-* is-disposable-email==1.0.0
-* itsdangerous==2.1.2
-* Jinja2==3.1.1
-* lazy-object-proxy==1.6.0
-* Mako==1.1.4
-* MarkupSafe==2.1.1
-* passlib==1.7.4
-* pycodestyle==2.7.0
-* pycparser==2.21
-* python-dateutil==2.8.1
-* python-dotenv==0.20.0
-* python-editor==1.0.4
-* pytz==2021.1
-* six==1.16.0
-* SQLAlchemy==1.4.35
-* sqlparse==0.4.2
-* toml==0.10.2
-* visitor==0.1.3
-* Werkzeug==2.1.1
-* wrapt==1.12.1
-* WTForms==3.0.1
-* wtforms-validators==1.0.0
-* zipp==3.8.0
 
 ## Built With
 
