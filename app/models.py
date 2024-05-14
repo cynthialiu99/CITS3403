@@ -11,8 +11,10 @@ def load_user(id):
     return db.session.get(User, int(id))
 
 class User(UserMixin, db.Model):
+    __tablename__ = "user"
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
+    email: so.Mapped[str] = so.mapped_column(sa.String(64), unique = True)
     password_hash: so.Mapped[str] = so.mapped_column(sa.String(256))
     points: so.Mapped[int] = so.mapped_column (sa.Integer)
     status: so.Mapped[str] = so.mapped_column(sa.String(7))
