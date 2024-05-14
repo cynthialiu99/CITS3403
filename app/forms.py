@@ -1,4 +1,4 @@
-from wtforms import SelectField, PasswordField, StringField, SubmitField, EmailField
+from wtforms import SelectField, PasswordField, StringField, SubmitField, HiddenField, BooleanField
 from flask_wtf import FlaskForm
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 import sqlalchemy as sa
@@ -30,22 +30,30 @@ class CreateThreadForm(FlaskForm):
         db.session.add(thread)
         db.session.commit()
 
+
     #class ReplyThreadForm(FlaskForm):
     #content = StringField("Enter reply:", validators=[DataRequired()])
 
 class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
+    remember_me = BooleanField("Remember Me")
     submit = SubmitField("Log In")
-    #redirect to forgot_password page if user clicks on forgot password??
-    #redirect to Account page (Account.html)??
+    def validate_username(self, username):
+        user = db.session.scalar(sa.select(User).where(
+            User.username == username.data))
+        if user is None:
+            raise ValidationError('Account does not exist')
+
 
 class SignUp(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
+    email2 = StringField('Confirm Email', validators=[DataRequired(), EqualTo('email')])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    type = HiddenField()
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
@@ -64,12 +72,15 @@ class SignUp(FlaskForm):
         if (is_table_empty(User) == True):
             userid = 0
         else:
-            userid = userid + 1
-        user = User(id = userid, username = self.username.data, email = self.email.data, points = 0)
+            userid = db.session.query(sa.func.max(User.id)).scalar() or 0
+            userid += 1
+        user = User(id = userid, username = self.username.data, email = self.email.data, points = 0, status = self.type.data)
         user.set_password(self.password.data)
 
         db.session.add(user)
         db.session.commit()
+
+        print(db.session.scalar(sa.select(User)))
 
     #name
     #id
