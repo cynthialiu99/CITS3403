@@ -9,16 +9,17 @@
         {% block content%}
         <div class="login-form">
             <h1> LOGIN </h1>   
-            <form action ="" method="post">
+            <form action ="{{url_for('login')}}" method="post">
             <div class="buttons-container">
-                <button class="login-button-a" onclick="window.location.href='Login.html'"> Login </button>
-                <button class="sign-up-button" onclick="window.location.href='Sign Up (Student).html'"> Sign Up </button>
+                <button class="login-button-a" onclick="location.href='{{url_for('login')}}'"> Login </button>
+                <button class="sign-up-button" onclick="location.href='{{url_for('signup')}}'"> Sign Up </button>
             </div>
             <div class="input-email-password">
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Email" name="username" required>
             </div>
             <div class="input-email-password">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" name="password" required>
+
             </div>
             <p1> <a href="{{ url_for('forgot_passwd') }}"> Forgot password? </a> </p1>
             <button class="login-button-b"> Login </button>
