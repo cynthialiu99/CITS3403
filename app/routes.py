@@ -7,12 +7,19 @@ from app import db, flaskApp
 from app.forms import SignUp, LoginForm
 from app.models import User
 from flask_login import logout_user, login_required
+from flask import session 
 
 @flaskApp.route('/account')
 #@login_required
 def account():
-    user = {'username': 'SupremeLord'}
-    return render_template("Account.html", title='Account Page')
+    user_id = session.get('user_id')
+    if user_id:
+        user = User.query.get(user_id)
+        return render_template('account.html', user=user)
+    else:
+        # Redirect to login page or handle unauthorized access
+        return redirect(url_for('login'))
+    # return render_template("Account.html", title='Account Page')
 
 @flaskApp.route('/signup', methods=['GET','POST'])
 def signup():
@@ -29,7 +36,7 @@ def signup():
 @flaskApp.route('/login', methods=['GET','POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('account'))
     form = LoginForm()
     if form.validate_on_submit():
         user = db.session.scalar(
@@ -40,7 +47,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('account')
         return redirect(next_page)
     return render_template('Login.html', title='Sign In', form=form)
 
@@ -87,9 +94,6 @@ def java():
 def contact():
     return render_template('ContactUs.html')
 
-if __name__ == '__main__':
-    flaskApp.run(debug=True)
-
 @flaskApp.route("/")
 @flaskApp.route('/home', methods=['GET'])
 def home():
@@ -102,3 +106,6 @@ def signup_academic():
 @flaskApp.route('/forgot_passwd', methods = ['GET', 'POST'])
 def forgot_passwd():
     return render_template('ForgotPassword.html', title ='ForgotPassword')
+
+if __name__ == '__main__':
+    flaskApp.run(debug=True)
