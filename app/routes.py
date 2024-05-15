@@ -3,6 +3,7 @@ from flask import flash, redirect, render_template, request, url_for, jsonify, s
 from urllib.parse import urlsplit
 from flask_login import current_user, login_user
 import sqlalchemy as sa
+from app.__init__ import create_app
 from app.blueprint import main
 from app.app import db, flaskApp
 from app.forms import SignUp, LoginForm
@@ -116,6 +117,8 @@ def signup_academic():
 @main.route('/forgot_passwd', methods = ['GET', 'POST'])
 def forgot_passwd():
     return render_template('ForgotPassword.html', title ='ForgotPassword')
+
+flaskApp.register_blueprint(main)
 
 if __name__ == '__main__':
     flaskApp.run(debug=True)

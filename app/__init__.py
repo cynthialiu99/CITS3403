@@ -18,17 +18,16 @@ def create_app():
         SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, 'app.db')
 
     flaskApp.config.from_object(Config)
-    
+
     db.init_app(flaskApp)
     migrate.init_app(flaskApp, db)
     login.init_app(flaskApp)
     login.login_view = 'auth.login'
-    
+
     with flaskApp.app_context():
         from . import models  # Import models to register them with SQLAlchemy
         db.create_all()  # Create the database tables
-    
-    from .blueprint import main as main_blueprint
+
+    from app.blueprint import main as main_blueprint
     flaskApp.register_blueprint(main_blueprint)
-    
-    return flaskApp
+
