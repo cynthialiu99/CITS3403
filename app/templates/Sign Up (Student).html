@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Code Central | Student Sign Up </title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='Sign Up.css') }}">
-        <script type="text/javascript" src="{{ url_for('static', filename='Sign Up.js') }}"></script>  
-    </head>
-    <body>
-        {% extends "header.html" %}
-        {% block content%}
-        <div class="sign-up-form">
-            <h1> STUDENT SIGN UP </h1>  
+<head>
+    <title> Code Central | Student Sign Up </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Sign Up.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='Sign Up.js') }}"></script>  
+</head>
+<body>
+    {% extends "header.html" %}
+    {% block content %}
+    <div class="sign-up-form">
+        <h1> STUDENT SIGN UP </h1>  
 
-            <p1> Are you an Academic Staff member? <a href="{{ url_for('signup_academic') }}"> Sign up here... </a> </p1>
+        <p1> Are you an Academic Staff member? <a href="{{ url_for('signup_academic') }}"> Sign up here... </a> </p1>
+        <form method="POST" action="{{ url_for('signup') }}">
+            {{ form.hidden_tag() }}
             <div class="input-details">
-                <input type="first-name" placeholder="Student's First Name" required>
-                <input type="last-name" placeholder="Student's Last Name" required>
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username(size=32) }}
+                </p>
             </div>
             <div class="input-details">
-                <input id = "signup-email" type="email" placeholder="Student Email" required>
-                <input id = "confirm-email" type="email" placeholder="Confirm Student Email" required>
+                <p>
+                    {{ form.email.label }}<br>
+                    {{ form.email(size=32) }}
+                </p>
+                <p>
+                    {{ form.email2.label }}<br>
+                    {{ form.email2(size=32) }}
+                </p>
             </div>
             <div class="input-details">
-                <input id = "signup-password" type="password" placeholder="Password" required>
-                <input id = "confirm-password" type="password" placeholder="Confirm Password" required>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(size=32) }}
+                </p>
+                <p>
+                    {{ form.password2.label }}<br>
+                    {{ form.password2(size=32) }}
+                </p>
             </div>
-            <div id = "signup-error"></div>
-            <button class="sign-up-button" onclick = "validateInputs()"> Sign up as a Student </button>
-            <div class="sign-up-form-footer">
-                <p2> Already have an account? <a href="Login.html"> Login </a> </p2>
-            </div>
+            <div id="signup-error"></div>
+            <p>{{ form.submit() }}</p>
+        </form>
+        <div class="sign-up-form-footer">
+            <p2> Already have an account? <a href="{{ url_for('login') }}"> Login </a> </p2>
         </div>
-        {%endblock%}
-    </body>
+    </div>
+    {% endblock %}
+</body>
 </html>

@@ -8,12 +8,19 @@ from app import db, flaskApp
 from app.forms import SignUp, LoginForm
 from app.models import User
 from flask_login import logout_user, login_required
+from flask import session 
 
 @main.route('/account')
 #@login_required
 def account():
-    user = {'username': 'SupremeLord'}
-    return render_template("Account.html", title='Account Page')
+    if current_user.is_anonymous == False:
+        user_id = current_user.id
+        user = User.query.get(user_id)
+        return render_template('account.html', user=user)
+    else:
+        # Redirect to login page or handle unauthorized access
+        return redirect(url_for('login'))
+    # return render_template("Account.html", title='Account Page')
 
 @main.route('/signup', methods=['GET','POST'])
 def signup():
@@ -22,10 +29,8 @@ def signup():
     
     form = SignUp()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        form.type.data = "student"
+        form.create_user()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('main.login'))
     return render_template('Sign Up (Student).html', title='Sign Up', form=form)
@@ -38,9 +43,9 @@ def login():
     if form.validate_on_submit():
         user = db.session.scalar(
             sa.select(User).where(User.username == form.username.data))
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
+        if (user.check_password(form.password.data)) == False:
+            flash('Incorrect Username or Password')
+            return render_template('Login.html', title='Sign In', form=form)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
@@ -94,15 +99,27 @@ def contact():
 if __name__ == '__main__':
     flaskApp.run(debug=True)
 
-@main.route("/")
-@main.route('/home', methods=['GET'])
+@flaskApp.route("/")
+@flaskApp.route('/home', methods=['GET'])
 def home():
     return render_template('HomePage.html')
 
 @main.route('/signup_academic', methods=['GET', 'POST'])
 def signup_academic():
-    return render_template('Sign Up (Academic Staff).html', title='Sign Up Staff')
+    if current_user.is_authenticated:
+        return redirect(url_for('account'))
+
+    form = SignUp()
+    if form.validate_on_submit():
+        form.type.data = "academic"
+        form.create_user()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
+    return render_template('Sign Up (Academic Staff).html', title='Sign Up', form=form)
 
 @main.route('/forgot_passwd', methods = ['GET', 'POST'])
 def forgot_passwd():
     return render_template('ForgotPassword.html', title ='ForgotPassword')
+
+if __name__ == '__main__':
+    flaskApp.run(debug=True)

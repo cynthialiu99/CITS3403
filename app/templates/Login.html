@@ -5,28 +5,41 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='Login.css') }}">
     </head>
     <body>
-        {% extends "header.html"%}
-        {% block content%}
+        {% extends "header.html" %}
+        {% block content %}
         <div class="login-form">
             <h1> LOGIN </h1>   
-            <form action ="" method="post">
             <div class="buttons-container">
-                <button class="login-button-a" onclick="window.location.href='Login.html'"> Login </button>
-                <button class="sign-up-button" onclick="window.location.href='Sign Up (Student).html'"> Sign Up </button>
+                <form action="{{ url_for('login') }}" method="get">
+                    <button class="login-button-a" type="submit"> Login </button>
+                </form>
+                <form action="{{ url_for('signup') }}" method="get">
+                    <button class="sign-up-button" type="submit"> Sign-Up </button>
+                </form>
             </div>
-            <div class="input-email-password">
-                <input type="email" placeholder="Email" required>
-            </div>
-            <div class="input-email-password">
-                <input type="password" placeholder="Password" required>
-            </div>
-            <p1> <a href="{{ url_for('forgot_passwd') }}"> Forgot password? </a> </p1>
-            <button class="login-button-b"> Login </button>
-            <div class="login-form-footer">
-                <p2> Don't have an account yet? </p2>
-                <br>
-                <p3> Sign up as a <a href="{{ url_for('signup') }}"> Student</a> or an <a href="{{ url_for('signup_academic') }}"> Academic Staff</a> member! </p3>
-            </div>
+            <form action ="{{url_for('login')}}" method="post">
+                {{form.hidden_tag () }}
+                <div class="input-email-password">
+                    <p>
+                        {{form.username.label}}<br>
+                        {{form.username(size = 32)}}
+                    </p>
+                    <p>
+                        {{form.password.label}}<br>
+                        {{form.password(size = 32)}}
+                    </p>
+                    <p>
+                        {{form.remember_me.label}}<br>
+                        {{form.remember_me}}
+                    </p>
+                </div>
+                <p1> <a href="{{ url_for('forgot_passwd') }}"> Forgot password? </a> </p1>
+                <p>{{ form.submit() }}</p>
+                <div class="login-form-footer">
+                    <p2> Don't have an account yet? </p2>
+                    <br>
+                    <p3> Sign up as a <a href="{{ url_for('signup') }}"> Student</a> or an <a href="{{ url_for('signup_academic') }}"> Academic Staff</a> member! </p3>
+                </div>
             </form>
         </div>
         {% endblock %}
