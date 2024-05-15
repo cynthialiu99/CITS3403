@@ -3,9 +3,8 @@ from flask import flash, redirect, render_template, request, url_for, jsonify, s
 from urllib.parse import urlsplit
 from flask_login import current_user, login_user
 import sqlalchemy as sa
-from app import create_app
+from app import create_app, db, migrate
 from app.blueprint import main
-from app.app import db, flaskApp
 from app.forms import SignUp, LoginForm
 from app.models import User
 from flask_login import logout_user, login_required

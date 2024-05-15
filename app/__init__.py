@@ -9,7 +9,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
 
-def create_app():
+def create_app(config_class=None):
     flaskApp = Flask(__name__)
     basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -18,7 +18,17 @@ def create_app():
         SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "my_secret_key")
         SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, 'app.db')
 
-    flaskApp.config.from_object(Config)
+    class DeploymentConfig(Config):
+        SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, 'test.db')
+    
+    class TestConfig(Config):
+        SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
+        TESTING = True
+
+    if config_class:
+        flaskApp.config.from_object(config_class)
+    else:
+        flaskApp.config.from_object(Config)
 
     # Initialize the extensions with the app
     db.init_app(flaskApp)
