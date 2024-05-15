@@ -49,13 +49,14 @@ $ pip install flask_migrate
 $ pip install flask_login
 $ pip install wtforms
 $ pip install flask_wtf
+$ pip install selenium
 $ set FLASK_APP = projectify.py 
 $ flask run
 ```
 For linux/mac use these commands instead of venv\Scripts\activate and set FLASK_APP = projectify.py:
 ```
 $ source venv/bin/activate
-$ export FLASK_APP=microblog.py
+$ export FLASK_APP=projectify.py
 ```
 For windows powershell, use this command instead of venv\Scripts\activate:
 
@@ -91,7 +92,7 @@ Staff User:
 * Username: 8 digit number
 * Email: Username@uwa.edu.au
 
-### Dependencies
+### Dependencies -> requirements.txt file
 alembic==1.13.1
 blinker==1.8.2
 click==8.1.7
