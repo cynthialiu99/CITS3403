@@ -11,7 +11,7 @@
         {% extends "header.html" %}
         {% block content%}
 
-        <h1>Welcome, {user.username}</h1>
+        <h1>Welcome, {user.name}</h1>
         <h4>Manage your info, privacy and details here.</h4>
 
         <h2>Your Threads</h2>
@@ -19,6 +19,12 @@
         <div id="threadsList">
             <!-- Threads will be displayed here -->
         </div>
+
+        <form action ="{{url_for('logout')}}" method="post">
+            <button type ="submit">Logout</button>
+        </form>
+
+        
         <script src="Account.js"></script>
         {% endblock %}
     </body>
