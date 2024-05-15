@@ -10,59 +10,47 @@
     <link rel="stylesheet" href="Threads_styles.css">
 </head>
 <body>
+    <div class="submitThreads">
+        {% extends "header.html" %}
+        {% block content %}
+            <h1 class="threadsPage">Threads Page</h1>
 
-<div class="submitThreads">
-    <h1 class="threadsPage">Threads Page</h1>
-
-    <div class="header">
-        <nav>
-            <ul class = "nav-links">
-                <li><a href="HomePage.html">Home</a></li>
-                <li><a href="">Account</a></li>
-                <li><a href="">Resources</a></li>
-                <li><a href="ContactUs.html">Contact</a></li>
-                <li><a href="">Menu</a></li>
-                <li><a href="PythonHomePage.html">Python</a></li>
-                <li><a href="JavaHomePage.html">Java</a></li>   
-                <li class = "btn" onclick="window.location.href='Sign Up.html'">Login/Sign Up</li> 
-            </ul>
-        </nav>
-    </div>
-
-    <div>
-        <a id= "display" href="Display_Threads.html">View Existing Threads!</a>
-    </div>
-
-    <!-- Search Bar 
-    <div class="input-group mb-3">
-        <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
-        <div class="input-group-append">
-            <button class="btn btn-primary" onclick="searchThreads()">Search</button>
-        </div>
-    </div> -->
-
-    <!-- New Thread Form -->
-    <div class="newThread">
-        <h3>Create New Thread</h3>
-        <form id="newThreadForm">
-            <div class="formGroup">
-                <label for="threadTitle">Thread Title</label>
-                <input type="text" class="form-control" id="threadTitle" required>
+            <div>
+                <a id="display" href="{{ url_for('main.display_threads') }}">View Existing Threads!</a>
             </div>
-            <div class="formGroup">
-                <label for="threadContent">Thread Content</label>
-                <textarea class="form-control" id="threadContent" rows="3" required></textarea>
+
+            <!-- Search Bar 
+            <div class="input-group mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" onclick="searchThreads()">Search</button>
+                </div>
+            </div> -->
+
+            <!-- New Thread Form -->
+            <div class="newThread">
+                <h3>Create New Thread</h3>
+                <form method="POST" action="{{ url_for('main.create_thread') }}" id="newThreadForm">
+                    {{ form.hidden_tag() }}
+                    <div class="formGroup">
+                        {{ form.thread_title.label(class="form-label") }}
+                        {{ form.thread_title(class="form-control", id="threadTitle") }}
+                    </div>
+                    <div class="formGroup">
+                        {{ form.thread_content.label(class="form-label") }}
+                        {{ form.thread_content(class="form-control", id="threadContent", rows="3") }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
             </div>
-            <button type="button" class="btn btn-success" onclick="addThread()">Submit</button>
-        </form>
+
+
+            <!-- Display Threads -->
+            <!--div id="threadsList"-->
+                <!-- Threads will be displayed here -->
+            <!--/div-->
+        {%block content%}
     </div>
-
-
-    <!-- Display Threads -->
-    <!--div id="threadsList"-->
-        <!-- Threads will be displayed here -->
-    <!--/div-->
-</div>
 
 <!-- Bootstrap JS and Popper.js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

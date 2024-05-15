@@ -15,15 +15,17 @@ class CreateThreadForm(FlaskForm):
         if (is_table_empty(Post) == True):
             postid = 0
         else:
-            postid = postid + 1
+            postid = db.session.query(sa.func.max(Post.id)).scalar() or 0
+            postid += 1
 
-        if (is_table_empty(Threads) == True):
+        if (is_table_empty(Thread) == True):
             threadid = 0
         else:
-            threadid = threadid + 1
+            threadid = db.session.query(sa.func.max(Thread.id)).scalar() or 0
+            threadid += 1
         # Create a new post
         post = Post(id = postid, body = self.content.data, user_id = user_id)
-        thread = Threads(thread_id = threadid, post_id = postid)
+        thread = Thread(thread_id = threadid, post_id = postid, thread_name = self.title.data)
 
         # Add the post to the database session
         db.session.add(post)
@@ -38,9 +40,9 @@ class ReplyThreadForm(FlaskForm):
         postid = CreateThreadForm.create_thread()[0]
         threadid = CreateThreadForm.create_thread()[1]
         post = Post(id = postid, body = self.content.data, user_id = user_id)
-        thread = Threads(thread_id = threadid, post_id = postid)
+        thread = Thread(thread_id = threadid, post_id = postid)
         content = StringField("Enter reply:", validators=[DataRequired()])
-        reply = Responses(p_id = postid, t_id = threadid, body=content, user_id = user_id)
+        reply = Response(p_id = postid, t_id = threadid, body=content, user_id = user_id)
 
         db.session.add(reply)
         db.session.commit()

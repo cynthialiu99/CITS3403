@@ -33,7 +33,7 @@ class User(UserMixin, db.Model):
 class Post(db.Model):
     __tablename__ = "post"
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    body: so.Mapped[str] = so.mapped_column(sa.String(500))
     timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('user.id'), index=True)
 
@@ -46,7 +46,7 @@ class Thread(db.Model):
     __tablename__ = "thread"
     thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
     post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey('post.id'))
-
+    thread_name: so.Mapped[str] = so.mapped_column(sa.String(140))
     post: so.Mapped[Post] = so.relationship('Post', backref=so.backref('threads', lazy=True))
 
 class Response(db.Model):

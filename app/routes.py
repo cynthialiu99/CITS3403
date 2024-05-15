@@ -71,9 +71,9 @@ def create_thread():
 # Route to retrieve all threads
 @main.route('/threads', methods=['GET'])
 def get_threads():
-    conn = sqlite3.connect('threads.db')
+    conn = sqlite3.connect('app.db')
     c = conn.cursor()
-    c.execute('''SELECT * FROM threads''')
+    c.execute('''SELECT * FROM thread''')
     threads = c.fetchall()
     conn.close()
     return jsonify(threads), 200
