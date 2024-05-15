@@ -11,8 +11,8 @@
     <div class="sign-up-form">
         <h1> STUDENT SIGN UP </h1>  
 
-        <p1> Are you an Academic Staff member? <a href="{{ url_for('signup_academic') }}"> Sign up here... </a> </p1>
-        <form method="POST" action="{{ url_for('signup') }}">
+        <p1> Are you an Academic Staff member? <a href="{{ url_for('main.signup_academic') }}"> Sign up here... </a> </p1>
+        <form method="POST" action="{{ url_for('main.signup') }}">
             {{ form.hidden_tag() }}
             <div class="input-details">
                 <p>
@@ -44,7 +44,7 @@
             <p>{{ form.submit() }}</p>
         </form>
         <div class="sign-up-form-footer">
-            <p2> Already have an account? <a href="{{ url_for('login') }}"> Login </a> </p2>
+            <p2> Already have an account? <a href="{{ url_for('main.login') }}"> Login </a> </p2>
         </div>
     </div>
     {% endblock %}

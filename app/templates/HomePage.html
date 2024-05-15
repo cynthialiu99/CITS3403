@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage responsive -->
     <title>Code Central | Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='HomePage.css') }}">
     <script src="{{ url_for('static', filename='HotTopics.js') }}"></script>
 </head>
 <body> 
     {% extends "header.html" %}
-    {% block content%}
-    <div class = "content">
+    {% block content %}
+    <div class="content">
         <h1>Code Central</h1>
         <p>Your go-to coding help forum for...</p>
         <div class="button-container">
-            <button type = "button" class = "button button1" onclick="location.href='{{ url_for('python') }}'">Python</button>
-            <button type = "button" class = "button button2" onclick="location.href='{{ url_for('java') }}'">Java</button>
+            <button type="button" class="button button1" onclick="redirectToPython()">Python</button>
+            <button type="button" class="button button2" onclick="redirectToJava()">Java</button>
         </div>
-        <div class ="hotTopics" id="hotTopics">
+        <div class="hotTopics" id="hotTopics">
             <h2>Hot Topics!</h2>
         </div>
     </div>
     {% endblock %}
+
+    <script>
+        function redirectToPython() {
+            window.location.href = "{{ url_for('main.python') }}";
+        }
+
+        function redirectToJava() {
+            window.location.href = "{{ url_for('main.java') }}";
+        }
+    </script>
 </body>
 </html>
+
+
