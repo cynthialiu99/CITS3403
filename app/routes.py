@@ -8,6 +8,10 @@ from app.blueprint import main
 from app.forms import SignUp, LoginForm
 from app.models import User
 from flask_login import logout_user, login_required
+from flask import Blueprint 
+
+# main = Blueprint('main', __name__)
+
 
 @main.route('/account')
 #@login_required
@@ -57,9 +61,13 @@ def logout():
     logout_user()
     return redirect(url_for('main.home'))
 
+@main.route('/threads', methods=['GET','POST'])
+def threads():
+    return render_template('Threads.html',title="Post new thread")
+
 # Route to create a new thread
-@main.route('/threads', methods=['POST'])
-def create_thread():
+@main.route('/create_threads', methods=['POST'])
+def create_threads():
     data = request.json
     conn = sqlite3.connect('threads.db')
     c = conn.cursor()
@@ -67,6 +75,7 @@ def create_thread():
     conn.commit()
     conn.close()
     return jsonify({'message': 'Thread created successfully'}), 201
+    # return render_template('Threads.html')
 
 # Route to retrieve all threads
 @main.route('/threads', methods=['GET'])
@@ -116,6 +125,8 @@ def signup_academic():
 @main.route('/forgot_passwd', methods = ['GET', 'POST'])
 def forgot_passwd():
     return render_template('ForgotPassword.html', title ='ForgotPassword')
+
+
 
 flaskApp = create_app()
 
