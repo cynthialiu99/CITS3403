@@ -3,19 +3,19 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
         <title>Code Central</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='Header.css') }}"> <!-- Use url_for to link to static files -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='Header.css') }}"> 
     </head>
     <body>   
         <div class="header">
             <nav>
                 <ul class="nav-links">
-                    <li><a href="{{ url_for('home') }}">Home</a></li> <!-- Use url_for to link to the home route -->
-                    <li><a href="{{ url_for('python') }}">Python</a></li> <!-- Use url_for to link to the python_home route -->
-                    <li><a href="{{ url_for('java') }}">Java</a></li> <!-- Use url_for to link to the java_home route -->
-                    <li><a href="{{ url_for('account') }}">Account</a></li> <!-- Use url_for to link to the account route -->
-                    <li><a href="{{ url_for('contact') }}">Contact Us</a></li> <!-- Use url_for to link to the contact_us route -->
-                    <li class="btn"><a href="{{ url_for('login') }}">Login</a></li> <!-- Use url_for to link to the login route -->
-                    <li class="btn"><a href="{{ url_for('signup') }}">Sign Up</a></li> <!-- Use url_for to link to the signup route -->
+                    <li><a href="{{ url_for('home') }}">Home</a></li> 
+                    <li><a href="{{ url_for('python') }}">Python</a></li> 
+                    <li><a href="{{ url_for('java') }}">Java</a></li> 
+                    <li><a href="{{ url_for('account') }}">Account</a></li> 
+                    <li><a href="{{ url_for('contact') }}">Contact Us</a></li> 
+                    <li class="btn"><a href="{{ url_for('login') }}">Login</a></li> 
+                    <li class="btn"><a href="{{ url_for('signup') }}">Sign Up</a></li> 
                 </ul>
             </nav>
         </div>
