@@ -19,7 +19,7 @@ def account():
         return render_template('account.html', user=user)
     else:
         # Redirect to login page or handle unauthorized access
-        return redirect(url_for('login'))
+        return redirect(url_for('main.login'))
     # return render_template("Account.html", title='Account Page')
 
 @main.route('/signup', methods=['GET','POST'])
@@ -56,7 +56,7 @@ def login():
 @main.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('main.signup'))
+    return redirect(url_for('main.login'))
 
 # Route to create a new thread
 @main.route('/threads', methods=['POST'])
@@ -96,25 +96,22 @@ def java():
 def contact():
     return render_template('ContactUs.html')
 
-if __name__ == '__main__':
-    flaskApp.run(debug=True)
-
-@flaskApp.route("/")
-@flaskApp.route('/home', methods=['GET'])
+@main.route("/")
+@main.route('/home', methods=['GET'])
 def home():
     return render_template('HomePage.html')
 
 @main.route('/signup_academic', methods=['GET', 'POST'])
 def signup_academic():
     if current_user.is_authenticated:
-        return redirect(url_for('account'))
+        return redirect(url_for('main.account'))
 
     form = SignUp()
     if form.validate_on_submit():
         form.type.data = "academic"
         form.create_user()
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
+        return redirect(url_for('main.login'))
     return render_template('Sign Up (Academic Staff).html', title='Sign Up', form=form)
 
 @main.route('/forgot_passwd', methods = ['GET', 'POST'])
