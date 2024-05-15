@@ -53,10 +53,10 @@ def login():
         return redirect(next_page)
     return render_template('Login.html', title='Sign In', form=form)
 
-@main.route('/logout')
+@main.route('/logout', methods=['GET', 'POST']))
 def logout():
     logout_user()
-    return redirect(url_for('main.login'))
+    return redirect(url_for('home'))
 
 # Route to create a new thread
 @main.route('/threads', methods=['POST'])
