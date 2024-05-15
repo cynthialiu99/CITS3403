@@ -1,16 +1,17 @@
 import unittest, os, time
-from app import flaskApp, db
+from app import flaskApp, db, create_app
 from app.models import User
-from config import TestConfig
+from app.config import TestConfig
 from selenium import webdriver
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+local_host = "http://localhost:5000/"
 
 class SystemTest(unittest.TestCase):
     driver = None
 
     def setUp(self):
-        self.driver = webdriver.Firefox(executable_path=os.path.join(basedir,))
+        self.driver = webdriver.Chrome(executable_path=os.path.join(basedir,))
         
         if not self.driver:
             self.skipTest('Could not create driver')
@@ -26,7 +27,7 @@ class SystemTest(unittest.TestCase):
             db.session.add(staff)
             db.session.commit()
             self.driver.maximize_window()
-            self.driver.get('http://localhost:5000/')
+            self.driver.get(local_host)
 
     def tearDOwn(self):
         if self.driver:

@@ -1,9 +1,10 @@
 import unittest, os
-from app import flaskApp, db
+from unittest import TestCase
+from app import flaskApp, db, create_app, test_data
 from app.models import User
-from config import TestConfig
+from app.config import TestConfig
 
-class UserModelCase(unittest.TestCase):
+class UserModelCase(TestCase):
     def setUp(self):
         self.app = flaskApp.test_client()
         db.create_all()
