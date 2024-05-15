@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from app import db, login
@@ -14,9 +14,9 @@ class User(UserMixin, db.Model):
     __tablename__ = "user"
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     username: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
-    email: so.Mapped[str] = so.mapped_column(sa.String(64), unique = True)
+    email: so.Mapped[str] = so.mapped_column(sa.String(64), unique=True)
     password_hash: so.Mapped[str] = so.mapped_column(sa.String(256))
-    points: so.Mapped[int] = so.mapped_column (sa.Integer)
+    points: so.Mapped[int] = so.mapped_column(sa.Integer)
     status: so.Mapped[str] = so.mapped_column(sa.String(7))
 
     posts: so.Mapped[List['Post']] = so.relationship('Post', back_populates='author')
@@ -28,38 +28,34 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
     
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return f'<User {self.username}>'
     
 class Post(db.Model):
+    __tablename__ = "post"
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     body: so.Mapped[str] = so.mapped_column(sa.String(140))
     timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
-    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),index=True)
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('user.id'), index=True)
 
-    author: so.Mapped[User] = so.relationship(back_populates='posts')
+    author: so.Mapped[User] = so.relationship('User', back_populates='posts')
 
     def __repr__(self):
-        return '<Post {}>'.format(self.body)
+        return f'<Post {self.body}>'
 
-
-class Threads(db.Model):
+class Thread(db.Model):
+    __tablename__ = "thread"
     thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
-    post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey(Post.id))
+    post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey('post.id'))
 
-class Responses(db.Model):
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
-    post = db.relationship('Post', backref=db.backref('responses', lazy=True))
+    post: so.Mapped[Post] = so.relationship('Post', backref=so.backref('threads', lazy=True))
 
-    thread_id = db.Column(db.String(100), db.ForeignKey('threads.thread_id'), nullable=False)
-    thread = db.relationship('Threads', backref=db.backref('responses', lazy=True))
+class Response(db.Model):
+    __tablename__ = "response"
+    response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
+    post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey('post.id'), nullable=False)
+    thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), sa.ForeignKey('thread.thread_id'), nullable=False)
+    response_no: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
+    responder_id: so.Mapped[str] = so.mapped_column(sa.String(8), nullable=False)
 
-    response_id = db.Column(db.String(100), primary_key=True)
-    response_no = db.Column(db.Integer, nullable=False)
-    responder_id = db.Column(db.String(8), nullable=False)
-
-# class Responses(db.Model):
-#     post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id), sa.Integer)
-#     thread_id: so.Mapped[str] = so.mapped_column(sa.ForeignKey(Threads.id), sa.String(100), nullable=False)
-#     response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
-#     response_no: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
-#     responder_id: so.Mapped[str] = so.mapped_column(sa.String(8), nullable=False)
+    post: so.Mapped[Post] = so.relationship('Post', backref=so.backref('responses', lazy=True))
+    thread: so.Mapped[Thread] = so.relationship('Thread', backref=so.backref('responses', lazy=True))

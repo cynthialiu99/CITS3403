@@ -1,4 +1,5 @@
-import os, models
+import os
+from app import models
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func

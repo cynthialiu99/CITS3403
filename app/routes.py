@@ -1,14 +1,13 @@
 import sqlite3
-from flask import flash, redirect, render_template, request, url_for, jsonify
+from flask import flash, redirect, render_template, request, url_for, jsonify, session
 from urllib.parse import urlsplit
 from flask_login import current_user, login_user
 import sqlalchemy as sa
-from blueprint import main
-from app import db, flaskApp
+from app.blueprint import main
+from app.app import db, flaskApp
 from app.forms import SignUp, LoginForm
 from app.models import User
 from flask_login import logout_user, login_required
-from flask import session 
 
 @main.route('/account')
 #@login_required
@@ -53,10 +52,10 @@ def login():
         return redirect(next_page)
     return render_template('Login.html', title='Sign In', form=form)
 
-@main.route('/logout', methods=['GET', 'POST']))
+@main.route('/logout', methods=['GET', 'POST'])
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('main.home'))
 
 # Route to create a new thread
 @main.route('/threads', methods=['POST'])

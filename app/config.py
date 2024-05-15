@@ -1,20 +1,27 @@
 import os
 from flask import Flask
+from app.__init__ import Config
+from flask_sqlalchemy import SQLAlchemy
+from app.models import User
 
+# Initialize the Flask application
 basedir = os.path.abspath(os.path.dirname(__file__))
 flaskApp = Flask(__name__)
 
-class Config:
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.environ.get("FLASK_SECRET_KEY")
-
 class DeploymentConfig(Config):
-    SQLALCHEMY_DATABASE_URI =  "sqlite:///" + os.path.join(basedir, 'test.db')
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, 'test.db')
     
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI =  "sqlite:///:memory"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
     TESTING = True
-    
 
+# Apply the configuration to the app
+flaskApp.config.from_object(Config)
 
+# Initialize SQLAlchemy
+db = SQLAlchemy()
+
+# Create the database and tables
+with flaskApp.app_context():
+    db.create_all()
 
