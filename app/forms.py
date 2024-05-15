@@ -30,9 +30,21 @@ class CreateThreadForm(FlaskForm):
         db.session.add(thread)
         db.session.commit()
 
+        return post.id, thread.thread_id
 
-    #class ReplyThreadForm(FlaskForm):
-    #content = StringField("Enter reply:", validators=[DataRequired()])
+
+class ReplyThreadForm(FlaskForm):
+    def reply_thread(self, user_id):
+        postid = CreateThreadForm.create_thread()[0]
+        threadid = CreateThreadForm.create_thread()[1]
+        post = Post(id = postid, body = self.content.data, user_id = user_id)
+        thread = Threads(thread_id = threadid, post_id = postid)
+        content = StringField("Enter reply:", validators=[DataRequired()])
+        reply = Responses(p_id = postid, t_id = threadid, body=content, user_id = user_id)
+
+        db.session.add(reply)
+        db.session.commit()
+
 
 class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
@@ -81,22 +93,6 @@ class SignUp(FlaskForm):
         db.session.commit()
 
         print(db.session.scalar(sa.select(User)))
-
-    #name
-    #id
-    #email
-    #password
-    #submit
-    #redirect to login page
-
-#class StaffSignUp(FlaskForm):
-    #name
-    #id
-    #email
-    #password
-    #submit
-    #redirect to login page
-
 
 def is_table_empty(tablename):
     # Execute a query to count the number of records in the Threads table
