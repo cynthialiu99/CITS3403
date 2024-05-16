@@ -10,38 +10,32 @@
     {% block content %}
     <div class="sign-up-form">
         <h1> STUDENT SIGN UP </h1>  
-
         <p1> Are you an Academic Staff member? <a href="{{ url_for('main.signup_academic') }}"> Sign up here... </a> </p1>
         <form method="POST" action="{{ url_for('main.signup') }}">
             {{ form.hidden_tag() }}
             <div class="input-details">
                 <p>
-                    {{ form.username.label }}<br>
-                    {{ form.username(size=32) }}
+                    {{ form.username.label }}{{ form.username(size=32) }}
                 </p>
-            </div>
-            <div class="input-details">
+                <br>
                 <p>
-                    {{ form.email.label }}<br>
-                    {{ form.email(size=32) }}
+                    {{ form.email.label }}{{ form.email(size=32) }}
                 </p>
+                <br>
                 <p>
-                    {{ form.email2.label }}<br>
-                    {{ form.email2(size=32) }}
+                    {{ form.email2.label }}{{ form.email2(size=32) }}
                 </p>
-            </div>
-            <div class="input-details">
+                <br>
                 <p>
-                    {{ form.password.label }}<br>
-                    {{ form.password(size=32) }}
+                    {{ form.password.label }}{{ form.password(size=32) }}
                 </p>
+                <br>
                 <p>
-                    {{ form.password2.label }}<br>
-                    {{ form.password2(size=32) }}
+                    {{ form.password2.label }}{{ form.password2(size=32) }}
                 </p>
             </div>
             <div id="signup-error"></div>
-            <p>{{ form.submit() }}</p>
+            {{ form.submit(class="sign-up-button") }}
         </form>
         <div class="sign-up-form-footer">
             <p2> Already have an account? <a href="{{ url_for('main.login') }}"> Login </a> </p2>

@@ -25,17 +25,19 @@ body {
   color: darkblue;
 }
 .buttons-container {
-  margin-bottom: 16px;
+  margin-bottom: 30px;
+  display: flex;
 }
 button {
   border: none;
-  border-radius: 4px;
-  padding: 20px 100px;
+  border-radius: 2px;
+  padding: 20px 62px;
   font-weight: bold;
   cursor: pointer;  
 }
 .login-button-a {
   background-color: lightskyblue; 
+  padding: 20px 70px;
 }
 .login-button-a:hover {
   background-color: darkblue;
@@ -49,19 +51,27 @@ button {
   background-color: darkblue;
   color: white;
 }
+p {
+  font-size: 15px;
+}
 .input-email-password {
   margin-bottom: 20px;
-  width: 91%;
+  width: 99%;
+  color: #333;
 }
 .input-email-password input {
-  width: 88%;
+  width: 90%;
   border-radius: 4px;
-  padding: 20px;
+  padding: 17px;
   border: 1px solid #ddd;
 }
+.remember-me {
+  margin-bottom: 30px;
+  color: #333;
+}
 .login-form p1 {
-  font-size: 15px;
-  margin-bottom: 23px;
+  font-size: 14px;
+  
 }
 .login-form p1 a {
   text-decoration: none;
@@ -72,8 +82,15 @@ button {
   text-decoration: underline;
 }
 .login-button-b {
+  margin-top: 30px;
   background-color: lightskyblue; 
-  width: 92%;
+  width: 99%;
+  border: none;
+  border-radius: 4px;
+  padding: 20px 70px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
 }
 .login-button-b:hover {
   background-color: darkblue;
