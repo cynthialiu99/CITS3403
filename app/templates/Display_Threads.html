@@ -42,7 +42,9 @@
 
     <!-- Display Threads -->
     <div id="threadsList">
-        <!-- Threads will be displayed here -->
+        {% for thread in threads %}
+            <li>{{thread.thread_name}}</li>
+        {% endfor %}
     </div>
 
    

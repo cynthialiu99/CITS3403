@@ -21,7 +21,7 @@ class CreateThreadForm(FlaskForm):
         if (is_table_empty(Thread) == True):
             threadid = 0
         else:
-            threadid = db.session.query(sa.func.max(Thread.id)).scalar() or 0
+            threadid = db.session.query(sa.func.max(Thread.thread_id)).scalar() or 0
             threadid += 1
         # Create a new post
         post = Post(id = postid, body = self.content.data, user_id = user_id)
@@ -95,6 +95,7 @@ class SignUp(FlaskForm):
         db.session.commit()
 
         print(db.session.scalar(sa.select(User)))
+
 
 def is_table_empty(tablename):
     # Execute a query to count the number of records in the Threads table

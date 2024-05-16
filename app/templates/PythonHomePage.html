@@ -9,19 +9,17 @@
         {% extends "header.html" %}
         {% block content%}
         <h1>Python</h1>
-        <form id ="searchForm">
+        <form id ="searchForm" action = "{{url_for('main.get_threads')}}" method = "get">
         <div class="searchbar">
-            <input type="text" placeholder="Search for a topic">
+            <input name="searchtext" type="text" placeholder="Search for a topic">
             <button id = "submit" onclick = "searchBar()">Submit</button>
         </div>
+        </form>
         <div class ="newThreads">
-            <!-- <button id ="new" onclick="window.location.href='{{url_for('main.threads')}}'">Post new thread</button> -->
-            <form action="{{ url_for('main.threads') }}" method="get">
+            <form action="{{ url_for('main.get_create_threads') }}" method="get">
                 <button class="new" type="submit"> Post new thread</button>
             </form>
         </div>
-
-        </form>
         <div class = "populartopics" id = popularTopics>
             <h2>POPULAR TOPICS:</h2>
             <p><a href = "insert link">Getting started with Python</a></p>

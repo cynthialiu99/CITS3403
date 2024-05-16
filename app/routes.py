@@ -5,7 +5,7 @@ from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import create_app, db, migrate
 from app.blueprint import main
-from app.forms import SignUp, LoginForm
+from app.forms import *
 from app.models import User
 from flask_login import logout_user, login_required
 from flask import Blueprint 
@@ -61,31 +61,39 @@ def logout():
     logout_user()
     return redirect(url_for('main.home'))
 
-@main.route('/threads', methods=['GET','POST'])
-def threads():
-    return render_template('Threads.html',title="Post new thread")
+#@main.route('/threads', methods=['GET','POST'])
+#def threads():
+#    return render_template('threads.html',title="Post new thread")
+
+# Route to create a new thread
+@main.route('/create_threads', methods=['GET'])
+def get_create_threads():
+    #data = request.json
+    #conn = sqlite3.connect('threads.db')
+    #c = conn.cursor()
+    #c.execute('''INSERT INTO threads (title, content, date) VALUES (?, ?, ?)''', (data['title'], data['content'], data['date']))
+    #conn.commit()
+    #conn.close()
+    #values =  jsonify({'message': 'Thread created successfully'}), 201
+    form = CreateThreadForm()
+    return render_template('Threads.html', title = 'Create Thread', form = form)
 
 # Route to create a new thread
 @main.route('/create_threads', methods=['POST'])
 def create_threads():
-    data = request.json
-    conn = sqlite3.connect('threads.db')
-    c = conn.cursor()
-    c.execute('''INSERT INTO threads (title, content, date) VALUES (?, ?, ?)''', (data['title'], data['content'], data['date']))
-    conn.commit()
-    conn.close()
-    return jsonify({'message': 'Thread created successfully'}), 201
-    # return render_template('Threads.html')
+    print("here")
+    form = CreateThreadForm()
+    if form.validate_on_submit():
+        postid, threadid = form.create_thread(current_user.id)
+        print(f"postid = {postid}     threadid = {threadid}")
+        return render_template('Display_Threads.html', title = "displaythreads", threadid = threadid)
+    return render_template('Threads.html', title = 'Create Thread', form = form)
 
 # Route to retrieve all threads
 @main.route('/threads', methods=['GET'])
 def get_threads():
-    conn = sqlite3.connect('app.db')
-    c = conn.cursor()
-    c.execute('''SELECT * FROM thread''')
-    threads = c.fetchall()
-    conn.close()
-    return jsonify(threads), 200
+    threads = db.session.query(Thread).all()
+    return render_template('Display_Threads.html', title = "displaythreads", threads = threads)
 
 #Route to reply to threads
 @main.route('/threads/<thread_id>/reply', methods=['GET'])
