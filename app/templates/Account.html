@@ -11,13 +11,17 @@
         {% extends "header.html" %}
         {% block content%}
 
-        <h1>Welcome, {user.name}</h1>
+        <h1>Welcome, {{user.username}}</h1>
         <h4>Manage your info, privacy and details here.</h4>
 
         <h2>Your Threads</h2>
         <!-- Display Threads -->
         <div id="threadsList">
-            <!-- Threads will be displayed here -->
+            <ul>
+            {% for thread in threads %}
+                <li>{{thread.thread_name}}</li>
+            {% endfor %}
+            </ul>
         </div>
 
         <form action ="{{url_for('main.logout')}}" method="post">

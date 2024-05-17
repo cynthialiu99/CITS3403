@@ -44,10 +44,13 @@ class Post(db.Model):
 
 class Thread(db.Model):
     __tablename__ = "thread"
-    thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
+    thread_id: so.Mapped[int] = so.mapped_column(primary_key=True)
     post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey('post.id'))
     thread_name: so.Mapped[str] = so.mapped_column(sa.String(140))
     post: so.Mapped[Post] = so.relationship('Post', backref=so.backref('threads', lazy=True))
+
+    def __repr__(self):
+        return f'<Thread {self.thread_name}>'
 
 class Response(db.Model):
     __tablename__ = "response"
