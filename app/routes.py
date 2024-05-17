@@ -19,7 +19,8 @@ def account():
     if current_user.is_anonymous == False:
         user_id = current_user.id
         user = User.query.get(user_id)
-        return render_template('account.html', user=user)
+        threads = db.session.query(Thread).join(Post).filter(Post.user_id == user_id).all()
+        return render_template('account.html', user=user, threads = threads)
     else:
         # Redirect to login page or handle unauthorized access
         return redirect(url_for('main.login'))
