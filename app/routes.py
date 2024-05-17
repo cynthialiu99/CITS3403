@@ -91,13 +91,13 @@ def create_threads():
     return render_template('Threads.html', title = 'Create Thread', form = form)
 
 # Route to retrieve all threads
-@main.route('/threads', methods=['GET'])
+@main.route('/get_threads', methods=['GET'])
 def get_threads():
     threads = db.session.query(Thread).all()
     return render_template('Display_Threads.html', title = "displaythreads", threads = threads)
 
 #Route to reply to threads
-@main.route('/threads/<thread_id>/reply', methods=['GET'])
+@main.route('/get_threads/<thread_id>/reply', methods=['GET'])
 def reply_threads():
     return render_template("Reply_Threads.html")
 
