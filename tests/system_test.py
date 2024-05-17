@@ -1,7 +1,7 @@
 import unittest, os, time
 from app import flaskApp, db, create_app
 from app.models import User
-from app.config import TestConfig
+from app.__init__ import TestConfig
 from selenium import webdriver
 
 basedir = os.path.abspath(os.path.dirname(__file__))
