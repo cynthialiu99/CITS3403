@@ -13,8 +13,8 @@
         <h1>Code Central</h1>
         <p>Your go-to coding help forum for...</p>
         <div class="button-container">
-            <button type="button" class="button button1" onclick="redirectToPython()">Python</button>
-            <button type="button" class="button button2" onclick="redirectToJava()">Java</button>
+            <button type="button" class="button button1" onclick="window.location.href='{{ url_for('main.python')}}';">Python</button>
+            <button type="button" class="button button2" onclick="window.location.href='{{ url_for('main.java')}}';">Java</button>
         </div>
         <div class="hotTopics" id="hotTopics">
             <h2>Hot Topics!</h2>
@@ -22,15 +22,6 @@
     </div>
     {% endblock %}
 
-    <script>
-        function redirectToPython() {
-            window.location.href = "{{ url_for('main.python') }}";
-        }
-
-        function redirectToJava() {
-            window.location.href = "{{ url_for('main.java') }}";
-        }
-    </script>
 </body>
 </html>
 
