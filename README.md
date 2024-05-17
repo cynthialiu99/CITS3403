@@ -154,6 +154,7 @@ WTForms==3.1.2
 | Vinita Rathore| 23147456      |  vinita254      |
 
 ## References
+Code Central's logo was generated using Wix's Logo Maker - https://www.wix.com/logo/maker
 The Flask Mega Tutorial: 
 Chapter 1 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 Chapter 2 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates
