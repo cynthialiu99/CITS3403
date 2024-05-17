@@ -6,7 +6,7 @@ import sqlalchemy as sa
 from app import create_app, db, migrate
 from app.blueprint import main
 from app.forms import *
-from app.models import User
+from app.models import *
 from flask_login import logout_user, login_required
 from flask import Blueprint 
 
@@ -69,13 +69,6 @@ def logout():
 # Route to create a new thread
 @main.route('/create_threads', methods=['GET'])
 def get_create_threads():
-    #data = request.json
-    #conn = sqlite3.connect('threads.db')
-    #c = conn.cursor()
-    #c.execute('''INSERT INTO threads (title, content, date) VALUES (?, ?, ?)''', (data['title'], data['content'], data['date']))
-    #conn.commit()
-    #conn.close()
-    #values =  jsonify({'message': 'Thread created successfully'}), 201
     form = CreateThreadForm()
     return render_template('Threads.html', title = 'Create Thread', form = form)
 
@@ -85,8 +78,7 @@ def create_threads():
     form = CreateThreadForm()
     if form.validate_on_submit():
         postid, threadid = form.create_thread(current_user.id)
-        print(f"postid = {postid}     threadid = {threadid}")
-        return render_template('Display_Threads.html', title = "displaythreads", threadid = threadid)
+        return redirect(url_for('main.single_thread', thread_id=threadid))
     return render_template('Threads.html', title = 'Create Thread', form = form)
 
 # Route to retrieve all threads
@@ -102,10 +94,30 @@ def get_threads():
         threads = db.session.query(Thread).filter(Thread.thread_name.like(search)).all()
     return render_template('Display_Threads.html', title = "displaythreads", threads = threads, form = form)
 
+@main.route('/threads/<int:thread_id>', methods=['GET'])
+def single_thread(thread_id):
+    thread = Thread.query.get_or_404(thread_id)
+    responses = Response.query.filter_by(thread_id=thread_id).all()
+    responsearray = []
+    for response in responses:
+        responsearray.append(Post.query.filter_by(id = response.post_id).first())
+    return render_template('Single_Thread.html', thread=thread, responses=responsearray)
+
+
 #Route to reply to threads
-@main.route('/threads/<thread_id>/reply', methods=['GET'])
-def reply_threads():
-    return render_template("Reply_Threads.html")
+@main.route('/threads/<int:thread_id>/reply', methods=['GET'])
+def reply_threads(thread_id):
+    form = ReplyThreadForm()
+    return render_template("Reply_Threads.html", thread_id = thread_id, form = form)
+
+@main.route('/threads/<int:thread_id>/reply', methods=['POST'])
+def post_reply_threads(thread_id):
+    thread_id = request.view_args['thread_id']
+    form = ReplyThreadForm()
+    form.reply_thread(current_user.id, thread_id)
+    thread = Thread.query.get_or_404(thread_id)
+    responses = Response.query.filter_by(thread_id=thread_id).order_by(Response.post.has(Post.timestamp)).all()
+    return render_template('Single_Thread.html', thread=thread, response = responses)
 
 @main.route('/homepage/python', methods=['GET'])
 def python():
