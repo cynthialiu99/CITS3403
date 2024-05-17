@@ -96,6 +96,9 @@ class SignUp(FlaskForm):
 
         print(db.session.scalar(sa.select(User)))
 
+class Search(FlaskForm):
+    search = StringField('Search')
+
 
 def is_table_empty(tablename):
     # Execute a query to count the number of records in the Threads table

@@ -82,7 +82,6 @@ def get_create_threads():
 # Route to create a new thread
 @main.route('/create_threads', methods=['POST'])
 def create_threads():
-    print("here")
     form = CreateThreadForm()
     if form.validate_on_submit():
         postid, threadid = form.create_thread(current_user.id)
@@ -91,10 +90,17 @@ def create_threads():
     return render_template('Threads.html', title = 'Create Thread', form = form)
 
 # Route to retrieve all threads
-@main.route('/threads', methods=['GET'])
+@main.route('/threads', methods=['POST'])
 def get_threads():
-    threads = db.session.query(Thread).all()
-    return render_template('Display_Threads.html', title = "displaythreads", threads = threads)
+    form = Search()
+    value = form.search.data
+    search = "%{}%".format(value)
+    print(form.search.data)
+    if form.search == None:
+        threads = db.session.query(Thread).all()
+    else:
+        threads = db.session.query(Thread).filter(Thread.thread_name.like(search)).all()
+    return render_template('Display_Threads.html', title = "displaythreads", threads = threads, form = form)
 
 #Route to reply to threads
 @main.route('/threads/<thread_id>/reply', methods=['GET'])
@@ -103,11 +109,13 @@ def reply_threads():
 
 @main.route('/homepage/python', methods=['GET'])
 def python():
-    return render_template('PythonHomePage.html')
+    form = Search()
+    return render_template('PythonHomePage.html', form = form)
 
 @main.route('/homepage/java', methods=['GET'])
 def java():
-    return render_template('JavaHomePage.html')
+    form = Search()
+    return render_template('JavaHomePage.html', form = form)
 
 @main.route('/contact', methods=['GET'])
 def contact():
