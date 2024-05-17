@@ -2,7 +2,7 @@ import unittest, os
 from unittest import TestCase
 from app import flaskApp, db, create_app, test_data
 from app.models import User
-from app.config import TestConfig
+from app.__init__ import TestConfig
 
 class UserModelCase(TestCase):
     def setUp(self):
