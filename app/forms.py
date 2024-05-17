@@ -32,6 +32,11 @@ class CreateThreadForm(FlaskForm):
         db.session.add(thread)
         db.session.commit()
 
+        # Increase user's points
+        user = User.query.get(user_id)
+        user.points += 1
+        db.session.commit()
+
         return post.id, thread.thread_id
 
 
