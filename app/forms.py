@@ -54,10 +54,10 @@ class ReplyThreadForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
+    username = StringField("Username:", validators=[DataRequired()])
+    password = PasswordField("Password:", validators=[DataRequired()])
     remember_me = BooleanField("Remember Me")
-    submit = SubmitField("Log In")
+    submit = SubmitField("Login")
     def validate_username(self, username):
         user = db.session.scalar(sa.select(User).where(
             User.username == username.data))
@@ -66,12 +66,12 @@ class LoginForm(FlaskForm):
 
 
 class SignUp(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    email2 = StringField('Confirm Email', validators=[DataRequired(), EqualTo('email')])
-    password = PasswordField('Password', validators=[DataRequired()])
+    username = StringField('Username:', validators=[DataRequired()])
+    email = StringField('Email:', validators=[DataRequired(), Email()])
+    email2 = StringField('Confirm Email:', validators=[DataRequired(), EqualTo('email')])
+    password = PasswordField('Password:', validators=[DataRequired()])
     password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+        'Confirm Password:', validators=[DataRequired(), EqualTo('password')])
     type = HiddenField()
     submit = SubmitField('Sign Up')
 

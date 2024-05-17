@@ -50,6 +50,7 @@ $ pip install flask_login
 $ pip install wtforms
 $ pip install flask_wtf
 $ pip install selenium
+$ pip install email_validator
 $ set FLASK_APP = projectify.py 
 $ flask run
 ```
