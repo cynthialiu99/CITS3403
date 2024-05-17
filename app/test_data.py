@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.app import flaskApp
+from app import flaskApp
 from app.models import User
 
 # Function to add test data to the database

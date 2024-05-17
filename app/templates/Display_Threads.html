@@ -7,7 +7,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -CHANGE -->
-    <link rel="stylesheet" href="Threads_styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='SearchPage.css') }}">
+    
 </head>
 <body>
 
@@ -29,7 +30,7 @@
     </div>
 
     <div>
-        <a id= "create" href="Threads.html">Create New Thread!!</a>
+        <a id= "create" href="{{ url_for('main.create_threads') }}"> Create New Thread!</a>
     </div>
 
     <!-- Search Bar--> 

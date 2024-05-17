@@ -4,18 +4,23 @@
     <head>
         <title>Code Central | Java Help Page</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='SearchPage.css') }}">
-        <script type="text/javascript" src="{{ url_for('static', filename='SearchPage.js') }}"></script>  
     </head>
     <body>
         {% extends "header.html" %}
         {% block content%}
         <h1>Java</h1>
-        <form id="searchForm">
+        <form id ="searchForm" action = "{{url_for('main.get_threads')}}" method = "get">
         <div class="searchbar">
-            <input id="searcher" type="text" placeholder="Search for a topic">
+            <input name="searchtext" type="text" placeholder="Search for a topic">
             <button id = "submit" onclick = "searchBar()">Submit</button>
         </div>
+
         </form>
+        <div class ="newThreads">
+            <form action="{{ url_for('main.get_create_threads') }}" method="get">
+                <button class="new" type="submit"> Post new thread</button>
+            </form>
+        </div>
         <div class = "populartopics" id = popularTopics>
             <h2>POPULAR TOPICS:</h2>
             <p><a href = "insert link">Getting started with Java</a></p>
