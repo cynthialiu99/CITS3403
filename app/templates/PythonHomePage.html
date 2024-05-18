@@ -15,6 +15,7 @@
             {{form.search(size = 32)}}
             <button id = "submit" onclick = "searchBar()">Submit</button>
         </div>
+
         </form>
         <div class ="newThreads">
             <form action="{{ url_for('main.get_create_threads') }}" method="get">
