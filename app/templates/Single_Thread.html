@@ -36,9 +36,11 @@
             </div>
         {% endfor %}
     </div>
-    <div class="mt-4">
-        <a href="{{ url_for('main.reply_threads', thread_id=thread.thread_id) }}" class="btn btn-primary">Reply to Thread</a>
-    </div>
+    {% if user.status == 'academic' %}
+        <div class="mt-4">
+            <a href="{{ url_for('main.reply_threads', thread_id=thread.thread_id) }}" class="btn btn-primary">Reply to Thread</a>
+        </div>
+    {% endif %}
 </div>
 </div>
 {% endblock %}
