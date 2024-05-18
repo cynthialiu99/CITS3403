@@ -10,7 +10,7 @@ class CreateThreadForm(FlaskForm):
     content = StringField("Enter thread content:", validators=[DataRequired()])
     submit = SubmitField("Create thread")
 
-    def create_thread(self, user_id):
+    def create_thread(self, user_id, language):
 
         if (is_table_empty(Post) == True):
             postid = 0
@@ -25,7 +25,7 @@ class CreateThreadForm(FlaskForm):
             threadid += 1
         # Create a new post
         post = Post(id = postid, body = self.content.data, user_id = user_id)
-        thread = Thread(thread_id = threadid, post_id = postid, thread_name = self.title.data)
+        thread = Thread(thread_id = threadid, post_id = postid, thread_name = self.title.data, language = language)
 
         # Add the post to the database session
         user = User.query.get(user_id)

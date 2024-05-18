@@ -65,60 +65,60 @@ def logout():
     return redirect(url_for('main.home'))
 
 # Route to create a new thread
-@main.route('/create_threads', methods=['GET'])
+@main.route('/<string:language>/create_threads', methods=['GET'])
 @login_required
-def get_create_threads():
+def get_create_threads(language):
     form = CreateThreadForm()
-    return render_template('Threads.html', title = 'Create Thread', form = form)
+    return render_template('Threads.html', title = 'Create Thread', form = form, language = language)
 
 # Route to create a new thread
-@main.route('/create_threads', methods=['POST'])
+@main.route('/<string:language>/create_threads', methods=['POST'])
 @login_required
-def create_threads():
+def create_threads(language):
     form = CreateThreadForm()
     if form.validate_on_submit():
-        postid, threadid = form.create_thread(current_user.id)
-        return redirect(url_for('main.single_thread', thread_id=threadid))
-    return render_template('Threads.html', title = 'Create Thread', form = form)
+        postid, threadid = form.create_thread(current_user.id, language)
+        return redirect(url_for('main.single_thread', thread_id=threadid, language = language))
+    return render_template('Threads.html', title = 'Create Thread', form = form, language = language)
 
 # Route to retrieve all threads
 
-@main.route('/threads', methods=['POST'])
-def get_threads():
+@main.route('/<string:language>/threads', methods=['POST'])
+def get_threads(language):
     form = Search()
     value = form.search.data
-    print(f"value = {value}")
     search = "%{}%".format(value)
     if value == "":
-        threads = db.session.query(Thread).all()
+        threads = db.session.query(Thread).join(Post).filter(Post.language == language).all()
     else:
-        threads = db.session.query(Thread).filter(Thread.thread_name.like(search)).all()
-    return render_template('Display_Threads.html', title = "displaythreads", threads = threads, form = form)
+        threads = db.session.query(Thread).join(Post).filter(Thread.thread_name.like(search), Thread.language == language).all()
+    return render_template('Display_Threads.html', title="Display Threads", threads=threads, form=form, language=language)
 
-@main.route('/threads/<int:thread_id>', methods=['GET'])
-def single_thread(thread_id):
+@main.route('/<string:language>/threads/<int:thread_id>', methods=['GET'])
+def single_thread(language, thread_id):
     thread = Thread.query.get_or_404(thread_id)
     responses = Response.query.filter_by(thread_id=thread_id).all()
     responsearray = []
     for response in responses:
-        responsearray.append(Post.query.filter_by(id = response.post_id).first())
-    return render_template('Single_Thread.html', thread=thread, responses=responsearray, user = current_user)
+        responsearray.append(Post.query.filter_by(id=response.post_id).first())
+    return render_template('Single_Thread.html', thread=thread, responses=responsearray, user=current_user, language = language)
 
-
-#Route to reply to threads
-@main.route('/threads/<int:thread_id>/reply', methods=['GET'])
-def reply_threads(thread_id):
+@main.route('/<string:language>/threads/<int:thread_id>/reply', methods=['GET'])
+def reply_threads(language, thread_id):
     form = ReplyThreadForm()
-    return render_template("Reply_Threads.html", thread_id = thread_id, form = form)
+    return render_template("Reply_Threads.html", thread_id=thread_id, form=form, language=language)
 
-@main.route('/threads/<int:thread_id>/reply', methods=['POST'])
-def post_reply_threads(thread_id):
-    thread_id = request.view_args['thread_id']
+@main.route('/<string:language>/threads/<int:thread_id>/reply', methods=['POST'])
+def post_reply_threads(language, thread_id):
     form = ReplyThreadForm()
-    form.reply_thread(current_user.id, thread_id)
+    if form.validate_on_submit():
+        form.reply_thread(current_user.id, thread_id)
     thread = Thread.query.get_or_404(thread_id)
     responses = Response.query.filter_by(thread_id=thread_id).order_by(Response.post.has(Post.timestamp)).all()
-    return render_template('Single_Thread.html', thread=thread, response = responses, user = current_user)
+    responsearray = []
+    for response in responses:
+        responsearray.append(Post.query.filter_by(id=response.post_id).first())
+    return render_template('Single_Thread.html', thread=thread, responses=responsearray, user=current_user, language=language)
 
 @main.route('/homepage/python', methods=['GET'])
 def python():
