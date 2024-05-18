@@ -43,13 +43,7 @@ To setup the virtual environment and run flask, open the root directory of the p
 ```
 $ python3 -m venv venv
 $ venv\Scripts\activate
-$ pip install flask
-$ pip install flask_sqlalchemy
-$ pip install flask_migrate
-$ pip install flask_login
-$ pip install wtforms
-$ pip install selenium
-$ pip install email_validator
+$ pip install -r requirements.txt
 $ set FLASK_APP = projectify.py 
 $ flask run
 ```
