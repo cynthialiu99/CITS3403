@@ -8,7 +8,7 @@
     <body>
         {% extends "header.html" %}
         {% block content%}
-        <h1>Welcome, {user.name}!</h1>
+        <h1>Welcome, {{user.username}}!</h1>
         <h2>View your past threads and points here!</h2>
         <h3>YOUR THREADS:</h3>
         <p>Your Points: {{ user.points }}</p>
