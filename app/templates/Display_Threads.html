@@ -12,21 +12,8 @@
 <body>
 
     <h1>Display Existing Threads</h1>
-
-    <div class="header">
-        <nav>
-            <ul class = "nav-links">
-                <li><a href="HomePage.html">Home</a></li>
-                <li><a href="">Account</a></li>
-                <li><a href="">Resources</a></li>
-                <li><a href="ContactUs.html">Contact</a></li>
-                <li><a href="">Menu</a></li>
-                <li><a href="PythonHomePage.html">Python</a></li>
-                <li><a href="JavaHomePage.html">Java</a></li>   
-                <li class = "btn" onclick="window.location.href='Sign Up.html'">Login/Sign Up</li> 
-            </ul>
-        </nav>
-    </div>
+    {% extends "header.html" %}
+    {% block content %}
 
     <div>
         <a id= "create" href="Threads.html">Create New Thread!!</a>
@@ -42,8 +29,11 @@
 
     <!-- Display Threads -->
     <div id="threadsList">
-        <!-- Threads will be displayed here -->
+        {% for thread in threads %}
+            <li>{{thread.thread_name}}</li>
+        {% endfor %}
     </div>
+    {%endblock%}
 
    
 

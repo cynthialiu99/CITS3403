@@ -154,5 +154,15 @@ WTForms==3.1.2
 | Vinita Rathore| 23147456      |  vinita254      |
 
 ## References
-The Flask Mega Tutorial: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+Code Central's logo was generated using Wix's Logo Maker - https://www.wix.com/logo/maker
+The Flask Mega Tutorial: 
+Chapter 1 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+Chapter 2 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates
+Chapter 3 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
+Chapter 4 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+Chapter 5 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+Chapter 6 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars
+Chapter 7 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling
+Chapter 8 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers
+
 

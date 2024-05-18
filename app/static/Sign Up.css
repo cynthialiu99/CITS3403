@@ -26,11 +26,11 @@ body {
 }
 .sign-up-form p1 {
   margin-bottom: 30px;
-  font-size: 17px;
+  font-size: 15.5px;
 }
 .sign-up-form p1 a {
   font-weight: bold;
-  font-size: 18.5px;
+  font-size: 17px;
   text-decoration: none;
   color: rgb(10, 145, 230)
 }
@@ -38,29 +38,40 @@ body {
   color: lightskyblue;
   text-decoration: underline;
 }
+p {
+  font-size: 15px;
+}
 .input-details {
-  margin-bottom: 11px;
-  background-color: rgb(198, 230, 250);
-  width: 91%;
+  margin-bottom: 20px;
+  width: 97%;
+  color: #333;
 }
 .input-details input {
-  width: 93%;
+  width: 94%;
   border-radius: 4px;
   padding: 17px;
   border: 1px solid #ddd;
-  margin-bottom: 15px;
+}
+.input-details input:hover {
+  background-color: rgb(198, 230, 250);
 }
 button {
   border: none;
   border-radius: 4px;
-  padding: 20px 60px;
+  padding: 18px 60px;
   font-weight: bold;
   cursor: pointer;
 }
 .sign-up-button {
   background-color: lightskyblue;
-  width: 80%;
+  width: 100%;
   margin-top: 11px;
+  border: none;
+  border-radius: 4px;
+  padding: 20px 60px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14.75px;
 }
 .sign-up-button:hover {
   background-color: darkblue;
@@ -69,12 +80,12 @@ button {
 .sign-up-form-footer {
   text-align: center;
   margin-top: 30px;
-  font-size: 17px;
+  font-size: 15.5px;
 }  
 .sign-up-form-footer p2 a {
   text-decoration: none;
   color: rgb(10, 145, 230);
-  font-size: 17.5px;
+  font-size: 16px;
 }
 .sign-up-form-footer p2 a:hover {
   color: lightskyblue;
