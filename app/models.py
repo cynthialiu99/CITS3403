@@ -4,6 +4,7 @@ import sqlalchemy.orm as so
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import validates
 from datetime import datetime, timezone
 
 @login.user_loader
@@ -21,11 +22,20 @@ class User(UserMixin, db.Model):
 
     posts: so.Mapped[List['Post']] = so.relationship('Post', back_populates='author')
 
+    @validates('username')
+    def validate_username(self, key, username):
+        if len(username) > 64:
+            raise ValueError("Username cannot be longer than 64 characters")
+        return username
+    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    def is_committed(self):
+        return db.session.is_modified(self)
     
     def __repr__(self):
         return f'<User {self.username}>'
