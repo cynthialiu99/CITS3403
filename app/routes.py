@@ -14,7 +14,7 @@ from flask import Blueprint
 
 
 @main.route('/account')
-#@login_required
+@login_required
 def account():
     if current_user.is_anonymous == False:
         user_id = current_user.id
@@ -62,18 +62,16 @@ def logout():
     logout_user()
     return redirect(url_for('main.home'))
 
-#@main.route('/threads', methods=['GET','POST'])
-#def threads():
-#    return render_template('threads.html',title="Post new thread")
-
 # Route to create a new thread
 @main.route('/create_threads', methods=['GET'])
+@login_required
 def get_create_threads():
     form = CreateThreadForm()
     return render_template('Threads.html', title = 'Create Thread', form = form)
 
 # Route to create a new thread
 @main.route('/create_threads', methods=['POST'])
+@login_required
 def create_threads():
     form = CreateThreadForm()
     if form.validate_on_submit():
