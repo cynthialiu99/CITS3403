@@ -47,7 +47,7 @@ def login():
     if form.validate_on_submit():
         user = db.session.scalar(
             sa.select(User).where(User.username == form.username.data))
-        if (user.check_password(form.password.data)) == False:
+        if user is None or not user.check_password(form.password.data):
             error = 'Incorrect Username or Password'
             return render_template('Login.html', title='Sign In', form=form, error = error)
         login_user(user, remember=form.remember_me.data)
@@ -55,7 +55,9 @@ def login():
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('main.account')
         return redirect(next_page)
-    return render_template('Login.html', title='Sign In', form=form, error = error)
+    else:
+        error = 'Incorrect Username or Password'
+        return render_template('Login.html', title='Sign In', form=form, error = error)
 
 @main.route('/logout', methods=['GET', 'POST'])
 def logout():
