@@ -51,7 +51,7 @@
     background-color: darkblue;
     color: white;
   }
-  p {
+  .login-form p {
     font-size: 15px;
   }
   .input-email-password {

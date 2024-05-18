@@ -6,7 +6,7 @@ from app import db
 from app.models import *
 
 class CreateThreadForm(FlaskForm):
-    title = StringField("Enter title:", validators=[DataRequired()])
+    title = StringField("Enter thread title:", validators=[DataRequired()])
     content = StringField("Enter thread content:", validators=[DataRequired()])
     submit = SubmitField("Create thread")
 
@@ -107,7 +107,7 @@ class SignUp(FlaskForm):
         print(db.session.scalar(sa.select(User)))
 
 class Search(FlaskForm):
-    search = StringField('Search')
+    search = StringField('Search', render_kw={"placeholder": "Search existing threads..."})
 
 
 def is_table_empty(tablename):

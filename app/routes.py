@@ -69,7 +69,7 @@ def logout():
 @login_required
 def get_create_threads():
     form = CreateThreadForm()
-    return render_template('Threads.html', title = 'Create Thread', form = form)
+    return render_template('Create_Threads.html', title = 'Create Thread', form = form)
 
 # Route to create a new thread
 @main.route('/create_threads', methods=['POST'])
@@ -79,7 +79,7 @@ def create_threads():
     if form.validate_on_submit():
         postid, threadid = form.create_thread(current_user.id)
         return redirect(url_for('main.single_thread', thread_id=threadid))
-    return render_template('Threads.html', title = 'Create Thread', form = form)
+    return render_template('Create_Threads.html', title = 'Create Thread', form = form)
 
 # Route to retrieve all threads
 

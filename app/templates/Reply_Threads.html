@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Threads</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='Threads_styles.css') }}">
+        <title>Code Central | Reply to Thread</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Reply_Threads.css') }}">
     </head>
     <body>
         {% extends "header.html" %}
         {% block content %}
-    <h1>Reply to Threads</h1>
-    <div id="replyForm">
-        <form action = "{{ url_for('main.post_reply_threads', thread_id = thread_id) }}" method="POST">
-            {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.content.label(for="replyContent") }}
-                {{ form.content(class="form-control", id="replyContent", rows="3", required="required") }}
-            </div>
-            <button type="submit" class="btn btn-reply">Submit</button>
-        </form>
-    </div>
-    {%endblock%}
-    <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
+        <h1>Reply To A Thread</h1>
+        <div id="replyForm">
+            <form action = "{{ url_for('main.post_reply_threads', thread_id = thread_id) }}" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.content.label(for="replyContent") }}
+                    {{ form.content(class="form-control", id="replyContent", rows="5", required="required") }}
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+        {%endblock%}
+        <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
     </body>
 </html>

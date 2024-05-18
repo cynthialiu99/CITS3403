@@ -38,7 +38,7 @@
     color: lightskyblue;
     text-decoration: underline;
   }
-  p {
+  .sign-up-form p {
     font-size: 15px;
   }
   .input-details {

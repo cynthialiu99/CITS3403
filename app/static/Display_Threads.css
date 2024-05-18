@@ -1,0 +1,91 @@
+* {
+    font-family: 'Helvetica';
+    margin: 0;
+  } 
+  body {
+    background-color: white;
+    margin-bottom: 50px;
+  }
+  h1 {
+    text-align: center;
+    color: darkblue;
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 55px;
+  }
+  #create {
+    margin-left: 625px;
+    text-decoration: none;
+    background-color: lightskyblue;
+    color: black;
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 15px 25px;
+  }
+  #create:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .searchbar {
+    margin-top: 65px;
+    margin-bottom: 40px;
+    margin-left: 468px;
+  }
+  .searchbar input {
+    padding: 10px;
+    width: 45%;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    font-size: 17px;
+  }
+  .searchbar input:hover {
+    background-color: #f3f3f3;
+  }
+  .search-btn {
+    border: none;
+    border-radius: 1px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-58%); 
+    margin-right: 30px;
+    padding: 10.5px 20px;
+    background-color: darkblue;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .search-btn:hover {
+    background-color: lightskyblue;
+    color: black;
+  }
+  h3 {
+    margin-left: 468px;
+    color: #333;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .list-threads {
+    margin-left: 468px;
+  }
+  .list-threads a {
+    text-decoration: none;
+  }
+  .list-threads h4 {
+    color: darkblue;
+    font-size: 17px;
+  }
+  .list-threads h4:hover {
+    color: rgb(10, 145, 230);
+    text-decoration: underline;
+  }
+  .list-threads p {
+    display: none;
+    color: black;
+    font-size: 15px;
+  }
+  .list-thread:hover p {
+    display: block;
+  }

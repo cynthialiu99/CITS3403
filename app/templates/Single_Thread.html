@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ thread.thread_name }}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <title>Code Central | Thread - {{ thread.thread_name }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Single_Thread.css') }}">
     </head>
     <body>
         {% extends "header.html" %}
         {% block content %}
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h2>{{ thread.thread_name }}</h2>
-                <small>Posted by {{ thread.post.author.username }} on {{ thread.post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
-            </div>
-            <div class="card-body">
-                <p>{{ thread.post.body }}</p>
-            </div>
-        </div>
-        <div class="mt-4">
-            <h4>Responses</h4>
-            {% for response in responses %}
-                <div class="card mt-3">
-                    <div class="card-header">
-                        <small>Posted by {{ response.author.username }} on {{ response.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
-                    </div>
-                    <div class="card-body">
-                        <p>{{ response.body }}</p>
-                    </div>
+        <h1> THREAD: </h1>
+        <div class="container1">
+            <div class="card">
+                <div class="card-header">
+                    <h2>{{ thread.thread_name }}</h2>
+                    <small>Posted by {{ thread.post.author.username }} on {{ thread.post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
                 </div>
-            {% endfor %}
-        </div>
-        {% if user.status == 'academic' %}
-            <div class="mt-4">
-                <a href="{{ url_for('main.reply_threads', thread_id=thread.thread_id) }}" class="btn btn-primary">Reply to Thread</a>
+                <div class="card-body">
+                    <p>{{ thread.post.body }}</p>
+                </div>
+                {% if user.status == 'academic' %}
+                <div class="reply-button">
+                    <a href="{{ url_for('main.reply_threads', thread_id=thread.thread_id) }}" class="reply-btn">Click here to reply to thread</a>
+                </div>
+            {% endif %}
             </div>
-        {% endif %}
-    </div>
-    </div>
-    {% endblock %}
+            <h3>RESPONSES:</h3>
+            <div class="container2">
+                {% for response in responses %}
+                    <div class="card">
+                        <div class="card-header">
+                            <small>Posted by {{ response.author.username }} on {{ response.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                        </div>
+                        <div class="card-body">
+                            <p>{{ response.body }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+        {% endblock %}
     </body>
 </html>

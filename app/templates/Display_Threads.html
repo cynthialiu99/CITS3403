@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Threads</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='Threads_styles.css') }}">
+        <title>Code Central | Existing Threads</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Display_Threads.css') }}">
     </head>
     <body>
         {% extends "header.html" %}
         {% block content %}
-        <div class="container mt-4">
-            <h1>Display Existing Threads</h1>
-            <div>
-                <a id="create" class="btn btn-primary" href="{{ url_for('main.get_create_threads') }}">Create New Thread!!</a>
-            </div>
-            <!-- Search Bar -->
-            <div class="input-group mb-3 mt-3">
-                <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" onclick="searchThreads()">Search</button>
-                </div>
-            </div>
-            <!-- Display Threads -->
-            <div id="threadsList" class="list-group">
-                {% for thread in threads %}
-                    <a href="{{ url_for('main.single_thread', thread_id=thread.thread_id) }}" class="list-group-item list-group-item-action">
-                        <h5>{{ thread.thread_name }}</h5>
-                        <p>{{ thread.post.body }}</p>
-                    </a>
-                {% endfor %}
-            </div>
+        <h1>Search & View Existing Threads</h1>
+        <h2><a id="create" href="{{ url_for('main.get_create_threads') }}">Click here to create a new thread</a></h2>
+        <div class="searchbar">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search for thread">
+            <button class="search-btn" onclick="searchThreads()">Search</button>
+        </div>
+        <h3> Existing Threads: </h3>
+        <!-- Display Threads -->
+        <div id="threadsList" class="list-threads">
+            {% for thread in threads %}
+                <a href="{{ url_for('main.single_thread', thread_id=thread.thread_id) }}" class="list-thread">
+                    <h4>{{ thread.thread_name }}</h4>
+                    <p>{{ thread.post.body }}</p>
+                </a>
+            {% endfor %}
         </div>
         {% endblock %}
-    <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
+        <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
     </body>
 </html>

@@ -12,11 +12,11 @@
             {{form.hidden_tag()}}
         <div class="searchbar">
             {{form.search(size = 32)}}
-            <button id = "submit" onclick = "searchBar()">Submit</button>
+            <button id = "submit" onclick = "searchBar()">Search</button>
         </div>
         <div class ="newThreads">
             <form action="{{ url_for('main.get_create_threads') }}" method="get">
-                <button class="new" type="submit" onclick="addThreads()"> Click here to post a new thread... </button>
+                <button class="new" type="submit" onclick="addThreads()"> Click here to create a new thread </button>
             </form>
         </div>
         </form>

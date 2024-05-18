@@ -17,6 +17,11 @@
                     <button class="sign-up-button" type="submit"> Sign Up </button>
                 </form>
             </div>
+            {% if error %}
+            <div class = "error">
+                <p class = "error">{{error}}</p>
+            </div>
+            {% endif %}
             <form action ="{{url_for('main.login')}}" method="post">
                 {{form.hidden_tag () }}
                 <div class="input-email-password">
@@ -32,11 +37,6 @@
                     <p>
                         {{form.remember_me.label}} {{form.remember_me}}
                     </p>
-                </div>
-                <div class = "error">
-                    {%if error%}
-                        <p class = "error">{{error}}</p>
-                    {%endif%}
                 </div>
                 <p1> <a href="{{ url_for('main.forgot_passwd') }}"> Forgot password? </a> </p1>
                 {{ form.submit(class="login-button-b") }}

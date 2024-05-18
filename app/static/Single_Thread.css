@@ -1,0 +1,60 @@
+* {
+    font-family: 'Helvetica';
+    margin: 0;
+  } 
+  body {
+    background-color: white;
+    margin-bottom: 50px;
+  }
+  h1 {
+    margin-top: 50px;
+    margin-left: 200px;
+    color: rgb(10, 145, 230);
+    font-size: 35px;
+  }
+  .card {
+    background-color: #f3f3f3;
+    padding: 40px;
+    max-width: 900px;
+    border-radius: 8px;
+    border: 1px solid lightskyblue;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .card-header h2 {
+    color: darkblue;
+    font-size: 40px;
+    margin-bottom: 25px;
+  }
+  .card-header small {
+    font-size: 15px;
+  }
+  .card-body p {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-size: 19px;
+  }
+  .reply-btn {
+    border-radius: 8px;
+    background-color: lightskyblue;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 13px 19px;
+  }
+  .reply-btn:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .container1 h3 {
+    color: rgb(10, 145, 230);
+    font-size: 29px;
+    margin-left: 200px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }

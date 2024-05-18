@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Code Central | Create a Thread</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Create_Threads.css') }}">   
+    </head>
+    <body>
+        <div class="submitThreads">
+            {% extends "header.html" %}
+            {% block content %}
+            <h1 class="threadsPage">Create A Thread</h1>
+            <div class="newThread">
+                <form method="POST" action="{{ url_for('main.create_threads') }}" id="newThreadForm">
+                    {{ form.hidden_tag() }}
+                    <div class="formGroup">
+                        {{ form.title.label }}<br>
+                        {{ form.title(size=32) }}
+                    </div>
+                    <br>
+                    <div class="formGroup">
+                        {{ form.content.label }}<br>
+                        {{ form.content(size=32) }}
+                    </div>
+                    <button type="submit" class="create-btn">Create</button>
+                </form>
+            </div>
+            <h2><a id="display" class="existing-btn" href="{{ url_for('main.get_threads') }}">Click here to search & view existing threads</a></h2>
+            {%endblock%}
+        </div>
+        <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
+    </body>
+</html>
