@@ -67,30 +67,6 @@
     text-decoration: underline dotted;
     text-decoration-color: white;
   }
-  .populartopics {
-    border-top: 2.5px dashed rgb(10, 145, 230);
-    width: 42%;
-    padding: 50px;
-    margin: 25px auto;
-    text-align: center;
-  }
-  .populartopics h2 {
-    color: darkblue;
-    font-size: 21.5px;
-    text-decoration: underline dotted;
-    text-decoration-color: rgb(10, 145, 230);
-    margin-bottom: 25px;
-  }
-  .populartopics p a{
-    text-decoration: none;
-    color: rgb(10, 145, 230);
-    font-weight: bold;
-    font-size: 17.5px;
-  }
-  .populartopics p a:hover{
-    color: lightskyblue;
-    text-decoration: underline;
-  }
   .foundThreads {
     font-size: 40px;
     padding: 20px;

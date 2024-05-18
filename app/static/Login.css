@@ -1,117 +1,115 @@
 * {
-  font-family: 'Helvetica';
-  margin: 0;
-}
-body {
-  background-color: #f3f3f3;
-}
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  padding: 40px;
-  border-radius: 8px;
-  border: 1px solid lightskyblue;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-.login-form h1 {
-  margin-bottom: 30px;
-  font-size: 37px;
-  color: darkblue;
-}
-.buttons-container {
-  margin-bottom: 30px;
-  display: flex;
-}
-button {
-  border: none;
-  border-radius: 2px;
-  padding: 20px 62px;
-  font-weight: bold;
-  cursor: pointer;  
-}
-.login-button-a {
-  background-color: lightskyblue; 
-  padding: 20px 70px;
-}
-.login-button-a:hover {
-  background-color: darkblue;
-  color: white;
-}
-.sign-up-button {
-  background-color: #f3f3f3;
-  color: #333;
-}
-.sign-up-button:hover {
-  background-color: darkblue;
-  color: white;
-}
-p {
-  font-size: 15px;
-}
-.input-email-password {
-  margin-bottom: 20px;
-  width: 99%;
-  color: #333;
-}
-.input-email-password input {
-  width: 90%;
-  border-radius: 4px;
-  padding: 17px;
-  border: 1px solid #ddd;
-}
-.remember-me {
-  margin-bottom: 30px;
-  color: #333;
-}
-.login-form p1 {
-  font-size: 14px;
-  
-}
-.login-form p1 a {
-  text-decoration: none;
-  color: rgb(10, 145, 230);
-}
-.login-form p1 a:hover {
-  color: lightskyblue;
-  text-decoration: underline;
-}
-.login-button-b {
-  margin-top: 30px;
-  background-color: lightskyblue; 
-  width: 99%;
-  border: none;
-  border-radius: 4px;
-  padding: 20px 70px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 15px;
-}
-.login-button-b:hover {
-  background-color: darkblue;
-  color: white;
-}
-.login-form-footer {
-  text-align: center;
-  margin-top: 35px;
-  margin-bottom: 7px;
-  font-size: 15px;
-}
-.login-form-footer p3 a {
-  text-decoration: none;
-  color: rgb(10, 145, 230);
-  font-size: 16px;
-}
-.login-form-footer p3 a:hover {
-  color: lightskyblue;
-  text-decoration: underline;
-}
-
-.error {
-  color: red
-}
+    font-family: 'Helvetica';
+    margin: 0;
+  }
+  body {
+    background-color: #f3f3f3;
+  }
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid lightskyblue;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .login-form h1 {
+    margin-bottom: 30px;
+    font-size: 37px;
+    color: darkblue;
+  }
+  .buttons-container {
+    margin-bottom: 30px;
+    display: flex;
+  }
+  button {
+    border: none;
+    border-radius: 2px;
+    padding: 20px 62px;
+    font-weight: bold;
+    cursor: pointer;  
+  }
+  .login-button-a {
+    background-color: lightskyblue; 
+    padding: 20px 70px;
+  }
+  .login-button-a:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .sign-up-button {
+    background-color: #f3f3f3;
+    color: #333;
+  }
+  .sign-up-button:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  p {
+    font-size: 15px;
+  }
+  .input-email-password {
+    margin-bottom: 20px;
+    width: 99%;
+    color: #333;
+  }
+  .input-email-password input {
+    width: 90%;
+    border-radius: 4px;
+    padding: 17px;
+    border: 1px solid #ddd;
+  }
+  .remember-me {
+    margin-bottom: 30px;
+    color: #333;
+  }
+  .login-form p1 {
+    font-size: 14px;
+  }
+  .login-form p1 a {
+    text-decoration: none;
+    color: rgb(10, 145, 230);
+  }
+  .login-form p1 a:hover {
+    color: lightskyblue;
+    text-decoration: underline;
+  }
+  .login-button-b {
+    margin-top: 30px;
+    background-color: lightskyblue; 
+    width: 99%;
+    border: none;
+    border-radius: 4px;
+    padding: 20px 70px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .login-button-b:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .login-form-footer {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 7px;
+    font-size: 15px;
+  }
+  .login-form-footer p3 a {
+    text-decoration: none;
+    color: rgb(10, 145, 230);
+    font-size: 16px;
+  }
+  .login-form-footer p3 a:hover {
+    color: lightskyblue;
+    text-decoration: underline;
+  }
+  .error {
+    color: red
+  }

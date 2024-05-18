@@ -1,97 +1,97 @@
 * {
-  font-family: 'Helvetica';
-  margin: 0;
-}
-body {
-  background-color: #f3f3f3;
-}
-.sign-up-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  padding: 50px;
-  border-radius: 8px;
-  border: 1px solid lightskyblue;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-.sign-up-form h1 {
-  margin-bottom: 30px;
-  font-size: 35px;
-  color: darkblue
-}
-.sign-up-form p1 {
-  margin-bottom: 30px;
-  font-size: 15.5px;
-}
-.sign-up-form p1 a {
-  font-weight: bold;
-  font-size: 17px;
-  text-decoration: none;
-  color: rgb(10, 145, 230)
-}
-.sign-up-form p1 a:hover {
-  color: lightskyblue;
-  text-decoration: underline;
-}
-p {
-  font-size: 15px;
-}
-.input-details {
-  margin-bottom: 20px;
-  width: 97%;
-  color: #333;
-}
-.input-details input {
-  width: 94%;
-  border-radius: 4px;
-  padding: 17px;
-  border: 1px solid #ddd;
-}
-.input-details input:hover {
-  background-color: rgb(198, 230, 250);
-}
-button {
-  border: none;
-  border-radius: 4px;
-  padding: 18px 60px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.sign-up-button {
-  background-color: lightskyblue;
-  width: 100%;
-  margin-top: 11px;
-  border: none;
-  border-radius: 4px;
-  padding: 20px 60px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14.75px;
-}
-.sign-up-button:hover {
-  background-color: darkblue;
-  color: white;
-}
-.sign-up-form-footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 15.5px;
-}  
-.sign-up-form-footer p2 a {
-  text-decoration: none;
-  color: rgb(10, 145, 230);
-  font-size: 16px;
-}
-.sign-up-form-footer p2 a:hover {
-  color: lightskyblue;
-  text-decoration: underline;
-}
-.signup-error {
-  color: red;
-  font-size: 17px;
-}
+    font-family: 'Helvetica';
+    margin: 0;
+  }
+  body {
+    background-color: #f3f3f3;
+  }
+  .sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 50px;
+    border-radius: 8px;
+    border: 1px solid lightskyblue;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .sign-up-form h1 {
+    margin-bottom: 30px;
+    font-size: 35px;
+    color: darkblue
+  }
+  .sign-up-form p1 {
+    margin-bottom: 30px;
+    font-size: 15.5px;
+  }
+  .sign-up-form p1 a {
+    font-weight: bold;
+    font-size: 17px;
+    text-decoration: none;
+    color: rgb(10, 145, 230)
+  }
+  .sign-up-form p1 a:hover {
+    color: lightskyblue;
+    text-decoration: underline;
+  }
+  p {
+    font-size: 15px;
+  }
+  .input-details {
+    margin-bottom: 20px;
+    width: 97%;
+    color: #333;
+  }
+  .input-details input {
+    width: 94%;
+    border-radius: 4px;
+    padding: 17px;
+    border: 1px solid #ddd;
+  }
+  .input-details input:hover {
+    background-color: rgb(198, 230, 250);
+  }
+  button {
+    border: none;
+    border-radius: 4px;
+    padding: 18px 60px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .sign-up-button {
+    background-color: lightskyblue;
+    width: 100%;
+    margin-top: 11px;
+    border: none;
+    border-radius: 4px;
+    padding: 20px 60px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14.75px;
+  }
+  .sign-up-button:hover {
+    background-color: darkblue;
+    color: white;
+  }
+  .sign-up-form-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 15.5px;
+  }  
+  .sign-up-form-footer p2 a {
+    text-decoration: none;
+    color: rgb(10, 145, 230);
+    font-size: 16px;
+  }
+  .sign-up-form-footer p2 a:hover {
+    color: lightskyblue;
+    text-decoration: underline;
+  }
+  .signup-error {
+    color: red;
+    font-size: 17px;
+  }

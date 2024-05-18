@@ -100,8 +100,6 @@ function displayThreads() {
     });
 }
 
-
-
 // Function to search threads
 function searchThreads() {
     let searchTerm = document.getElementById('searchInput').value.toLowerCase();
