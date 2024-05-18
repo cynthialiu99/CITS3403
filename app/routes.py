@@ -87,9 +87,9 @@ def create_threads():
 def get_threads():
     form = Search()
     value = form.search.data
+    print(f"value = {value}")
     search = "%{}%".format(value)
-    print(form.search.data)
-    if form.search == None:
+    if value == "":
         threads = db.session.query(Thread).all()
     else:
         threads = db.session.query(Thread).filter(Thread.thread_name.like(search)).all()
@@ -102,7 +102,7 @@ def single_thread(thread_id):
     responsearray = []
     for response in responses:
         responsearray.append(Post.query.filter_by(id = response.post_id).first())
-    return render_template('Single_Thread.html', thread=thread, responses=responsearray)
+    return render_template('Single_Thread.html', thread=thread, responses=responsearray, user = current_user)
 
 
 #Route to reply to threads
@@ -118,7 +118,7 @@ def post_reply_threads(thread_id):
     form.reply_thread(current_user.id, thread_id)
     thread = Thread.query.get_or_404(thread_id)
     responses = Response.query.filter_by(thread_id=thread_id).order_by(Response.post.has(Post.timestamp)).all()
-    return render_template('Single_Thread.html', thread=thread, response = responses)
+    return render_template('Single_Thread.html', thread=thread, response = responses, user = current_user)
 
 @main.route('/homepage/python', methods=['GET'])
 def python():
