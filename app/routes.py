@@ -74,6 +74,7 @@ def get_create_threads():
 
 # Route to create a new thread
 @main.route('/create_threads', methods=['POST'])
+@login_required
 def create_threads():
     form = CreateThreadForm()
     if form.validate_on_submit():
