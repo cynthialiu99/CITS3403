@@ -1,54 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threads</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='Threads_styles.css') }}">
-
-</head>
-<body>
-
-    {% extends "header.html" %}
-    {% block content %}
-    <div class="container mt-4">
-        <h1>Display Existing Threads</h1>
-
-        <div>
-            <a id="create" class="btn btn-primary" href="{{ url_for('main.get_create_threads') }}">Create New Thread!!</a>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="input-group mb-3 mt-3">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
-            <div class="input-group-append">
-                <button class="btn btn-primary" onclick="searchThreads()">Search</button>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Threads</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Threads_styles.css') }}">
+    </head>
+    <body>
+        {% extends "header.html" %}
+        {% block content %}
+        <div class="container mt-4">
+            <h1>Display Existing Threads</h1>
+            <div>
+                <a id="create" class="btn btn-primary" href="{{ url_for('main.get_create_threads') }}">Create New Thread!!</a>
+            </div>
+            <!-- Search Bar -->
+            <div class="input-group mb-3 mt-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" onclick="searchThreads()">Search</button>
+                </div>
+            </div>
+            <!-- Display Threads -->
+            <div id="threadsList" class="list-group">
+                {% for thread in threads %}
+                    <a href="{{ url_for('main.single_thread', thread_id=thread.thread_id) }}" class="list-group-item list-group-item-action">
+                        <h5>{{ thread.thread_name }}</h5>
+                        <p>{{ thread.post.body }}</p>
+                    </a>
+                {% endfor %}
             </div>
         </div>
-
-        <!-- Display Threads -->
-        <div id="threadsList" class="list-group">
-            {% for thread in threads %}
-                <a href="{{ url_for('main.single_thread', thread_id=thread.thread_id) }}" class="list-group-item list-group-item-action">
-                    <h5>{{ thread.thread_name }}</h5>
-                    <p>{{ thread.post.body }}</p>
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-
-    {% endblock %}
-
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Custom JS -->
-<script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
-
-</body>
+        {% endblock %}
+    <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
+    </body>
 </html>

@@ -1,54 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ thread.thread_name }}</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    {% extends "header.html" %}
-    {% block content %}
-<div class="container mt-4">
-    <div class="card">
-        <div class="card-header">
-            <h2>{{ thread.thread_name }}</h2>
-            <small>Posted by {{ thread.post.author.username }} on {{ thread.post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
-        </div>
-        <div class="card-body">
-            <p>{{ thread.post.body }}</p>
-        </div>
-    </div>
-
-    <div class="mt-4">
-        <h4>Responses</h4>
-        {% for response in responses %}
-            <div class="card mt-3">
-                <div class="card-header">
-                    <small>Posted by {{ response.author.username }} on {{ response.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
-                </div>
-                <div class="card-body">
-                    <p>{{ response.body }}</p>
-                </div>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ thread.thread_name }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        {% extends "header.html" %}
+        {% block content %}
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>{{ thread.thread_name }}</h2>
+                <small>Posted by {{ thread.post.author.username }} on {{ thread.post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
             </div>
-        {% endfor %}
-    </div>
-    {% if user.status == 'academic' %}
-        <div class="mt-4">
-            <a href="{{ url_for('main.reply_threads', thread_id=thread.thread_id) }}" class="btn btn-primary">Reply to Thread</a>
+            <div class="card-body">
+                <p>{{ thread.post.body }}</p>
+            </div>
         </div>
-    {% endif %}
-</div>
-</div>
-{% endblock %}
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Custom JS -->
-<script src="{{ url_for('static', filename='scripts.js') }}"></script>
-</body>
+        <div class="mt-4">
+            <h4>Responses</h4>
+            {% for response in responses %}
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <small>Posted by {{ response.author.username }} on {{ response.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ response.body }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if user.status == 'academic' %}
+            <div class="mt-4">
+                <a href="{{ url_for('main.reply_threads', thread_id=thread.thread_id) }}" class="btn btn-primary">Reply to Thread</a>
+            </div>
+        {% endif %}
+    </div>
+    </div>
+    {% endblock %}
+    </body>
 </html>

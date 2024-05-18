@@ -1,65 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threads</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    
-    <link rel="stylesheet" href="{{ url_for('static', filename='SearchPage.css') }}">
-    
-</head>
-<body>
-    <div class="submitThreads">
-        {% extends "header.html" %}
-        {% block content %}
-            <h1 class="threadsPage">Threads Page</h1>
-
-            <div>
-                <a id="display" href="{{ url_for('main.get_threads') }}">View Existing Threads!</a>
-            </div>
-
-            <!-- Search Bar 
-            <div class="input-group mb-3">
-                <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" onclick="searchThreads()">Search</button>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Threads</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Threads_styles.css') }}">   
+    </head>
+    <body>
+        <div class="submitThreads">
+            {% extends "header.html" %}
+            {% block content %}
+                <h1 class="threadsPage">Threads Page</h1>
+                <div>
+                    <a id="display" href="{{ url_for('main.get_threads') }}">View Existing Threads!</a>
                 </div>
-            </div> -->
-
-            <!-- New Thread Form -->
-            <div class="newThread">
-                <h3>Create New Thread</h3>
-                <form method="POST" action="{{ url_for('main.create_threads') }}" id="newThreadForm">
-                    {{ form.hidden_tag() }}
-                    <div class="formGroup">
-                        {{ form.title.label }}<br>
-                        {{ form.title(size=32) }}
+                <!-- Search Bar 
+                <div class="input-group mb-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" onclick="searchThreads()">Search</button>
                     </div>
-                    <div class="formGroup">
-                        {{ form.content.label }}<br>
-                        {{ form.content(size=32) }}
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
-            </div>
-
-
-            <!-- Display Threads -->
-            <!--div id="threadsList"-->
-                <!-- Threads will be displayed here -->
-            <!--/div-->
-        {%endblock%}
-    </div>
-
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Custom JS -->
-<script src="Threads_scripts.js"></script>
-
-</body>
+                </div> -->
+                <!-- New Thread Form -->
+                <div class="newThread">
+                    <h3>Create New Thread</h3>
+                    <form method="POST" action="{{ url_for('main.create_threads') }}" id="newThreadForm">
+                        {{ form.hidden_tag() }}
+                        <div class="formGroup">
+                            {{ form.title.label }}<br>
+                            {{ form.title(size=32) }}
+                        </div>
+                        <div class="formGroup">
+                            {{ form.content.label }}<br>
+                            {{ form.content(size=32) }}
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+                <!-- Display Threads -->
+                <!--div id="threadsList"-->
+                    <!-- Threads will be displayed here -->
+                <!--/div-->
+            {%endblock%}
+        </div>
+    <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
+    </body>
 </html>

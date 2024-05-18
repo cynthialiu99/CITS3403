@@ -1,39 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Threads</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -CHANGE -->
-    <link rel="stylesheet" href="Threads_styles.css">
-</head>
-<body>
-    {% extends "header.html" %}
-    {% block content %}
-<h1>Reply to Threads</h1>
-
-
-<!-- Reply Form -->
-<div id="replyForm">
-    <form action = "{{ url_for('main.post_reply_threads', thread_id = thread_id) }}" method="POST">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.content.label(for="replyContent") }}
-            {{ form.content(class="form-control", id="replyContent", rows="3", required="required") }}
-        </div>
-        <button type="submit" class="btn btn-reply">Submit</button>
-    </form>
-</div>
-{%endblock%}
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Custom JS -->
-<script src="Threads_scripts.js"></script>
-
-</body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Threads</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Threads_styles.css') }}">
+    </head>
+    <body>
+        {% extends "header.html" %}
+        {% block content %}
+    <h1>Reply to Threads</h1>
+    <div id="replyForm">
+        <form action = "{{ url_for('main.post_reply_threads', thread_id = thread_id) }}" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.content.label(for="replyContent") }}
+                {{ form.content(class="form-control", id="replyContent", rows="3", required="required") }}
+            </div>
+            <button type="submit" class="btn btn-reply">Submit</button>
+        </form>
+    </div>
+    {%endblock%}
+    <script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
+    </body>
 </html>

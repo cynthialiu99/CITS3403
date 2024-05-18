@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--to make webpage responsive -->  
         <title>Code Central | Account</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='Account.css') }}">  
     </head>
@@ -10,10 +10,8 @@
         {% block content%}
         <h1>Welcome, {{user.username}}!</h1>
         <h2>View your past threads and points here!</h2>
-        <h3>YOUR THREADS:</h3>
         <p>Your Points: {{ user.points }}</p>
-
-
+        <h3>YOUR THREADS:</h3>
         <!-- Display Threads -->
         <div id="threadsList">
             <ul>
@@ -21,10 +19,8 @@
                 <li>{{thread.thread_name}}</li>
             {% endfor %}
             </ul>
-        </div>
-        
+        </div>       
         <script src="{{ url_for('static', filename='Account.js') }}"></script>
         {% endblock %}
     </body>
 </html>
-
