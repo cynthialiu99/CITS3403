@@ -54,11 +54,9 @@ class Thread(db.Model):
 
 class Response(db.Model):
     __tablename__ = "response"
-    response_id: so.Mapped[str] = so.mapped_column(sa.String(100), primary_key=True)
+    response_id: so.Mapped[int] = so.mapped_column(sa.Integer, primary_key=True)
     post_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey('post.id'), nullable=False)
-    thread_id: so.Mapped[str] = so.mapped_column(sa.String(100), sa.ForeignKey('thread.thread_id'), nullable=False)
-    response_no: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
-    responder_id: so.Mapped[str] = so.mapped_column(sa.String(8), nullable=False)
+    thread_id: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey('thread.thread_id'), nullable=False)
 
     post: so.Mapped[Post] = so.relationship('Post', backref=so.backref('responses', lazy=True))
     thread: so.Mapped[Thread] = so.relationship('Thread', backref=so.backref('responses', lazy=True))

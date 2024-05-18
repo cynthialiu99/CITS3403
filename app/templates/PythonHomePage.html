@@ -9,9 +9,10 @@
         {% extends "header.html" %}
         {% block content%}
         <h1>Python</h1>
-        <form id ="searchForm" action = "{{url_for('main.get_threads')}}" method = "get">
+        <form id ="searchForm" action = "{{url_for('main.get_threads')}}" method = "post">
+            {{form.hidden_tag()}}
         <div class="searchbar">
-            <input name="searchtext" type="text" placeholder="Search for a topic">
+            {{form.search(size = 32)}}
             <button id = "submit" onclick = "searchBar()">Submit</button>
         </div>
 

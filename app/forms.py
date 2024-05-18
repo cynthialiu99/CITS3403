@@ -32,19 +32,29 @@ class CreateThreadForm(FlaskForm):
         db.session.add(thread)
         db.session.commit()
 
+        # Increase user's points
+        user = User.query.get(user_id)
+        user.points += 1
+        db.session.commit()
+
         return post.id, thread.thread_id
 
 
 class ReplyThreadForm(FlaskForm):
-    def reply_thread(self, user_id):
-        postid = CreateThreadForm.create_thread()[0]
-        threadid = CreateThreadForm.create_thread()[1]
+    content = StringField("Enter reply:", validators = [DataRequired()])
+    def reply_thread(self, user_id, thread_id):
+        postid = db.session.query(sa.func.max(Post.id)).scalar() or 0
+        postid += 1
+        if (is_table_empty(Response) == True):
+            responseid = 0
+        else:
+            responseid = db.session.query(sa.func.max(Response.response_id)).scalar() or 0
+            responseid += 1
         post = Post(id = postid, body = self.content.data, user_id = user_id)
-        thread = Thread(thread_id = threadid, post_id = postid)
-        content = StringField("Enter reply:", validators=[DataRequired()])
-        reply = Response(p_id = postid, t_id = threadid, body=content, user_id = user_id)
+        response = Response(response_id = responseid, post_id = postid, thread_id = thread_id)
 
-        db.session.add(reply)
+        db.session.add(post)
+        db.session.add(response)
         db.session.commit()
 
 
@@ -95,6 +105,9 @@ class SignUp(FlaskForm):
         db.session.commit()
 
         print(db.session.scalar(sa.select(User)))
+
+class Search(FlaskForm):
+    search = StringField('Search')
 
 
 def is_table_empty(tablename):
