@@ -19,7 +19,7 @@ class User(UserMixin, db.Model):
     password_hash: so.Mapped[str] = so.mapped_column(sa.String(256))
     points: so.Mapped[int] = so.mapped_column(sa.Integer)
     status: so.Mapped[str] = so.mapped_column(sa.String(7))
-
+    committed = db.Column(db.Boolean, default=False)  # Add a committed field
     posts: so.Mapped[List['Post']] = so.relationship('Post', back_populates='author')
 
     @validates('username')
@@ -34,11 +34,17 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
     
-    def is_committed(self):
-        return db.session.is_modified(self)
     
     def __repr__(self):
         return f'<User {self.username}>'
+
+    def is_committed(self):
+        return self.committed  # Ensure this returns the committed field
+
+    def mark_as_committed(self):
+        self.committed = True
+        db.session.add(self)
+        db.session.commit()
     
 class Post(db.Model):
     __tablename__ = "post"

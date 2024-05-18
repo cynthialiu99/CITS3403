@@ -30,13 +30,10 @@ class UserModelCase(unittest.TestCase):
         self.assertTrue(user.check_password('correct'))
 
     def test_is_committed(self):
-        user = db.session.get(User, 1)
-        db.session.add(user)  
-        db.session.commit() 
-        if hasattr(user, 'is_committed'):
-            self.assertTrue(user.is_committed())  
-        else:
-            self.assertFalse(user.is_committed())  
+        user = User.query.get(1)
+        self.assertFalse(user.is_committed())
+        user.mark_as_committed()  # Use the new method to mark as committed
+        self.assertTrue(user.is_committed())
 
     def test_set_password(self):
         user = User(username='02345678', email='02345678@uwa.edu.au', points=0, status='student')  # Added default points and status
