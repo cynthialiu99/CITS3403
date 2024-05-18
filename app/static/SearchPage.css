@@ -44,6 +44,29 @@
     background-color: darkblue;
     color: white;
   }
+  .newThreads {
+    text-align: center;
+    width: 40%;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .new {
+    background-color: darkblue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 20px 90px;
+    font-size: 16.5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .new:hover {
+    background-color: lightskyblue;
+    color: black;
+    text-decoration: underline dotted;
+    text-decoration-color: white;
+  }
   .populartopics {
     border-top: 2.5px dashed rgb(10, 145, 230);
     width: 42%;

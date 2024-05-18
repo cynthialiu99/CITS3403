@@ -6,53 +6,48 @@
     <title>Threads</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -CHANGE -->
-    <link rel="stylesheet" href="Threads_styles.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Threads_styles.css') }}">
+
 </head>
 <body>
 
-    <h1>Display Existing Threads</h1>
+    {% extends "header.html" %}
+    {% block content %}
+    <div class="container mt-4">
+        <h1>Display Existing Threads</h1>
 
-    <div class="header">
-        <nav>
-            <ul class = "nav-links">
-                <li><a href="HomePage.html">Home</a></li>
-                <li><a href="">Account</a></li>
-                <li><a href="">Resources</a></li>
-                <li><a href="ContactUs.html">Contact</a></li>
-                <li><a href="">Menu</a></li>
-                <li><a href="PythonHomePage.html">Python</a></li>
-                <li><a href="JavaHomePage.html">Java</a></li>   
-                <li class = "btn" onclick="window.location.href='Sign Up.html'">Login/Sign Up</li> 
-            </ul>
-        </nav>
-    </div>
-
-    <div>
-        <a id= "create" href="Threads.html">Create New Thread!!</a>
-    </div>
-
-    <!-- Search Bar--> 
-    <div class="input-group mb-3">
-        <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
-        <div class="input-group-append">
-            <button class="btn btn-primary" onclick="searchThreads()">Search</button>
+        <div>
+            <a id="create" class="btn btn-primary" href="{{ url_for('main.get_create_threads') }}">Create New Thread!!</a>
         </div>
-    </div> 
 
-    <!-- Display Threads -->
-    <div id="threadsList">
-        <!-- Threads will be displayed here -->
+        <!-- Search Bar -->
+        <div class="input-group mb-3 mt-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search for threads">
+            <div class="input-group-append">
+                <button class="btn btn-primary" onclick="searchThreads()">Search</button>
+            </div>
+        </div>
+
+        <!-- Display Threads -->
+        <div id="threadsList" class="list-group">
+            {% for thread in threads %}
+                <a href="{{ url_for('main.single_thread', thread_id=thread.thread_id) }}" class="list-group-item list-group-item-action">
+                    {{ thread.thread_name }}
+                </a>
+            {% endfor %}
+        </div>
     </div>
 
-   
+    {% endblock %}
 
 <!-- Bootstrap JS and Popper.js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Custom JS -->
-<script src="Threads_scripts.js"></script>
+<script src="{{ url_for('static', filename='Threads_scripts.js') }}"></script>
 
 </body>
 </html>

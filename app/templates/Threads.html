@@ -7,7 +7,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="Threads_styles.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='SearchPage.css') }}">
+    
 </head>
 <body>
     <div class="submitThreads">
@@ -30,15 +32,15 @@
             <!-- New Thread Form -->
             <div class="newThread">
                 <h3>Create New Thread</h3>
-                <form method="POST" action="{{ url_for('main.create_thread') }}" id="newThreadForm">
+                <form method="POST" action="{{ url_for('main.create_threads') }}" id="newThreadForm">
                     {{ form.hidden_tag() }}
                     <div class="formGroup">
-                        {{ form.thread_title.label(class="form-label") }}
-                        {{ form.thread_title(class="form-control", id="threadTitle") }}
+                        {{ form.title.label }}<br>
+                        {{ form.title(size=32) }}
                     </div>
                     <div class="formGroup">
-                        {{ form.thread_content.label(class="form-label") }}
-                        {{ form.thread_content(class="form-control", id="threadContent", rows="3") }}
+                        {{ form.content.label }}<br>
+                        {{ form.content(size=32) }}
                     </div>
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
@@ -49,7 +51,7 @@
             <!--div id="threadsList"-->
                 <!-- Threads will be displayed here -->
             <!--/div-->
-        {%block content%}
+        {%endblock%}
     </div>
 
 <!-- Bootstrap JS and Popper.js -->

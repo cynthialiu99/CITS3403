@@ -2,7 +2,7 @@ import unittest, os
 from unittest import TestCase
 from app import flaskApp, db, create_app, test_data
 from app.models import User
-from app.config import TestConfig
+from app.__init__ import TestConfig
 
 class UserModelCase(TestCase):
     def setUp(self):
@@ -34,6 +34,28 @@ class UserModelCase(TestCase):
         db.session.flush()
         db.session.commit()
         self.assertTrue(user.is_committed())
+
+    def test_set_password(self):
+        user = User(username='02345678', email='02345678@uwa.edu.au', staff=True)
+        user.set_password('testpassword')
+        self.assertTrue(user.check_password('testpassword'))
+
+    def test_email_uniqueness(self):
+        # Attempt to create two users with the same email
+        user1 = User(username='user1', email='23066191@student.uwa.edu.au', staff=False)
+        user2 = User(username='user2', email='23066191@student.uwa.edu.au', staff=False)
+        db.session.add(user1)
+        db.session.add(user2)
+        with self.assertRaises(Exception):
+            db.session.commit()
+    
+    def test_username_length(self):
+        # Attempt to create a user with a username longer than the maximum allowed length
+        long_username = 'a' * 65  # Assuming maximum length is 64
+        user = User(username=long_username, email='test@example.com', staff=False)
+        with self.assertRaises(ValueError):
+            db.session.add(user)
+            db.session.commit()
     
     if __name__ == '__main__':
         unittest.main()

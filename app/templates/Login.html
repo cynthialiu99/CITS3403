@@ -14,23 +14,23 @@
                     <button class="login-button-a" type="submit"> Login </button>
                 </form>
                 <form action="{{ url_for('main.signup') }}" method="get">
-                    <button class="sign-up-button" type="submit"> Sign-Up </button>
+                    <button class="sign-up-button" type="submit"> Sign Up </button>
                 </form>
             </div>
             <form action ="{{url_for('main.login')}}" method="post">
                 {{form.hidden_tag () }}
                 <div class="input-email-password">
                     <p>
-                        {{form.username.label}}<br>
-                        {{form.username(size = 32)}}
+                        {{form.username.label}}{{form.username(size = 32)}}
                     </p>
+                    <br>
                     <p>
-                        {{form.password.label}}<br>
-                        {{form.password(size = 32)}}
+                        {{form.password.label}}{{form.password(size = 32)}}
                     </p>
+                </div>
+                <div class="remember-me">
                     <p>
-                        {{form.remember_me.label}}<br>
-                        {{form.remember_me}}
+                        {{form.remember_me.label}} {{form.remember_me}}
                     </p>
                 </div>
                 <div class = "error">
@@ -39,7 +39,7 @@
                     {%endif%}
                 </div>
                 <p1> <a href="{{ url_for('main.forgot_passwd') }}"> Forgot password? </a> </p1>
-                <p>{{ form.submit() }}</p>
+                {{ form.submit(class="login-button-b") }}
                 <div class="login-form-footer">
                     <p2> Don't have an account yet? </p2>
                     <br>
