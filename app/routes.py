@@ -34,12 +34,12 @@ def signup():
     if form.validate_on_submit():
         form.type.data = "student"
         form.create_user()
-        flash('Congratulations, you are now a registered user!')
         return redirect(url_for('main.login'))
     return render_template('Sign Up (Student).html', title='Sign Up', form=form)
 
 @main.route('/login', methods=['GET','POST'])
 def login():
+    error = ""
     if current_user.is_authenticated:
         return redirect(url_for('main.account'))
     form = LoginForm()
@@ -47,14 +47,14 @@ def login():
         user = db.session.scalar(
             sa.select(User).where(User.username == form.username.data))
         if (user.check_password(form.password.data)) == False:
-            flash('Incorrect Username or Password')
-            return render_template('Login.html', title='Sign In', form=form)
+            error = 'Incorrect Username or Password'
+            return render_template('Login.html', title='Sign In', form=form, error = error)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('main.account')
         return redirect(next_page)
-    return render_template('Login.html', title='Sign In', form=form)
+    return render_template('Login.html', title='Sign In', form=form, error = error)
 
 @main.route('/logout', methods=['GET', 'POST'])
 def logout():
