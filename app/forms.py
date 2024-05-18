@@ -28,13 +28,10 @@ class CreateThreadForm(FlaskForm):
         thread = Thread(thread_id = threadid, post_id = postid, thread_name = self.title.data)
 
         # Add the post to the database session
-        db.session.add(post)
-        db.session.add(thread)
-        db.session.commit()
-
-        # Increase user's points
         user = User.query.get(user_id)
         user.points += 1
+        db.session.add(post)
+        db.session.add(thread)
         db.session.commit()
 
         return post.id, thread.thread_id
@@ -52,6 +49,9 @@ class ReplyThreadForm(FlaskForm):
             responseid += 1
         post = Post(id = postid, body = self.content.data, user_id = user_id)
         response = Response(response_id = responseid, post_id = postid, thread_id = thread_id)
+
+        user = User.query.get(user_id)
+        user.points += 1
 
         db.session.add(post)
         db.session.add(response)
