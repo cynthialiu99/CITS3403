@@ -21,7 +21,7 @@ class SystemTest(unittest.TestCase):
         options.add_argument('--headless')  # Run headless browser if needed
         self.driver = webdriver.Chrome(options=options)
 
-        staff = User(id=0,username='01234567', password_hash = '4758', email='01234567@uwa.edu.au',points=5,status='yes')
+        staff = User(id=0,username='01234567', password_hash = '4758', email='01234567@uwa.edu.au',points=5,status='academic')
         staff.set_password('staffpassword')
         db.session.add(staff)
         db.session.commit()
