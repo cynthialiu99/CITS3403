@@ -2,20 +2,18 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!--to make webpage repsonsive -->
-        <title>Accounts</title>
-        <link rel="stylesheet" href="Account.css">
-        
+        <title>Code Central | Account</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Account.css') }}">  
     </head>
-
     <body>
         {% extends "header.html" %}
         {% block content%}
-
-        <h1>Welcome, {{user.username}}</h1>
-        <h4>View your past threads and points here!.</h4>
+        <h1>Welcome, {{user.username}}!</h1>
+        <h2>View your past threads and points here!</h2>
+        <h3>YOUR THREADS:</h3>
         <p>Your Points: {{ user.points }}</p>
 
-        <h2>Your Threads</h2>
+
         <!-- Display Threads -->
         <div id="threadsList">
             <ul>
@@ -24,13 +22,8 @@
             {% endfor %}
             </ul>
         </div>
-
-        <form action ="{{url_for('main.logout')}}" method="post">
-            <button type ="submit">Logout</button>
-        </form>
-
         
-        <script src="Account.js"></script>
+        <script src="{{ url_for('static', filename='Account.js') }}"></script>
         {% endblock %}
     </body>
 </html>

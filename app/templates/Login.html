@@ -33,6 +33,11 @@
                         {{form.remember_me.label}} {{form.remember_me}}
                     </p>
                 </div>
+                <div class = "error">
+                    {%if error%}
+                        <p class = "error">{{error}}</p>
+                    {%endif%}
+                </div>
                 <p1> <a href="{{ url_for('main.forgot_passwd') }}"> Forgot password? </a> </p1>
                 {{ form.submit(class="login-button-b") }}
                 <div class="login-form-footer">

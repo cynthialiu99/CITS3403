@@ -111,3 +111,7 @@ p {
   color: lightskyblue;
   text-decoration: underline;
 }
+
+.error {
+  color: red
+}

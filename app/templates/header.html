@@ -7,7 +7,9 @@
     </head>
     <body>   
         <div class="header">
-            <img class="logo" src="{{ url_for('static', filename='Code Central Logo.jpeg') }}">
+            <a href="{{ url_for('main.home') }}">
+                <img class="logo" src="{{ url_for('static', filename='Code Central Logo.jpeg') }}"> <!-- Code Central's logo was generated using Wix's Logo Maker (https://www.wix.com/logo/maker) -->
+            </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="{{ url_for('main.home') }}">Home</a></li> 
@@ -15,8 +17,12 @@
                     <li><a href="{{ url_for('main.java') }}">Java</a></li> 
                     <li><a href="{{ url_for('main.account') }}">Account</a></li> 
                     <li><a href="{{ url_for('main.contact') }}">Contact Us</a></li> 
-                    <li class="btn"><a href="{{ url_for('main.login') }}">Login</a></li> 
-                    <li class="btn"><a href="{{ url_for('main.signup') }}">Sign Up</a></li> 
+                    {% if current_user.is_authenticated %}
+                        <li class="btn"><a href="{{ url_for('main.logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="btn"><a href="{{ url_for('main.login') }}">Login</a></li> 
+                        <li class="btn"><a href="{{ url_for('main.signup') }}">Sign Up</a></li> 
+                    {% endif %}
                 </ul>
             </nav>
         </div>
