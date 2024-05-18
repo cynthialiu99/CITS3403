@@ -9,12 +9,18 @@
         {% extends "header.html" %}
         {% block content%}
         <h1>Welcome, {user.name}!</h1>
-        <h2>Manage your info, privacy and details here.</h2>
-
+        <h2>View your past threads and points here!</h2>
         <h3>YOUR THREADS:</h3>
+        <p>Your Points: {{ user.points }}</p>
+
+
         <!-- Display Threads -->
         <div id="threadsList">
-            <!-- Threads will be displayed here -->
+            <ul>
+            {% for thread in threads %}
+                <li>{{thread.thread_name}}</li>
+            {% endfor %}
+            </ul>
         </div>
         
         <script src="{{ url_for('static', filename='Account.js') }}"></script>

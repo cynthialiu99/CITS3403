@@ -50,6 +50,7 @@ $ pip install flask_login
 $ pip install wtforms
 $ pip install flask_wtf
 $ pip install selenium
+$ pip install email_validator
 $ set FLASK_APP = projectify.py 
 $ flask run
 ```
@@ -94,23 +95,42 @@ Staff User:
 
 ### Dependencies -> requirements.txt file
 alembic==1.13.1
+attrs==23.2.0
 blinker==1.8.2
+certifi==2024.2.2
+cffi==1.16.0
 click==8.1.7
 colorama==0.4.6
+dnspython==2.6.1
+email_validator==2.1.1
+exceptiongroup==1.2.1
 Flask==3.0.3
 Flask-Login==0.6.3
 Flask-Migrate==4.0.7
 Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.1
 greenlet==3.0.3
+h11==0.14.0
+idna==3.7
 itsdangerous==2.2.0
 Jinja2==3.1.4
-Mako==1.3.3
+Mako==1.3.5
 MarkupSafe==2.1.5
+outcome==1.3.0.post0
+pycparser==2.22
+PySocks==1.7.1
+selenium==4.21.0
+sniffio==1.3.1
+sortedcontainers==2.4.0
 SQLAlchemy==2.0.30
+trio==0.25.1
+trio-websocket==0.11.1
 typing_extensions==4.11.0
+urllib3==2.2.1
 Werkzeug==3.0.3
+wsproto==1.2.0
 WTForms==3.1.2
+
 
 
 ## Built With
@@ -132,3 +152,17 @@ WTForms==3.1.2
 | Cynthia Liu   | 23387046      |  cynthialiu99   |
 | Neha Menon    | 23516355      |  nehamenon139   |
 | Vinita Rathore| 23147456      |  vinita254      |
+
+## References
+Code Central's logo was generated using Wix's Logo Maker - https://www.wix.com/logo/maker
+The Flask Mega Tutorial: 
+Chapter 1 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+Chapter 2 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates
+Chapter 3 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
+Chapter 4 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+Chapter 5 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+Chapter 6 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars
+Chapter 7 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling
+Chapter 8 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers
+
+
