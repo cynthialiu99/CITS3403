@@ -14,13 +14,11 @@
         <h3>Your Threads:</h3>
         <!-- Display Threads -->
         <div id="threadsList">
-            <ul>
-            {% for thread in threads %}
-                <li>{{thread.thread_name}}</li>
-            {% endfor %}
-            </ul>
-        </div>       
-        <script src="{{ url_for('static', filename='Account.js') }}"></script>
+        </div>
+        <script>
+            var threads = {{ threads | tojson }};
+        </script>
+        <script src="{{ url_for('static', filename='Account.js', threads = threads) }}"></script>
         {% endblock %}
     </body>
 </html>

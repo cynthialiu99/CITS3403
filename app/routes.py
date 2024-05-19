@@ -16,11 +16,19 @@ from flask import Blueprint
 @main.route('/account')
 @login_required
 def account():
+    threads = []
     if current_user.is_anonymous == False:
         user_id = current_user.id
         user = User.query.get(user_id)
         threads = db.session.query(Thread).join(Post).filter(Post.user_id == user_id).all()
-        return render_template('account.html', user=user, threads = threads)
+        thread_list = []
+        for thread in threads:
+            thread_dict = {
+                'thread_id': thread.thread_id,
+                'thread_name': thread.thread_name
+            }
+        thread_list.append(thread_dict)
+        return render_template('Account.html', user=user, threads = thread_list)
     else:
         # Redirect to login page or handle unauthorized access
         return redirect(url_for('main.login'))
@@ -84,7 +92,6 @@ def create_threads():
 def get_threads():
     form = Search()
     value = form.search.data
-    print(f"value = {value}")
     search = "%{}%".format(value)
     if value == "":
         threads = db.session.query(Thread).all()

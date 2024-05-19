@@ -10,10 +10,13 @@
         {% block content %}
         <h1>Search & View Existing Threads</h1>
         <h2><a id="create" href="{{ url_for('main.get_create_threads') }}">Click here to create a new thread</a></h2>
-        <div class="searchbar">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search for thread">
-            <button class="search-btn" onclick="searchThreads()">Search</button>
-        </div>
+        <form id ="searchForm" action = "{{url_for('main.get_threads')}}" method = "post">
+            {{form.hidden_tag()}}
+            <div class="searchbar">
+                {{form.search(size = 32)}}
+                <button id = "submit" onclick = "searchBar()">Search</button>
+            </div>
+        </form>
         <h3> Existing Threads: </h3>
         <!-- Display Threads -->
         <div id="threadsList" class="list-threads">
