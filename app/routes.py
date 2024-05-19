@@ -49,15 +49,13 @@ def login():
             sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
             error = 'Incorrect Username or Password'
-            return render_template('Login.html', title='Sign In', form=form, error = error)
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('main.account')
-        return redirect(next_page)
-    else:
-        error = 'Incorrect Username or Password'
-        return render_template('Login.html', title='Sign In', form=form, error = error)
+        else:
+            login_user(user, remember=form.remember_me.data)
+            next_page = request.args.get('next')
+            if not next_page or urlsplit(next_page).netloc != '':
+                next_page = url_for('main.account')
+            return redirect(next_page)
+    return render_template('Login.html', title='Sign In', form=form, error = error)
 
 @main.route('/logout', methods=['GET', 'POST'])
 def logout():
