@@ -14,13 +14,13 @@
                 {{form.search(size = 32)}}
                 <button id = "submit" onclick = "searchBar()">Search</button>
             </div>
-            <div class ="newThreads">
-                <form action="{{ url_for('main.get_create_threads') }}" method="get">
-                    <button class="new" type="submit" onclick="addThreads()"> Click here to create a new thread </button>
-                </form>
-            </div>
         </form>
         <div id = "searchResults">
+        </div>
+        <div class ="newThreads">
+            <form action="{{ url_for('main.get_create_threads') }}" method="get">
+                <button class="new" type="submit" onclick="addThreads()"> Click here to create a new thread </button>
+            </form>
         </div>
         {%endblock%}
     </body>
