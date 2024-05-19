@@ -82,8 +82,7 @@ def create_threads():
     return render_template('Create_Threads.html', title = 'Create Thread', form = form)
 
 # Route to retrieve all threads
-
-@main.route('/threads', methods=['POST'])
+@main.route('/threads', methods=['GET','POST'])
 def get_threads():
     form = Search()
     value = form.search.data

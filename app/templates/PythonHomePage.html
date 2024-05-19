@@ -8,7 +8,7 @@
         {% extends "header.html" %}
         {% block content%}
         <h1>Python</h1>
-        <form id ="searchForm" action = "{{url_for('main.get_threads')}}" method = "post">
+        <form id ="searchForm" action = "{{url_for('main.get_create_threads')}}" method = "post">
             {{form.hidden_tag()}}
         <div class="searchbar">
             {{form.search(size = 32)}}
