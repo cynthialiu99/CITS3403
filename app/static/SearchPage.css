@@ -66,10 +66,3 @@
     text-decoration: underline dotted;
     text-decoration-color: white;
   }
-  .foundThreads {
-    font-size: 40px;
-    padding: 20px;
-  }
-  .errorNothingFound {
-    font-size: 40px;
-  }
