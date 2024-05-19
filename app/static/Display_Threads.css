@@ -41,7 +41,7 @@
   .searchbar input:hover {
     background-color: #f3f3f3;
   }
-  .submit {
+  #submit {
     border: none;
     border-radius: 1px;
     position: absolute;
@@ -55,7 +55,7 @@
     font-weight: bold;
     cursor: pointer;
   }
-  .submit:hover {
+  #submit:hover {
     background-color: lightskyblue;
     color: black;
   }
@@ -76,6 +76,7 @@
   .list-threads h4 {
     color: darkblue;
     font-size: 17px;
+    margin-bottom: 15px;
   }
   .list-threads h4:hover {
     color: rgb(10, 145, 230);
@@ -85,6 +86,7 @@
     display: none;
     color: black;
     font-size: 15px;
+    margin-bottom: 25px;
   }
   .list-thread:hover p {
     display: block;
