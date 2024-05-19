@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Code Central | Java Help Page</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='SearchPage.css') }}">
@@ -10,15 +10,15 @@
         <h1>Java</h1>
         <form id ="searchForm" action = "{{url_for('main.get_threads')}}" method = "post">
             {{form.hidden_tag()}}
-        <div class="searchbar">
-            {{form.search(size = 32)}}
-            <button id = "submit" onclick = "searchBar()">Search</button>
-        </div>
-        <div class ="newThreads">
-            <form action="{{ url_for('main.get_create_threads') }}" method="get">
-                <button class="new" type="submit" onclick="addThreads()"> Click here to create a new thread </button>
-            </form>
-        </div>
+            <div class="searchbar">
+                {{form.search(size = 32)}}
+                <button id = "submit" onclick = "searchBar()">Search</button>
+            </div>
+            <div class ="newThreads">
+                <form action="{{ url_for('main.get_create_threads') }}" method="get">
+                    <button class="new" type="submit" onclick="addThreads()"> Click here to create a new thread </button>
+                </form>
+            </div>
         </form>
         <div id = "searchResults">
         </div>
