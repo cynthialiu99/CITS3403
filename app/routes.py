@@ -22,12 +22,13 @@ def account():
         user = User.query.get(user_id)
         threads = db.session.query(Thread).join(Post).filter(Post.user_id == user_id).all()
         thread_list = []
-        for thread in threads:
-            thread_dict = {
-                'thread_id': thread.thread_id,
-                'thread_name': thread.thread_name
-            }
-        thread_list.append(thread_dict)
+        if(len(threads) !=0):
+            for thread in threads:
+                thread_dict = {
+                    'thread_id': thread.thread_id,
+                    'thread_name': thread.thread_name
+                }
+            thread_list.append(thread_dict)
         return render_template('Account.html', user=user, threads = thread_list)
     else:
         # Redirect to login page or handle unauthorized access
